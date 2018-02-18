@@ -1,0 +1,3 @@
+include 'org.eclipse.xtext.peweb.editorlanguage'
+include 'org.eclipse.xtext.peweb.editorlanguage.ide'
+include 'org.eclipse.xtext.peweb.editorlanguage.tests'
