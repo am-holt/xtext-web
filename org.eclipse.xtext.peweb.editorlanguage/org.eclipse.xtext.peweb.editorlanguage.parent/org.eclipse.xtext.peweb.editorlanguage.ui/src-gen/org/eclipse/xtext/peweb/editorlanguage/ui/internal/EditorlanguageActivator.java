@@ -10,11 +10,11 @@ import java.util.Collections;
 import java.util.Map;
 import org.apache.log4j.Logger;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.peweb.EditorLanguageRuntimeModule;
+import org.eclipse.xtext.peweb.ui.EditorLanguageUiModule;
 import org.eclipse.xtext.ui.shared.SharedStateModule;
 import org.eclipse.xtext.util.Modules2;
 import org.osgi.framework.BundleContext;
-import ox.xtext.projectionalEditor.EditorLanguageRuntimeModule;
-import ox.xtext.projectionalEditor.ui.EditorLanguageUiModule;
 
 /**
  * This class was generated. Customizations should only happen in a newly
@@ -23,7 +23,7 @@ import ox.xtext.projectionalEditor.ui.EditorLanguageUiModule;
 public class EditorlanguageActivator extends AbstractUIPlugin {
 
 	public static final String PLUGIN_ID = "org.eclipse.xtext.peweb.editorlanguage.ui";
-	public static final String OX_XTEXT_PROJECTIONALEDITOR_EDITORLANGUAGE = "ox.xtext.projectionalEditor.EditorLanguage";
+	public static final String ORG_ECLIPSE_XTEXT_PEWEB_EDITORLANGUAGE = "org.eclipse.xtext.peweb.EditorLanguage";
 	
 	private static final Logger logger = Logger.getLogger(EditorlanguageActivator.class);
 	
@@ -73,14 +73,14 @@ public class EditorlanguageActivator extends AbstractUIPlugin {
 	}
 	
 	protected com.google.inject.Module getRuntimeModule(String grammar) {
-		if (OX_XTEXT_PROJECTIONALEDITOR_EDITORLANGUAGE.equals(grammar)) {
+		if (ORG_ECLIPSE_XTEXT_PEWEB_EDITORLANGUAGE.equals(grammar)) {
 			return new EditorLanguageRuntimeModule();
 		}
 		throw new IllegalArgumentException(grammar);
 	}
 	
 	protected com.google.inject.Module getUiModule(String grammar) {
-		if (OX_XTEXT_PROJECTIONALEDITOR_EDITORLANGUAGE.equals(grammar)) {
+		if (ORG_ECLIPSE_XTEXT_PEWEB_EDITORLANGUAGE.equals(grammar)) {
 			return new EditorLanguageUiModule(this);
 		}
 		throw new IllegalArgumentException(grammar);

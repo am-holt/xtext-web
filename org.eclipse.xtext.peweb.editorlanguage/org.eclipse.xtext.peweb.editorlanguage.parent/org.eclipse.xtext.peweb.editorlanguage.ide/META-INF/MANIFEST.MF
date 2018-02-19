@@ -11,7 +11,5 @@ Require-Bundle: org.eclipse.xtext.peweb.editorlanguage,
  org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.xtext.peweb.ide.contentassist.antlr,
- org.eclipse.xtext.peweb.ide.contentassist.antlr.internal,
- ox.xtext.projectionalEditor.ide.contentassist.antlr,
- ox.xtext.projectionalEditor.ide.contentassist.antlr.internal
+ org.eclipse.xtext.peweb.ide.contentassist.antlr.internal
 

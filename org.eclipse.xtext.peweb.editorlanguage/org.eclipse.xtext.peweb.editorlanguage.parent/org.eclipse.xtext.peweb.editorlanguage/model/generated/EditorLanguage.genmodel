@@ -4,7 +4,7 @@
     modelPluginID="org.eclipse.xtext.peweb.editorlanguage" forceOverwrite="true" modelName="EditorLanguage"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.12">
-  <genPackages prefix="EditorLanguage" basePackage="ox.xtext.projectionalEditor" disposableProviderFactory="true"
+  <genPackages prefix="EditorLanguage" basePackage="org.eclipse.xtext.peweb" disposableProviderFactory="true"
       fileExtensions="editor" ecorePackage="EditorLanguage.ecore#/">
     <genClasses ecoreClass="EditorLanguage.ecore#//EditorDefinitionFile">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//EditorDefinitionFile/imports"/>
