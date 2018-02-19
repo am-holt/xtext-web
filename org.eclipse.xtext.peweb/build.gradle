@@ -1,0 +1,25 @@
+apply from: "${rootDir}/gradle/default-project-layout.gradle"
+
+ext.title = 'Xtext PEWeb'
+description = 'Xtext Web API for Projectional editing'
+
+configurations { providedCompile }
+sourceSets.all {compileClasspath += configurations.providedCompile}
+eclipse.classpath.plusConfigurations += [configurations.providedCompile]
+javadoc.classpath += configurations.providedCompile
+
+dependencies {
+	compile project(':org.eclipse.xtext.web')
+	compile project(':org.eclipse.xtext.web.servlet')
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.5'
+	providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+}
+
+jar.manifest {
+	name 'Xtext PEWeb'
+	vendor 'Eclipse Xtext'
+	instruction 'Import-Package', "org.eclipse.xtext.web.server.*;version=\"${version}\""
+	instruction 'Import-Package', 'org.eclipse.xtext.web.servlet.*'
+	instruction 'Import-Package', '*'
+	instruction 'Export-Package', "org.eclipse.xtext.peweb.*;version=\"${version}\""
+}

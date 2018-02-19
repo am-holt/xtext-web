@@ -1,5 +1,6 @@
 rootProject.name = 'xtext-web'
 
+include 'org.eclipse.xtext.peweb'
 include 'org.eclipse.xtext.web'
 include 'org.eclipse.xtext.xbase.web'
 include 'org.eclipse.xtext.web.servlet'
