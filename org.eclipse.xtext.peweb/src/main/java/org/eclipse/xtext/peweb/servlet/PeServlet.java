@@ -23,8 +23,7 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
-
-
+import com.google.inject.Injector;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -49,11 +48,13 @@ import javax.servlet.http.HttpServletResponse;
  * 
  * 
  */
-public class PeServlet extends HttpServlet {
+public abstract class PeServlet extends HttpServlet {
 	
 	DisposableRegistry disposableRegistry;
 	Logger LOG = Logger.getLogger(this.getClass());
 	private Gson gson = getGson();	private OpenResources openResources = new OpenResources();
+	
+	public abstract Injector getInjector(); 
 	
 	protected void service(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
@@ -119,6 +120,8 @@ public class PeServlet extends HttpServlet {
 		}
 		
 		switch(serviceType){
+			case "ls-languages":
+				return getInjector().getInstance(GetAvailableLanguagesService.class);
 			case "ls-projects":
 				return new ListProjectsService();
 			case "add-project":
@@ -126,7 +129,7 @@ public class PeServlet extends HttpServlet {
 			case "get-project":
 				return new GetProjectService();
 			case "add-file":
-				return new CreateFileService();
+				return getInjector().getInstance(CreateFileService.class);
 			case "get-file":
 				return new GetFileService(this.openResources);
 			case "get-node":

@@ -12,6 +12,9 @@ import com.google.inject.Inject;
 
 public class CreateFileService implements PEService {
 
+	@Inject 
+	public  FileExtensionProvider fileExtensionProvider;
+	
 	private class CreateFileResult implements IServiceResult{
 		String name; 
 		Boolean success;
@@ -20,7 +23,7 @@ public class CreateFileService implements PEService {
 	@Override
 	public IServiceResult service(IServiceContext serviceContext) {
 		String name = serviceContext.getParameter("name");
-		String extension = serviceContext.getParameter("extension");
+		String extension = this.fileExtensionProvider.getPrimaryFileExtension();
 		String projectId = serviceContext.getParameter("project-name");
 		try{
 			if(name == null){
@@ -28,10 +31,10 @@ public class CreateFileService implements PEService {
 			}else if(projectId == null){
 				throw new InvalidRequestException("Create file call requires a project-name field!");
 			}else{
-				File file = new File("./user-files" + File.separator +projectId  + File.separator + name + extension);
+				File file = new File("./user-files" + File.separator +projectId  + File.separator + name + "."  + extension);
 				CreateFileResult result = new CreateFileResult();
 				result.success = file.createNewFile();
-				result.name = name;
+				result.name = name + "." + extension;
 				return result;
 			}
 		}catch(IOException e){
