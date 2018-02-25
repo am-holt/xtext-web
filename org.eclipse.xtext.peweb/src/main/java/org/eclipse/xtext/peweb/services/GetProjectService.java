@@ -37,10 +37,6 @@ public class GetProjectService implements PEService {
 						return !f.isDirectory();
 					}
 					});
-				//get rid of file extensions
-				for(int i= 0; i< files.length;i++){
-					files[i] = files[i].substring(0, files[i].lastIndexOf('.'));
-				}
 				GetProjectResult result = new GetProjectResult(files);
 				return result;
 			}
