@@ -1,0 +1,11 @@
+<h1 class="title"> Projectional Editor </h1>
+<div class="startup">
+	<h2> Create New Project </h2>
+	<li *ngFor="let lang of availableLanguages">
+		<a class="newProjectButton" (click)="newProjectClick()">Create new {{lang.name}} Project </a>
+	</li>
+	<h2> Open Existing Project </h2>
+	<li *ngFor="let proj of existingProjects">
+		<a class="existingProjectButton" routerLink="/edit/{{proj.id}}"> Open {{proj.name}}</a>
+	</li>
+</div>

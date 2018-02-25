@@ -1,0 +1,4 @@
+<div [ngSwitch]="type">
+	<input *ngSwitchCase="'EString'" [type]="text" [ngModel]="val" (ngModelChange)="test($event)">
+  <input *ngSwitchCase="'EInt'" [type]="number" [ngModel]="val" (ngModelChange)="test($event)" >
+</div> 

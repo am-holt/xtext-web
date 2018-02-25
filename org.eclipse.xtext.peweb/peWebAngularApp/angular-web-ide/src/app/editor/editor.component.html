@@ -1,0 +1,33 @@
+<div *ngIf="project;else notFound"> 
+	<h1 class="title"> Editor : {{project.details.name}} </h1>
+	<div class="container">
+	  <div class="leftpane">
+	  	<h3>Files</h3>
+	    <ul>
+	      <li *ngFor="let file of project.files">
+	     		<span class="textbtn" (click)="loadFile(file)">{{file.name}}</span>
+	      </li>
+	    </ul>
+	    <a class="newfilebtn" (click)="newFileClick()"> New File </a>
+	  </div>
+
+	  <div class="middlepane">
+	  	<h3>Tree</h3>
+	  	<div *ngIf="openFile">
+		   <tree-view [treeRoot]="openFile.treeRoot" (clickedNode)="getNodeEditor($event)"></tree-view>
+		   <a class="savefilebtn" [ngClass]="{hidden: !valid}" (click)="saveFileClick()"> Save File </a>
+		  </div>
+		</div>
+
+	  <div class="rightpane">
+	    <h3>Edit</h3>
+	    <div *ngIf="nodeDetails">
+		   <default-node-editor [nodeDetails]="nodeDetails" [fileDetails]="openFile.details" [projId]="project.details.id"></default-node-editor>
+		  </div>
+	  </div>
+	</div>
+</div>
+
+<ng-template #notFound>
+	<h1> Invalid Project ID </h1>
+</ng-template>

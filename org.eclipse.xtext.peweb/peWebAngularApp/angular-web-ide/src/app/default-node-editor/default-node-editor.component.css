@@ -1,0 +1,22 @@
+.default-node-editor{
+	cursor: pointer;
+	padding-left: 10px;
+}
+
+ul li{
+	margin: 0 0 3px 0;
+}
+
+
+ul li ul li{
+	margin: 0.2em 0 0.2em 0;
+	list-style-type: none;
+}
+
+.textbtn{
+  cursor: pointer;
+  background: #1d1f2b;
+  border-radius: 3px;
+  padding-left:  1em;
+  padding-right: 1em;
+}

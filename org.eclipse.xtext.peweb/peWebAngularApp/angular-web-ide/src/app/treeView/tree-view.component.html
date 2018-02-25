@@ -1,0 +1,13 @@
+<div class="treeView" *ngIf="treeRoot;else notFound">
+	<span class="toggleIcon" (click)="treeRoot.toggle()">{{treeRoot.getToggleIcon()}}</span>
+	<span class="data" (click)="onClick()">{{treeRoot.name}}</span>
+	    <ul *ngIf="treeRoot.expanded">
+	      <li *ngFor="let child of treeRoot.children">
+	        <tree-view [treeRoot]="child" (clickedNode)="passUpClickedNode($event)"></tree-view>
+	      </li>
+	    </ul>
+</div>
+
+<ng-template #notFound>
+	No nodes yet!
+</ng-template>
