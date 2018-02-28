@@ -13,9 +13,13 @@ import { Project } from '../project';
 import { FileDetails } from '../file-details';
 import { File } from '../file';
 import { AbstractSyntaxTree } from '../abstract-syntax-tree';
-import { NodeDetails } from '../node-details';
+import { ViewDescriptor } from '../view-descriptor';
+import { CustomViewDescriptor } from '../custom-view-descriptor';
 import { GetNodeResponse, GetNodeRawResponse } from './responses/get-node-response';
 import { SaveFileResponse, SaveFileRawResponse } from './responses/save-file-response';
+
+//TODO Delete
+import{ MOCKNODEDETAILS   } from '../mockServices/mock-node-details'
 
 @Injectable()
 export class ProjectsService {
@@ -64,7 +68,7 @@ export class ProjectsService {
 
   //TODO refactor out into separate service? 
   //TODO Modify service so it returns something other than default node response
-  getNode(projId: string, fileDetails:FileDetails, node:AbstractSyntaxTree): Observable<NodeDetails>{
+  mockgetNode(projId: string, fileDetails:FileDetails, node:AbstractSyntaxTree): Observable<ViewDescriptor>{
     return this.http.get<GetNodeRawResponse>(this.serviceUrl,
       {params: new HttpParams().append('serviceType','get-node')
       .append('file-name', fileDetails.name)
@@ -72,6 +76,15 @@ export class ProjectsService {
       .append('node-id',node.nodeId)})
       .map(a => new GetNodeResponse(a).getNodeDetails(node));
      
+  }
+
+
+  //TODO delete once done
+  getNode(projId: string, fileDetails:FileDetails, node:AbstractSyntaxTree): Observable<ViewDescriptor>{
+    console.log("Instance of (proj serv): " + (MOCKNODEDETAILS.DeclarationMain instanceof CustomViewDescriptor ));
+    
+    return of(MOCKNODEDETAILS.DeclarationMain );
+
   }
 
   addFileToProject(projId:string , fileName:string) : Observable<FileDetails>{

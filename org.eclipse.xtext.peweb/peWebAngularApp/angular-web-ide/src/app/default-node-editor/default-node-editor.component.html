@@ -1,17 +1,17 @@
-<div class="default-node-editor" *ngIf="nodeDetails;else noDetails">
-	<div class ="Attributes" *ngIf="nodeDetails.attributes.length !=0">
+<div class="default-node-editor" *ngIf="nodeViewDescriptor;else noDetails">
+	<div class ="Attributes" *ngIf="nodeViewDescriptor.attributes.length !=0">
 		<h4> Attributes: </h4>
 		<ul>
-			<li *ngFor="let att of nodeDetails.attributes">
+			<li *ngFor="let att of nodeViewDescriptor.attributes">
 				{{att.name}} ({{att.type}}) : <default-einput [type]="att.type" [initialValue]="att.value" (value)="AttributeChange(att,$event)" > </default-einput>
 			</li>
 		</ul>
 	</div>
 
-	<div class="References" *ngIf="nodeDetails.references.length !=0">
+	<div class="References" *ngIf="nodeViewDescriptor.references.length !=0">
 		<h4> References: </h4>
 		<ul>
-			<li *ngFor="let ref of nodeDetails.references">
+			<li *ngFor="let ref of nodeViewDescriptor.references">
 				{{ref.name}}
 				<ul>
 					<li *ngFor="let refNode of ref.nodes">
@@ -25,5 +25,5 @@
 </div>
 
 <ng-template #noDetails>
-	No nodeDetails
+	No nodeViewDescriptor
 </ng-template>

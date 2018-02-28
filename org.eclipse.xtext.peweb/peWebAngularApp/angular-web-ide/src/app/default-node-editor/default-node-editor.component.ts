@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { NodeDetails, Attribute, Reference, NodeReference } from '../node-details';
+import { DefaultViewDescriptor, Attribute, Reference, NodeReference } from '../default-view-descriptor';
 import { EditService } from'../services/edit.service';
 import {FileDetails } from '../file-details';
 import {AbstractSyntaxTree } from '../abstract-syntax-tree';
@@ -21,7 +21,7 @@ export class DefaultNodeEditorComponent implements OnInit {
 
   @Input() projId: string;
   @Input() fileDetails: FileDetails;
-  @Input() nodeDetails: NodeDetails;
+  @Input() nodeViewDescriptor: DefaultViewDescriptor;
 
   test(o: any) {
     console.log("edit" + o);
@@ -32,20 +32,20 @@ export class DefaultNodeEditorComponent implements OnInit {
 
     //What to do here? save?
     //Locally Validate
-    this.editService.validateAttribute(this.projId, this.fileDetails, this.nodeDetails.nodeId, att.name, value).subscribe(a=>null);
-    this.editService.updateAttribute(this.projId, this.fileDetails, this.nodeDetails.nodeId, att.name, value).subscribe(a=>null);
+    this.editService.validateAttribute(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, att.name, value).subscribe(a=>null);
+    this.editService.updateAttribute(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, att.name, value).subscribe(a=>null);
   }
 
 
   AddReferenceClick(ref: Reference): void {
     console.log("Add " + ref.name);
-    this.editService.addReference(this.projId, this.fileDetails, this.nodeDetails.nodeId, ref.name).subscribe(a=>this.nodeDetails.ast.addChild(a));
+    this.editService.addReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, ref.name).subscribe(a=>null);
   }
 
 	RemoveReferenceClick(nodeId: string, ref:Reference) {
     console.log("Remove " + nodeId);
-    this.editService.removeReference(this.projId, this.fileDetails, this.nodeDetails.nodeId, nodeId, ref.name)
-    .subscribe(a=>{if(a){this.nodeDetails.ast.removeChild(nodeId)}else{console.error("Error removing reference")}});
+    this.editService.removeReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, nodeId, ref.name)
+    .subscribe(a=>null);
 
 	}
 

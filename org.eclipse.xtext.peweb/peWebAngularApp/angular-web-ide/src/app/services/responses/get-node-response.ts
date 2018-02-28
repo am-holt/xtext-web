@@ -1,6 +1,7 @@
-import{Attribute,Reference} from '../../node-details';
-import {AbstractSyntaxTree} from '../../abstract-syntax-tree';
-import {NodeDetails} from '../../node-details';
+import {Attribute,Reference, DefaultViewDescriptor} from '../../default-view-descriptor';
+import {CustomViewDescriptor} from '../../custom-view-descriptor';
+
+
 
 export class GetNodeRawResponse{
 	attributes: Attribute[];
@@ -14,7 +15,7 @@ export class GetNodeResponse{
 		this.rawResponse = rawResponse;
 	}	
 
-	getNodeDetails(ast:AbstractSyntaxTree){
-		return new NodeDetails(this.rawResponse.attributes,this.rawResponse.references,this.rawResponse.nodeId,ast);
+	getNodeDetails(ast:any){
+		return new DefaultViewDescriptor(this.rawResponse.attributes,this.rawResponse.references,this.rawResponse.nodeId);
 	}
 }

@@ -13,7 +13,7 @@ import { Project } from '../project';
 import { FileDetails } from '../file-details';
 import { File } from '../file';
 import { AbstractSyntaxTree } from '../abstract-syntax-tree';
-import { NodeDetails } from '../node-details';
+
 import { ValidNodeResponse, ValidNodeRawResponse  } from './responses/valid-node-response';
 import { UpdateNodeResponse, UpdateNodeRawResponse  } from './responses/update-node-response';
 import { AddReferenceRawResponse, AddReferenceResponse } from './responses/add-reference-response';
@@ -30,13 +30,6 @@ export class EditService {
 
 
   private readonly serviceUrl : string = `/pe-service`;
-
-  getFile(projId:string, fileDetails:FileDetails): Observable<File>{
-    var a = this.http.get(this.serviceUrl,
-      {params: new HttpParams().append('serviceType','get-file').append('file-name', fileDetails.name).append('project-name',projId)})
-      .map(a=> new File(new AbstractSyntaxTree(a["ast"]), fileDetails));
-    return a;
-  }
 
   validateAttribute(projId:string, fileDetails:FileDetails, nodeId:string, attributeName:string, newValue:any) : Observable<ValidNodeResponse>{
   	return this.http.get<ValidNodeRawResponse>(this.serviceUrl,

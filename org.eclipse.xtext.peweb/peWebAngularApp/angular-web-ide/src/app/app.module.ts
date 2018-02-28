@@ -17,6 +17,8 @@ import { DefaultEinputComponent } from './default-node-editor/default-einput/def
 import { EditService } from './services/edit.service';
 import { AvailableLanguagesService } from './services/available-languages.service';
 import { LanguageService } from './services/language.service';
+import { CustomNodeEditorComponent } from './custom-node-editor/custom-node-editor.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { LanguageService } from './services/language.service';
     TreeViewComponent,
     DefaultNodeEditorComponent,
     DefaultEinputComponent,
+    CustomNodeEditorComponent,
+    SafeHtmlPipe,
     
   ],
   imports: [
