@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.xtext.peweb.editorLanguage.ComponentController;
 import org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration;
 import org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage;
+import org.eclipse.xtext.peweb.editorLanguage.HtmlSnippet;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +26,7 @@ import org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentDeclarationImpl#getView <em>View</em>}</li>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentDeclarationImpl#getControl <em>Control</em>}</li>
  * </ul>
  *
@@ -51,6 +53,16 @@ public class ComponentDeclarationImpl extends MinimalEObjectImpl.Container imple
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getView() <em>View</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getView()
+   * @generated
+   * @ordered
+   */
+  protected HtmlSnippet view;
 
   /**
    * The cached value of the '{@link #getControl() <em>Control</em>}' containment reference.
@@ -111,6 +123,54 @@ public class ComponentDeclarationImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
+  public HtmlSnippet getView()
+  {
+    return view;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetView(HtmlSnippet newView, NotificationChain msgs)
+  {
+    HtmlSnippet oldView = view;
+    view = newView;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.COMPONENT_DECLARATION__VIEW, oldView, newView);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setView(HtmlSnippet newView)
+  {
+    if (newView != view)
+    {
+      NotificationChain msgs = null;
+      if (view != null)
+        msgs = ((InternalEObject)view).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EditorLanguagePackage.COMPONENT_DECLARATION__VIEW, null, msgs);
+      if (newView != null)
+        msgs = ((InternalEObject)newView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EditorLanguagePackage.COMPONENT_DECLARATION__VIEW, null, msgs);
+      msgs = basicSetView(newView, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.COMPONENT_DECLARATION__VIEW, newView, newView));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ComponentController getControl()
   {
     return control;
@@ -164,6 +224,8 @@ public class ComponentDeclarationImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
+      case EditorLanguagePackage.COMPONENT_DECLARATION__VIEW:
+        return basicSetView(null, msgs);
       case EditorLanguagePackage.COMPONENT_DECLARATION__CONTROL:
         return basicSetControl(null, msgs);
     }
@@ -182,6 +244,8 @@ public class ComponentDeclarationImpl extends MinimalEObjectImpl.Container imple
     {
       case EditorLanguagePackage.COMPONENT_DECLARATION__NAME:
         return getName();
+      case EditorLanguagePackage.COMPONENT_DECLARATION__VIEW:
+        return getView();
       case EditorLanguagePackage.COMPONENT_DECLARATION__CONTROL:
         return getControl();
     }
@@ -200,6 +264,9 @@ public class ComponentDeclarationImpl extends MinimalEObjectImpl.Container imple
     {
       case EditorLanguagePackage.COMPONENT_DECLARATION__NAME:
         setName((String)newValue);
+        return;
+      case EditorLanguagePackage.COMPONENT_DECLARATION__VIEW:
+        setView((HtmlSnippet)newValue);
         return;
       case EditorLanguagePackage.COMPONENT_DECLARATION__CONTROL:
         setControl((ComponentController)newValue);
@@ -221,6 +288,9 @@ public class ComponentDeclarationImpl extends MinimalEObjectImpl.Container imple
       case EditorLanguagePackage.COMPONENT_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case EditorLanguagePackage.COMPONENT_DECLARATION__VIEW:
+        setView((HtmlSnippet)null);
+        return;
       case EditorLanguagePackage.COMPONENT_DECLARATION__CONTROL:
         setControl((ComponentController)null);
         return;
@@ -240,6 +310,8 @@ public class ComponentDeclarationImpl extends MinimalEObjectImpl.Container imple
     {
       case EditorLanguagePackage.COMPONENT_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case EditorLanguagePackage.COMPONENT_DECLARATION__VIEW:
+        return view != null;
       case EditorLanguagePackage.COMPONENT_DECLARATION__CONTROL:
         return control != null;
     }

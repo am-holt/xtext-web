@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 
 import org.apache.log4j.Logger;
 import org.eclipse.xtext.peweb.OpenResources;
+import org.eclipse.xtext.peweb.customview.ViewRetriever;
 import org.eclipse.xtext.peweb.services.*;
 import org.eclipse.xtext.util.DisposableRegistry;
 import org.eclipse.xtext.web.server.IServiceContext;
@@ -55,6 +56,8 @@ public abstract class PeServlet extends HttpServlet {
 	private Gson gson = getGson();	private OpenResources openResources = new OpenResources();
 	
 	public abstract Injector getInjector(); 
+	
+	public abstract ViewRetriever getViewRetriever();
 	
 	protected void service(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
@@ -133,7 +136,7 @@ public abstract class PeServlet extends HttpServlet {
 			case "get-file":
 				return new GetFileService(this.openResources);
 			case "get-node":
-				return new GetNodeService(this.openResources);
+				return new GetNodeService(this.openResources, this.getViewRetriever());
 			case "update-node":
 				return new UpdateNodeService(this.openResources);
 			case "validate-node":

@@ -7,6 +7,9 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eclipse.xtext.peweb.editorLanguage.NodeDeclaration
+import org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration
+import org.eclipse.xtext.peweb.editorLanguage.ProjectionDeclaration
 
 /**
  * Generates code from your model files on save.
@@ -21,5 +24,55 @@ class EditorLanguageGenerator extends AbstractGenerator {
 //				.filter(Greeting)
 //				.map[name]
 //				.join(', '))
+		var contents = "";
+		
+	//	var viewList = generateViewList(resource);
+		var test = "contents: /n"
+		for(e: resource.allContents.toIterable.filter(NodeDeclaration)){
+			test += (e as NodeDeclaration).nodeName + "/n";
+		
+		}
+		System.out.println(contents);
+		
+		fsa.generateFile('ViewSpecification.java', '''		
+		import java.util.Map;
+		import java.util.HashMap;
+		import org.eclipse.xtext.peweb.customview.*;
+		
+		public class ViewSpecification {
+			
+			public static  Map<ProjectionIdentifier,HtmlProjectionSpecification> getNodeMap(){
+				Map<ProjectionIdentifier,HtmlProjectionSpecification> result 
+					= new HashMap<ProjectionIdentifier,HtmlProjectionSpecification>();
+				return result;	
+			}
+			
+			public static  Map<ProjectionIdentifier,HtmlComponentSpecification> getComponentMap(){
+				Map<ProjectionIdentifier,HtmlComponentSpecification> result 
+					= new HashMap<ProjectionIdentifier,HtmlComponentSpecification>();
+				return result;	
+			}
+			 
+		}
+		''' )
+		
+		
 	}
+	
+	
+//	def String generateViewList(Resource resource){
+//		
+//		for(e: resource.allContents.toIterable.filter(NodeDeclaration)){
+//			for(view: e.eAllContents.toIterable){
+//				
+//			}
+//		
+//		}
+//	} 
 }
+
+/*
+ * Want to put all into two hashmaps: 
+ * 			1) node id, projection type => htmlView object
+ * 			2) Component Id => 
+ */

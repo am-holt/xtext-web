@@ -64,16 +64,17 @@ TagId:
 ;
 
 ComponentDeclaration:
-	'%' name=ID '%' (control=ComponentController)?
+	'Component' name=ID '{'
+	'view:' view=HtmlSnippet
+	 (control=ComponentController)?
+	 '}'
 ;
 
 ComponentController:
-	'{' 
-		'view:' view=HtmlSnippet
-		('get:' getter=JsSnippet
+	 
+		'get:' getter=JsSnippet
 		'set:' setter=JsSnippet
-		'validate:' validater=JsSnippet)?
-	'}'
+		'validate:' validater=JsSnippet
 ;
 
 HtmlSnippet:

@@ -68,19 +68,18 @@ export class ProjectsService {
 
   //TODO refactor out into separate service? 
   //TODO Modify service so it returns something other than default node response
-  mockgetNode(projId: string, fileDetails:FileDetails, node:AbstractSyntaxTree): Observable<ViewDescriptor>{
+  getNode(projId: string, fileDetails:FileDetails, node:AbstractSyntaxTree): Observable<ViewDescriptor>{
     return this.http.get<GetNodeRawResponse>(this.serviceUrl,
       {params: new HttpParams().append('serviceType','get-node')
       .append('file-name', fileDetails.name)
       .append('project-name',projId)
       .append('node-id',node.nodeId)})
       .map(a => new GetNodeResponse(a).getNodeDetails(node));
-     
   }
 
 
   //TODO delete once done
-  getNode(projId: string, fileDetails:FileDetails, node:AbstractSyntaxTree): Observable<ViewDescriptor>{
+  mockgetNode(projId: string, fileDetails:FileDetails, node:AbstractSyntaxTree): Observable<ViewDescriptor>{
     console.log("Instance of (proj serv): " + (MOCKNODEDETAILS.DeclarationMain instanceof CustomViewDescriptor ));
     
     return of(MOCKNODEDETAILS.DeclarationMain );

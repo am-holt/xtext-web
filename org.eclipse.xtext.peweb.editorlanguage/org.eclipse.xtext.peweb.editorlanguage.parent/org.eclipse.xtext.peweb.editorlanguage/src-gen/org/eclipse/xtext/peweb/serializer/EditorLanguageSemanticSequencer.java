@@ -256,10 +256,22 @@ public class EditorLanguageSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     ComponentController returns ComponentController
 	 *
 	 * Constraint:
-	 *     (view=HtmlSnippet (getter=JsSnippet setter=JsSnippet validater=JsSnippet)?)
+	 *     (getter=JsSnippet setter=JsSnippet validater=JsSnippet)
 	 */
 	protected void sequence_ComponentController(ISerializationContext context, ComponentController semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__GETTER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__GETTER));
+			if (transientValues.isValueTransient(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__SETTER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__SETTER));
+			if (transientValues.isValueTransient(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__VALIDATER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__VALIDATER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getComponentControllerAccess().getGetterJsSnippetParserRuleCall_1_0(), semanticObject.getGetter());
+		feeder.accept(grammarAccess.getComponentControllerAccess().getSetterJsSnippetParserRuleCall_3_0(), semanticObject.getSetter());
+		feeder.accept(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0(), semanticObject.getValidater());
+		feeder.finish();
 	}
 	
 	
@@ -268,7 +280,7 @@ public class EditorLanguageSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     ComponentDeclaration returns ComponentDeclaration
 	 *
 	 * Constraint:
-	 *     (name=ID control=ComponentController?)
+	 *     (name=ID view=HtmlSnippet control=ComponentController?)
 	 */
 	protected void sequence_ComponentDeclaration(ISerializationContext context, ComponentDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

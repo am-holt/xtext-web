@@ -857,9 +857,9 @@ ruleComponentDeclaration returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='%'
+		otherlv_0='Component'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getComponentDeclarationAccess().getPercentSignKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getComponentDeclarationAccess().getComponentKeyword_0());
 		}
 		(
 			(
@@ -879,16 +879,39 @@ ruleComponentDeclaration returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2='%'
+		otherlv_2='{'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getComponentDeclarationAccess().getPercentSignKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getComponentDeclarationAccess().getLeftCurlyBracketKeyword_2());
+		}
+		otherlv_3='view:'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getComponentDeclarationAccess().getViewKeyword_3());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getComponentDeclarationAccess().getControlComponentControllerParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getComponentDeclarationAccess().getViewHtmlSnippetParserRuleCall_4_0());
 				}
-				lv_control_3_0=ruleComponentController
+				lv_view_4_0=ruleHtmlSnippet
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getComponentDeclarationRule());
+					}
+					set(
+						$current,
+						"view",
+						lv_view_4_0,
+						"org.eclipse.xtext.peweb.EditorLanguage.HtmlSnippet");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getComponentDeclarationAccess().getControlComponentControllerParserRuleCall_5_0());
+				}
+				lv_control_5_0=ruleComponentController
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getComponentDeclarationRule());
@@ -896,12 +919,16 @@ ruleComponentDeclaration returns [EObject current=null]
 					set(
 						$current,
 						"control",
-						lv_control_3_0,
+						lv_control_5_0,
 						"org.eclipse.xtext.peweb.EditorLanguage.ComponentController");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)?
+		otherlv_6='}'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getComponentDeclarationAccess().getRightCurlyBracketKeyword_6());
+		}
 	)
 ;
 
@@ -921,108 +948,75 @@ ruleComponentController returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='{'
+		otherlv_0='get:'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getComponentControllerAccess().getLeftCurlyBracketKeyword_0());
-		}
-		otherlv_1='view:'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getComponentControllerAccess().getViewKeyword_1());
+			newLeafNode(otherlv_0, grammarAccess.getComponentControllerAccess().getGetKeyword_0());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getComponentControllerAccess().getViewHtmlSnippetParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getComponentControllerAccess().getGetterJsSnippetParserRuleCall_1_0());
 				}
-				lv_view_2_0=ruleHtmlSnippet
+				lv_getter_1_0=ruleJsSnippet
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getComponentControllerRule());
 					}
 					set(
 						$current,
-						"view",
-						lv_view_2_0,
-						"org.eclipse.xtext.peweb.EditorLanguage.HtmlSnippet");
+						"getter",
+						lv_getter_1_0,
+						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		(
-			otherlv_3='get:'
-			{
-				newLeafNode(otherlv_3, grammarAccess.getComponentControllerAccess().getGetKeyword_3_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getComponentControllerAccess().getGetterJsSnippetParserRuleCall_3_1_0());
-					}
-					lv_getter_4_0=ruleJsSnippet
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getComponentControllerRule());
-						}
-						set(
-							$current,
-							"getter",
-							lv_getter_4_0,
-							"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_5='set:'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getComponentControllerAccess().getSetKeyword_3_2());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getComponentControllerAccess().getSetterJsSnippetParserRuleCall_3_3_0());
-					}
-					lv_setter_6_0=ruleJsSnippet
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getComponentControllerRule());
-						}
-						set(
-							$current,
-							"setter",
-							lv_setter_6_0,
-							"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_7='validate:'
-			{
-				newLeafNode(otherlv_7, grammarAccess.getComponentControllerAccess().getValidateKeyword_3_4());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_3_5_0());
-					}
-					lv_validater_8_0=ruleJsSnippet
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getComponentControllerRule());
-						}
-						set(
-							$current,
-							"validater",
-							lv_validater_8_0,
-							"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		otherlv_9='}'
+		otherlv_2='set:'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getComponentControllerAccess().getRightCurlyBracketKeyword_4());
+			newLeafNode(otherlv_2, grammarAccess.getComponentControllerAccess().getSetKeyword_2());
 		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getComponentControllerAccess().getSetterJsSnippetParserRuleCall_3_0());
+				}
+				lv_setter_3_0=ruleJsSnippet
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getComponentControllerRule());
+					}
+					set(
+						$current,
+						"setter",
+						lv_setter_3_0,
+						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_4='validate:'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getComponentControllerAccess().getValidateKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0());
+				}
+				lv_validater_5_0=ruleJsSnippet
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getComponentControllerRule());
+					}
+					set(
+						$current,
+						"validater",
+						lv_validater_5_0,
+						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 

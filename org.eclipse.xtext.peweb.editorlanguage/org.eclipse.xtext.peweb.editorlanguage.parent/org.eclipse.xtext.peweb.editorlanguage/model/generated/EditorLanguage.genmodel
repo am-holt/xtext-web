@@ -53,10 +53,10 @@
     </genClasses>
     <genClasses ecoreClass="EditorLanguage.ecore#//ComponentDeclaration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EditorLanguage.ecore#//ComponentDeclaration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentDeclaration/view"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentDeclaration/control"/>
     </genClasses>
     <genClasses ecoreClass="EditorLanguage.ecore#//ComponentController">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentController/view"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentController/getter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentController/setter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentController/validater"/>

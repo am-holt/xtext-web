@@ -512,13 +512,22 @@ public interface EditorLanguagePackage extends EPackage
   int COMPONENT_DECLARATION__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>View</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPONENT_DECLARATION__VIEW = 1;
+
+  /**
    * The feature id for the '<em><b>Control</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT_DECLARATION__CONTROL = 1;
+  int COMPONENT_DECLARATION__CONTROL = 2;
 
   /**
    * The number of structural features of the '<em>Component Declaration</em>' class.
@@ -527,7 +536,7 @@ public interface EditorLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_DECLARATION_FEATURE_COUNT = 2;
+  int COMPONENT_DECLARATION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentControllerImpl <em>Component Controller</em>}' class.
@@ -540,22 +549,13 @@ public interface EditorLanguagePackage extends EPackage
   int COMPONENT_CONTROLLER = 12;
 
   /**
-   * The feature id for the '<em><b>View</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPONENT_CONTROLLER__VIEW = 0;
-
-  /**
    * The feature id for the '<em><b>Getter</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT_CONTROLLER__GETTER = 1;
+  int COMPONENT_CONTROLLER__GETTER = 0;
 
   /**
    * The feature id for the '<em><b>Setter</b></em>' containment reference.
@@ -564,7 +564,7 @@ public interface EditorLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_CONTROLLER__SETTER = 2;
+  int COMPONENT_CONTROLLER__SETTER = 1;
 
   /**
    * The feature id for the '<em><b>Validater</b></em>' containment reference.
@@ -573,7 +573,7 @@ public interface EditorLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_CONTROLLER__VALIDATER = 3;
+  int COMPONENT_CONTROLLER__VALIDATER = 2;
 
   /**
    * The number of structural features of the '<em>Component Controller</em>' class.
@@ -582,7 +582,7 @@ public interface EditorLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_CONTROLLER_FEATURE_COUNT = 4;
+  int COMPONENT_CONTROLLER_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.xtext.peweb.editorLanguage.impl.HtmlSnippetImpl <em>Html Snippet</em>}' class.
@@ -1157,6 +1157,17 @@ public interface EditorLanguagePackage extends EPackage
   EAttribute getComponentDeclaration_Name();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration#getView <em>View</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>View</em>'.
+   * @see org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration#getView()
+   * @see #getComponentDeclaration()
+   * @generated
+   */
+  EReference getComponentDeclaration_View();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration#getControl <em>Control</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1176,17 +1187,6 @@ public interface EditorLanguagePackage extends EPackage
    * @generated
    */
   EClass getComponentController();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentController#getView <em>View</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>View</em>'.
-   * @see org.eclipse.xtext.peweb.editorLanguage.ComponentController#getView()
-   * @see #getComponentController()
-   * @generated
-   */
-  EReference getComponentController_View();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentController#getGetter <em>Getter</em>}'.
@@ -1703,6 +1703,14 @@ public interface EditorLanguagePackage extends EPackage
     EAttribute COMPONENT_DECLARATION__NAME = eINSTANCE.getComponentDeclaration_Name();
 
     /**
+     * The meta object literal for the '<em><b>View</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPONENT_DECLARATION__VIEW = eINSTANCE.getComponentDeclaration_View();
+
+    /**
      * The meta object literal for the '<em><b>Control</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1719,14 +1727,6 @@ public interface EditorLanguagePackage extends EPackage
      * @generated
      */
     EClass COMPONENT_CONTROLLER = eINSTANCE.getComponentController();
-
-    /**
-     * The meta object literal for the '<em><b>View</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COMPONENT_CONTROLLER__VIEW = eINSTANCE.getComponentController_View();
 
     /**
      * The meta object literal for the '<em><b>Getter</b></em>' containment reference feature.

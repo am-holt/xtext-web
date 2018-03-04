@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.xtext.peweb.editorLanguage.ComponentController;
 import org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage;
-import org.eclipse.xtext.peweb.editorLanguage.HtmlSnippet;
 import org.eclipse.xtext.peweb.editorLanguage.JsSnippet;
 
 /**
@@ -25,7 +24,6 @@ import org.eclipse.xtext.peweb.editorLanguage.JsSnippet;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentControllerImpl#getView <em>View</em>}</li>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentControllerImpl#getGetter <em>Getter</em>}</li>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentControllerImpl#getSetter <em>Setter</em>}</li>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentControllerImpl#getValidater <em>Validater</em>}</li>
@@ -35,16 +33,6 @@ import org.eclipse.xtext.peweb.editorLanguage.JsSnippet;
  */
 public class ComponentControllerImpl extends MinimalEObjectImpl.Container implements ComponentController
 {
-  /**
-   * The cached value of the '{@link #getView() <em>View</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getView()
-   * @generated
-   * @ordered
-   */
-  protected HtmlSnippet view;
-
   /**
    * The cached value of the '{@link #getGetter() <em>Getter</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -94,54 +82,6 @@ public class ComponentControllerImpl extends MinimalEObjectImpl.Container implem
   protected EClass eStaticClass()
   {
     return EditorLanguagePackage.Literals.COMPONENT_CONTROLLER;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public HtmlSnippet getView()
-  {
-    return view;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetView(HtmlSnippet newView, NotificationChain msgs)
-  {
-    HtmlSnippet oldView = view;
-    view = newView;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.COMPONENT_CONTROLLER__VIEW, oldView, newView);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setView(HtmlSnippet newView)
-  {
-    if (newView != view)
-    {
-      NotificationChain msgs = null;
-      if (view != null)
-        msgs = ((InternalEObject)view).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EditorLanguagePackage.COMPONENT_CONTROLLER__VIEW, null, msgs);
-      if (newView != null)
-        msgs = ((InternalEObject)newView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EditorLanguagePackage.COMPONENT_CONTROLLER__VIEW, null, msgs);
-      msgs = basicSetView(newView, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.COMPONENT_CONTROLLER__VIEW, newView, newView));
   }
 
   /**
@@ -298,8 +238,6 @@ public class ComponentControllerImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case EditorLanguagePackage.COMPONENT_CONTROLLER__VIEW:
-        return basicSetView(null, msgs);
       case EditorLanguagePackage.COMPONENT_CONTROLLER__GETTER:
         return basicSetGetter(null, msgs);
       case EditorLanguagePackage.COMPONENT_CONTROLLER__SETTER:
@@ -320,8 +258,6 @@ public class ComponentControllerImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case EditorLanguagePackage.COMPONENT_CONTROLLER__VIEW:
-        return getView();
       case EditorLanguagePackage.COMPONENT_CONTROLLER__GETTER:
         return getGetter();
       case EditorLanguagePackage.COMPONENT_CONTROLLER__SETTER:
@@ -342,9 +278,6 @@ public class ComponentControllerImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case EditorLanguagePackage.COMPONENT_CONTROLLER__VIEW:
-        setView((HtmlSnippet)newValue);
-        return;
       case EditorLanguagePackage.COMPONENT_CONTROLLER__GETTER:
         setGetter((JsSnippet)newValue);
         return;
@@ -368,9 +301,6 @@ public class ComponentControllerImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case EditorLanguagePackage.COMPONENT_CONTROLLER__VIEW:
-        setView((HtmlSnippet)null);
-        return;
       case EditorLanguagePackage.COMPONENT_CONTROLLER__GETTER:
         setGetter((JsSnippet)null);
         return;
@@ -394,8 +324,6 @@ public class ComponentControllerImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case EditorLanguagePackage.COMPONENT_CONTROLLER__VIEW:
-        return view != null;
       case EditorLanguagePackage.COMPONENT_CONTROLLER__GETTER:
         return getter != null;
       case EditorLanguagePackage.COMPONENT_CONTROLLER__SETTER:

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_CODENOTAG", "RULE_CODESTART", "RULE_CODEMID", "RULE_CODEEND", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'import'", "'.'", "'Node'", "'{'", "'}'", "'Projection'", "'view:'", "'@'", "'%'", "':'", "'get:'", "'set:'", "'validate:'", "'!'", "'$'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_CODENOTAG", "RULE_CODESTART", "RULE_CODEMID", "RULE_CODEEND", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'import'", "'.'", "'Node'", "'{'", "'}'", "'Projection'", "'view:'", "'@'", "'%'", "':'", "'get:'", "'set:'", "'validate:'", "'!'", "'$'", "'Component'"
     };
     public static final int RULE_CODESTART=6;
     public static final int RULE_CODEMID=7;
@@ -41,6 +41,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
     public static final int T__27=27;
     public static final int T__28=28;
     public static final int RULE_INT=9;
+    public static final int T__29=29;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=10;
     public static final int T__23=23;
@@ -689,7 +690,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                 if ( (LA4_0==16) ) {
                     alt4=1;
                 }
-                else if ( (LA4_0==22) ) {
+                else if ( (LA4_0==29) ) {
                     alt4=2;
                 }
 
@@ -900,7 +901,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                 if ( (LA5_0==19) ) {
                     alt5=1;
                 }
-                else if ( (LA5_0==22) ) {
+                else if ( (LA5_0==29) ) {
                     alt5=2;
                 }
 
@@ -1153,7 +1154,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                 if ( (LA6_0==21) ) {
                     alt6=1;
                 }
-                else if ( (LA6_0==22) ) {
+                else if ( (LA6_0==29) ) {
                     alt6=2;
                 }
 
@@ -2043,29 +2044,33 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComponentDeclaration"
-    // InternalEditorLanguage.g:852:1: ruleComponentDeclaration returns [EObject current=null] : (otherlv_0= '%' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '%' ( (lv_control_3_0= ruleComponentController ) )? ) ;
+    // InternalEditorLanguage.g:852:1: ruleComponentDeclaration returns [EObject current=null] : (otherlv_0= 'Component' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'view:' ( (lv_view_4_0= ruleHtmlSnippet ) ) ( (lv_control_5_0= ruleComponentController ) )? otherlv_6= '}' ) ;
     public final EObject ruleComponentDeclaration() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
         Token otherlv_2=null;
-        EObject lv_control_3_0 = null;
+        Token otherlv_3=null;
+        Token otherlv_6=null;
+        EObject lv_view_4_0 = null;
+
+        EObject lv_control_5_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:858:2: ( (otherlv_0= '%' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '%' ( (lv_control_3_0= ruleComponentController ) )? ) )
-            // InternalEditorLanguage.g:859:2: (otherlv_0= '%' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '%' ( (lv_control_3_0= ruleComponentController ) )? )
+            // InternalEditorLanguage.g:858:2: ( (otherlv_0= 'Component' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'view:' ( (lv_view_4_0= ruleHtmlSnippet ) ) ( (lv_control_5_0= ruleComponentController ) )? otherlv_6= '}' ) )
+            // InternalEditorLanguage.g:859:2: (otherlv_0= 'Component' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'view:' ( (lv_view_4_0= ruleHtmlSnippet ) ) ( (lv_control_5_0= ruleComponentController ) )? otherlv_6= '}' )
             {
-            // InternalEditorLanguage.g:859:2: (otherlv_0= '%' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '%' ( (lv_control_3_0= ruleComponentController ) )? )
-            // InternalEditorLanguage.g:860:3: otherlv_0= '%' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '%' ( (lv_control_3_0= ruleComponentController ) )?
+            // InternalEditorLanguage.g:859:2: (otherlv_0= 'Component' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'view:' ( (lv_view_4_0= ruleHtmlSnippet ) ) ( (lv_control_5_0= ruleComponentController ) )? otherlv_6= '}' )
+            // InternalEditorLanguage.g:860:3: otherlv_0= 'Component' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'view:' ( (lv_view_4_0= ruleHtmlSnippet ) ) ( (lv_control_5_0= ruleComponentController ) )? otherlv_6= '}'
             {
-            otherlv_0=(Token)match(input,22,FOLLOW_5); 
+            otherlv_0=(Token)match(input,29,FOLLOW_5); 
 
-            			newLeafNode(otherlv_0, grammarAccess.getComponentDeclarationAccess().getPercentSignKeyword_0());
+            			newLeafNode(otherlv_0, grammarAccess.getComponentDeclarationAccess().getComponentKeyword_0());
             		
             // InternalEditorLanguage.g:864:3: ( (lv_name_1_0= RULE_ID ) )
             // InternalEditorLanguage.g:865:4: (lv_name_1_0= RULE_ID )
@@ -2073,7 +2078,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
             // InternalEditorLanguage.g:865:4: (lv_name_1_0= RULE_ID )
             // InternalEditorLanguage.g:866:5: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_14); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_8); 
 
             					newLeafNode(lv_name_1_0, grammarAccess.getComponentDeclarationAccess().getNameIDTerminalRuleCall_1_0());
             				
@@ -2093,29 +2098,64 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,22,FOLLOW_22); 
+            otherlv_2=(Token)match(input,17,FOLLOW_10); 
 
-            			newLeafNode(otherlv_2, grammarAccess.getComponentDeclarationAccess().getPercentSignKeyword_2());
+            			newLeafNode(otherlv_2, grammarAccess.getComponentDeclarationAccess().getLeftCurlyBracketKeyword_2());
             		
-            // InternalEditorLanguage.g:886:3: ( (lv_control_3_0= ruleComponentController ) )?
+            otherlv_3=(Token)match(input,20,FOLLOW_11); 
+
+            			newLeafNode(otherlv_3, grammarAccess.getComponentDeclarationAccess().getViewKeyword_3());
+            		
+            // InternalEditorLanguage.g:890:3: ( (lv_view_4_0= ruleHtmlSnippet ) )
+            // InternalEditorLanguage.g:891:4: (lv_view_4_0= ruleHtmlSnippet )
+            {
+            // InternalEditorLanguage.g:891:4: (lv_view_4_0= ruleHtmlSnippet )
+            // InternalEditorLanguage.g:892:5: lv_view_4_0= ruleHtmlSnippet
+            {
+
+            					newCompositeNode(grammarAccess.getComponentDeclarationAccess().getViewHtmlSnippetParserRuleCall_4_0());
+            				
+            pushFollow(FOLLOW_22);
+            lv_view_4_0=ruleHtmlSnippet();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getComponentDeclarationRule());
+            					}
+            					set(
+            						current,
+            						"view",
+            						lv_view_4_0,
+            						"org.eclipse.xtext.peweb.EditorLanguage.HtmlSnippet");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            // InternalEditorLanguage.g:909:3: ( (lv_control_5_0= ruleComponentController ) )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==17) ) {
+            if ( (LA8_0==24) ) {
                 alt8=1;
             }
             switch (alt8) {
                 case 1 :
-                    // InternalEditorLanguage.g:887:4: (lv_control_3_0= ruleComponentController )
+                    // InternalEditorLanguage.g:910:4: (lv_control_5_0= ruleComponentController )
                     {
-                    // InternalEditorLanguage.g:887:4: (lv_control_3_0= ruleComponentController )
-                    // InternalEditorLanguage.g:888:5: lv_control_3_0= ruleComponentController
+                    // InternalEditorLanguage.g:910:4: (lv_control_5_0= ruleComponentController )
+                    // InternalEditorLanguage.g:911:5: lv_control_5_0= ruleComponentController
                     {
 
-                    					newCompositeNode(grammarAccess.getComponentDeclarationAccess().getControlComponentControllerParserRuleCall_3_0());
+                    					newCompositeNode(grammarAccess.getComponentDeclarationAccess().getControlComponentControllerParserRuleCall_5_0());
                     				
-                    pushFollow(FOLLOW_2);
-                    lv_control_3_0=ruleComponentController();
+                    pushFollow(FOLLOW_18);
+                    lv_control_5_0=ruleComponentController();
 
                     state._fsp--;
 
@@ -2126,7 +2166,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                     					set(
                     						current,
                     						"control",
-                    						lv_control_3_0,
+                    						lv_control_5_0,
                     						"org.eclipse.xtext.peweb.EditorLanguage.ComponentController");
                     					afterParserOrEnumRuleCall();
                     				
@@ -2139,6 +2179,10 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
             }
 
+            otherlv_6=(Token)match(input,18,FOLLOW_2); 
+
+            			newLeafNode(otherlv_6, grammarAccess.getComponentDeclarationAccess().getRightCurlyBracketKeyword_6());
+            		
 
             }
 
@@ -2162,7 +2206,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleComponentController"
-    // InternalEditorLanguage.g:909:1: entryRuleComponentController returns [EObject current=null] : iv_ruleComponentController= ruleComponentController EOF ;
+    // InternalEditorLanguage.g:936:1: entryRuleComponentController returns [EObject current=null] : iv_ruleComponentController= ruleComponentController EOF ;
     public final EObject entryRuleComponentController() throws RecognitionException {
         EObject current = null;
 
@@ -2170,8 +2214,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalEditorLanguage.g:909:60: (iv_ruleComponentController= ruleComponentController EOF )
-            // InternalEditorLanguage.g:910:2: iv_ruleComponentController= ruleComponentController EOF
+            // InternalEditorLanguage.g:936:60: (iv_ruleComponentController= ruleComponentController EOF )
+            // InternalEditorLanguage.g:937:2: iv_ruleComponentController= ruleComponentController EOF
             {
              newCompositeNode(grammarAccess.getComponentControllerRule()); 
             pushFollow(FOLLOW_1);
@@ -2198,54 +2242,45 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComponentController"
-    // InternalEditorLanguage.g:916:1: ruleComponentController returns [EObject current=null] : (otherlv_0= '{' otherlv_1= 'view:' ( (lv_view_2_0= ruleHtmlSnippet ) ) (otherlv_3= 'get:' ( (lv_getter_4_0= ruleJsSnippet ) ) otherlv_5= 'set:' ( (lv_setter_6_0= ruleJsSnippet ) ) otherlv_7= 'validate:' ( (lv_validater_8_0= ruleJsSnippet ) ) )? otherlv_9= '}' ) ;
+    // InternalEditorLanguage.g:943:1: ruleComponentController returns [EObject current=null] : (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) ) ) ;
     public final EObject ruleComponentController() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        Token otherlv_1=null;
-        Token otherlv_3=null;
-        Token otherlv_5=null;
-        Token otherlv_7=null;
-        Token otherlv_9=null;
-        EObject lv_view_2_0 = null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        EObject lv_getter_1_0 = null;
 
-        EObject lv_getter_4_0 = null;
+        EObject lv_setter_3_0 = null;
 
-        EObject lv_setter_6_0 = null;
-
-        EObject lv_validater_8_0 = null;
+        EObject lv_validater_5_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:922:2: ( (otherlv_0= '{' otherlv_1= 'view:' ( (lv_view_2_0= ruleHtmlSnippet ) ) (otherlv_3= 'get:' ( (lv_getter_4_0= ruleJsSnippet ) ) otherlv_5= 'set:' ( (lv_setter_6_0= ruleJsSnippet ) ) otherlv_7= 'validate:' ( (lv_validater_8_0= ruleJsSnippet ) ) )? otherlv_9= '}' ) )
-            // InternalEditorLanguage.g:923:2: (otherlv_0= '{' otherlv_1= 'view:' ( (lv_view_2_0= ruleHtmlSnippet ) ) (otherlv_3= 'get:' ( (lv_getter_4_0= ruleJsSnippet ) ) otherlv_5= 'set:' ( (lv_setter_6_0= ruleJsSnippet ) ) otherlv_7= 'validate:' ( (lv_validater_8_0= ruleJsSnippet ) ) )? otherlv_9= '}' )
+            // InternalEditorLanguage.g:949:2: ( (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) ) ) )
+            // InternalEditorLanguage.g:950:2: (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) ) )
             {
-            // InternalEditorLanguage.g:923:2: (otherlv_0= '{' otherlv_1= 'view:' ( (lv_view_2_0= ruleHtmlSnippet ) ) (otherlv_3= 'get:' ( (lv_getter_4_0= ruleJsSnippet ) ) otherlv_5= 'set:' ( (lv_setter_6_0= ruleJsSnippet ) ) otherlv_7= 'validate:' ( (lv_validater_8_0= ruleJsSnippet ) ) )? otherlv_9= '}' )
-            // InternalEditorLanguage.g:924:3: otherlv_0= '{' otherlv_1= 'view:' ( (lv_view_2_0= ruleHtmlSnippet ) ) (otherlv_3= 'get:' ( (lv_getter_4_0= ruleJsSnippet ) ) otherlv_5= 'set:' ( (lv_setter_6_0= ruleJsSnippet ) ) otherlv_7= 'validate:' ( (lv_validater_8_0= ruleJsSnippet ) ) )? otherlv_9= '}'
+            // InternalEditorLanguage.g:950:2: (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) ) )
+            // InternalEditorLanguage.g:951:3: otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) )
             {
-            otherlv_0=(Token)match(input,17,FOLLOW_10); 
+            otherlv_0=(Token)match(input,24,FOLLOW_11); 
 
-            			newLeafNode(otherlv_0, grammarAccess.getComponentControllerAccess().getLeftCurlyBracketKeyword_0());
+            			newLeafNode(otherlv_0, grammarAccess.getComponentControllerAccess().getGetKeyword_0());
             		
-            otherlv_1=(Token)match(input,20,FOLLOW_11); 
-
-            			newLeafNode(otherlv_1, grammarAccess.getComponentControllerAccess().getViewKeyword_1());
-            		
-            // InternalEditorLanguage.g:932:3: ( (lv_view_2_0= ruleHtmlSnippet ) )
-            // InternalEditorLanguage.g:933:4: (lv_view_2_0= ruleHtmlSnippet )
+            // InternalEditorLanguage.g:955:3: ( (lv_getter_1_0= ruleJsSnippet ) )
+            // InternalEditorLanguage.g:956:4: (lv_getter_1_0= ruleJsSnippet )
             {
-            // InternalEditorLanguage.g:933:4: (lv_view_2_0= ruleHtmlSnippet )
-            // InternalEditorLanguage.g:934:5: lv_view_2_0= ruleHtmlSnippet
+            // InternalEditorLanguage.g:956:4: (lv_getter_1_0= ruleJsSnippet )
+            // InternalEditorLanguage.g:957:5: lv_getter_1_0= ruleJsSnippet
             {
 
-            					newCompositeNode(grammarAccess.getComponentControllerAccess().getViewHtmlSnippetParserRuleCall_2_0());
+            					newCompositeNode(grammarAccess.getComponentControllerAccess().getGetterJsSnippetParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_23);
-            lv_view_2_0=ruleHtmlSnippet();
+            pushFollow(FOLLOW_16);
+            lv_getter_1_0=ruleJsSnippet();
 
             state._fsp--;
 
@@ -2255,9 +2290,9 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
             					}
             					set(
             						current,
-            						"view",
-            						lv_view_2_0,
-            						"org.eclipse.xtext.peweb.EditorLanguage.HtmlSnippet");
+            						"getter",
+            						lv_getter_1_0,
+            						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
             					afterParserOrEnumRuleCall();
             				
 
@@ -2266,132 +2301,76 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalEditorLanguage.g:951:3: (otherlv_3= 'get:' ( (lv_getter_4_0= ruleJsSnippet ) ) otherlv_5= 'set:' ( (lv_setter_6_0= ruleJsSnippet ) ) otherlv_7= 'validate:' ( (lv_validater_8_0= ruleJsSnippet ) ) )?
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            otherlv_2=(Token)match(input,25,FOLLOW_11); 
 
-            if ( (LA9_0==24) ) {
-                alt9=1;
-            }
-            switch (alt9) {
-                case 1 :
-                    // InternalEditorLanguage.g:952:4: otherlv_3= 'get:' ( (lv_getter_4_0= ruleJsSnippet ) ) otherlv_5= 'set:' ( (lv_setter_6_0= ruleJsSnippet ) ) otherlv_7= 'validate:' ( (lv_validater_8_0= ruleJsSnippet ) )
-                    {
-                    otherlv_3=(Token)match(input,24,FOLLOW_11); 
-
-                    				newLeafNode(otherlv_3, grammarAccess.getComponentControllerAccess().getGetKeyword_3_0());
-                    			
-                    // InternalEditorLanguage.g:956:4: ( (lv_getter_4_0= ruleJsSnippet ) )
-                    // InternalEditorLanguage.g:957:5: (lv_getter_4_0= ruleJsSnippet )
-                    {
-                    // InternalEditorLanguage.g:957:5: (lv_getter_4_0= ruleJsSnippet )
-                    // InternalEditorLanguage.g:958:6: lv_getter_4_0= ruleJsSnippet
-                    {
-
-                    						newCompositeNode(grammarAccess.getComponentControllerAccess().getGetterJsSnippetParserRuleCall_3_1_0());
-                    					
-                    pushFollow(FOLLOW_16);
-                    lv_getter_4_0=ruleJsSnippet();
-
-                    state._fsp--;
-
-
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getComponentControllerRule());
-                    						}
-                    						set(
-                    							current,
-                    							"getter",
-                    							lv_getter_4_0,
-                    							"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
-
-                    }
-
-                    otherlv_5=(Token)match(input,25,FOLLOW_11); 
-
-                    				newLeafNode(otherlv_5, grammarAccess.getComponentControllerAccess().getSetKeyword_3_2());
-                    			
-                    // InternalEditorLanguage.g:979:4: ( (lv_setter_6_0= ruleJsSnippet ) )
-                    // InternalEditorLanguage.g:980:5: (lv_setter_6_0= ruleJsSnippet )
-                    {
-                    // InternalEditorLanguage.g:980:5: (lv_setter_6_0= ruleJsSnippet )
-                    // InternalEditorLanguage.g:981:6: lv_setter_6_0= ruleJsSnippet
-                    {
-
-                    						newCompositeNode(grammarAccess.getComponentControllerAccess().getSetterJsSnippetParserRuleCall_3_3_0());
-                    					
-                    pushFollow(FOLLOW_17);
-                    lv_setter_6_0=ruleJsSnippet();
-
-                    state._fsp--;
-
-
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getComponentControllerRule());
-                    						}
-                    						set(
-                    							current,
-                    							"setter",
-                    							lv_setter_6_0,
-                    							"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
-
-                    }
-
-                    otherlv_7=(Token)match(input,26,FOLLOW_11); 
-
-                    				newLeafNode(otherlv_7, grammarAccess.getComponentControllerAccess().getValidateKeyword_3_4());
-                    			
-                    // InternalEditorLanguage.g:1002:4: ( (lv_validater_8_0= ruleJsSnippet ) )
-                    // InternalEditorLanguage.g:1003:5: (lv_validater_8_0= ruleJsSnippet )
-                    {
-                    // InternalEditorLanguage.g:1003:5: (lv_validater_8_0= ruleJsSnippet )
-                    // InternalEditorLanguage.g:1004:6: lv_validater_8_0= ruleJsSnippet
-                    {
-
-                    						newCompositeNode(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_3_5_0());
-                    					
-                    pushFollow(FOLLOW_18);
-                    lv_validater_8_0=ruleJsSnippet();
-
-                    state._fsp--;
-
-
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getComponentControllerRule());
-                    						}
-                    						set(
-                    							current,
-                    							"validater",
-                    							lv_validater_8_0,
-                    							"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            otherlv_9=(Token)match(input,18,FOLLOW_2); 
-
-            			newLeafNode(otherlv_9, grammarAccess.getComponentControllerAccess().getRightCurlyBracketKeyword_4());
+            			newLeafNode(otherlv_2, grammarAccess.getComponentControllerAccess().getSetKeyword_2());
             		
+            // InternalEditorLanguage.g:978:3: ( (lv_setter_3_0= ruleJsSnippet ) )
+            // InternalEditorLanguage.g:979:4: (lv_setter_3_0= ruleJsSnippet )
+            {
+            // InternalEditorLanguage.g:979:4: (lv_setter_3_0= ruleJsSnippet )
+            // InternalEditorLanguage.g:980:5: lv_setter_3_0= ruleJsSnippet
+            {
+
+            					newCompositeNode(grammarAccess.getComponentControllerAccess().getSetterJsSnippetParserRuleCall_3_0());
+            				
+            pushFollow(FOLLOW_17);
+            lv_setter_3_0=ruleJsSnippet();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getComponentControllerRule());
+            					}
+            					set(
+            						current,
+            						"setter",
+            						lv_setter_3_0,
+            						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            otherlv_4=(Token)match(input,26,FOLLOW_11); 
+
+            			newLeafNode(otherlv_4, grammarAccess.getComponentControllerAccess().getValidateKeyword_4());
+            		
+            // InternalEditorLanguage.g:1001:3: ( (lv_validater_5_0= ruleJsSnippet ) )
+            // InternalEditorLanguage.g:1002:4: (lv_validater_5_0= ruleJsSnippet )
+            {
+            // InternalEditorLanguage.g:1002:4: (lv_validater_5_0= ruleJsSnippet )
+            // InternalEditorLanguage.g:1003:5: lv_validater_5_0= ruleJsSnippet
+            {
+
+            					newCompositeNode(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0());
+            				
+            pushFollow(FOLLOW_2);
+            lv_validater_5_0=ruleJsSnippet();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getComponentControllerRule());
+            					}
+            					set(
+            						current,
+            						"validater",
+            						lv_validater_5_0,
+            						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
 
             }
 
@@ -2415,7 +2394,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleHtmlSnippet"
-    // InternalEditorLanguage.g:1030:1: entryRuleHtmlSnippet returns [EObject current=null] : iv_ruleHtmlSnippet= ruleHtmlSnippet EOF ;
+    // InternalEditorLanguage.g:1024:1: entryRuleHtmlSnippet returns [EObject current=null] : iv_ruleHtmlSnippet= ruleHtmlSnippet EOF ;
     public final EObject entryRuleHtmlSnippet() throws RecognitionException {
         EObject current = null;
 
@@ -2423,8 +2402,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalEditorLanguage.g:1030:52: (iv_ruleHtmlSnippet= ruleHtmlSnippet EOF )
-            // InternalEditorLanguage.g:1031:2: iv_ruleHtmlSnippet= ruleHtmlSnippet EOF
+            // InternalEditorLanguage.g:1024:52: (iv_ruleHtmlSnippet= ruleHtmlSnippet EOF )
+            // InternalEditorLanguage.g:1025:2: iv_ruleHtmlSnippet= ruleHtmlSnippet EOF
             {
              newCompositeNode(grammarAccess.getHtmlSnippetRule()); 
             pushFollow(FOLLOW_1);
@@ -2451,7 +2430,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleHtmlSnippet"
-    // InternalEditorLanguage.g:1037:1: ruleHtmlSnippet returns [EObject current=null] : ( ( () ( (lv_html_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) ) ) ;
+    // InternalEditorLanguage.g:1031:1: ruleHtmlSnippet returns [EObject current=null] : ( ( () ( (lv_html_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) ) ) ;
     public final EObject ruleHtmlSnippet() throws RecognitionException {
         EObject current = null;
 
@@ -2472,34 +2451,34 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:1043:2: ( ( ( () ( (lv_html_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) ) ) )
-            // InternalEditorLanguage.g:1044:2: ( ( () ( (lv_html_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) ) )
+            // InternalEditorLanguage.g:1037:2: ( ( ( () ( (lv_html_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) ) ) )
+            // InternalEditorLanguage.g:1038:2: ( ( () ( (lv_html_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) ) )
             {
-            // InternalEditorLanguage.g:1044:2: ( ( () ( (lv_html_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) ) )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            // InternalEditorLanguage.g:1038:2: ( ( () ( (lv_html_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) ) )
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA11_0==RULE_CODENOTAG) ) {
-                alt11=1;
+            if ( (LA10_0==RULE_CODENOTAG) ) {
+                alt10=1;
             }
-            else if ( (LA11_0==RULE_CODESTART) ) {
-                alt11=2;
+            else if ( (LA10_0==RULE_CODESTART) ) {
+                alt10=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 11, 0, input);
+                    new NoViableAltException("", 10, 0, input);
 
                 throw nvae;
             }
-            switch (alt11) {
+            switch (alt10) {
                 case 1 :
-                    // InternalEditorLanguage.g:1045:3: ( () ( (lv_html_1_0= ruleCodeLiteral ) ) )
+                    // InternalEditorLanguage.g:1039:3: ( () ( (lv_html_1_0= ruleCodeLiteral ) ) )
                     {
-                    // InternalEditorLanguage.g:1045:3: ( () ( (lv_html_1_0= ruleCodeLiteral ) ) )
-                    // InternalEditorLanguage.g:1046:4: () ( (lv_html_1_0= ruleCodeLiteral ) )
+                    // InternalEditorLanguage.g:1039:3: ( () ( (lv_html_1_0= ruleCodeLiteral ) ) )
+                    // InternalEditorLanguage.g:1040:4: () ( (lv_html_1_0= ruleCodeLiteral ) )
                     {
-                    // InternalEditorLanguage.g:1046:4: ()
-                    // InternalEditorLanguage.g:1047:5: 
+                    // InternalEditorLanguage.g:1040:4: ()
+                    // InternalEditorLanguage.g:1041:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -2509,11 +2488,11 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalEditorLanguage.g:1053:4: ( (lv_html_1_0= ruleCodeLiteral ) )
-                    // InternalEditorLanguage.g:1054:5: (lv_html_1_0= ruleCodeLiteral )
+                    // InternalEditorLanguage.g:1047:4: ( (lv_html_1_0= ruleCodeLiteral ) )
+                    // InternalEditorLanguage.g:1048:5: (lv_html_1_0= ruleCodeLiteral )
                     {
-                    // InternalEditorLanguage.g:1054:5: (lv_html_1_0= ruleCodeLiteral )
-                    // InternalEditorLanguage.g:1055:6: lv_html_1_0= ruleCodeLiteral
+                    // InternalEditorLanguage.g:1048:5: (lv_html_1_0= ruleCodeLiteral )
+                    // InternalEditorLanguage.g:1049:6: lv_html_1_0= ruleCodeLiteral
                     {
 
                     						newCompositeNode(grammarAccess.getHtmlSnippetAccess().getHtmlCodeLiteralParserRuleCall_0_1_0());
@@ -2547,21 +2526,21 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalEditorLanguage.g:1074:3: ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) )
+                    // InternalEditorLanguage.g:1068:3: ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) )
                     {
-                    // InternalEditorLanguage.g:1074:3: ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) )
-                    // InternalEditorLanguage.g:1075:4: ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) )
+                    // InternalEditorLanguage.g:1068:3: ( ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) ) )
+                    // InternalEditorLanguage.g:1069:4: ( (lv_html_2_0= ruleCodeLiteralStart ) ) ( (lv_html_3_0= ruleHtmlAnnotation ) ) ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )* ( (lv_html_6_0= ruleCodeLiteralEnd ) )
                     {
-                    // InternalEditorLanguage.g:1075:4: ( (lv_html_2_0= ruleCodeLiteralStart ) )
-                    // InternalEditorLanguage.g:1076:5: (lv_html_2_0= ruleCodeLiteralStart )
+                    // InternalEditorLanguage.g:1069:4: ( (lv_html_2_0= ruleCodeLiteralStart ) )
+                    // InternalEditorLanguage.g:1070:5: (lv_html_2_0= ruleCodeLiteralStart )
                     {
-                    // InternalEditorLanguage.g:1076:5: (lv_html_2_0= ruleCodeLiteralStart )
-                    // InternalEditorLanguage.g:1077:6: lv_html_2_0= ruleCodeLiteralStart
+                    // InternalEditorLanguage.g:1070:5: (lv_html_2_0= ruleCodeLiteralStart )
+                    // InternalEditorLanguage.g:1071:6: lv_html_2_0= ruleCodeLiteralStart
                     {
 
                     						newCompositeNode(grammarAccess.getHtmlSnippetAccess().getHtmlCodeLiteralStartParserRuleCall_1_0_0());
                     					
-                    pushFollow(FOLLOW_24);
+                    pushFollow(FOLLOW_23);
                     lv_html_2_0=ruleCodeLiteralStart();
 
                     state._fsp--;
@@ -2583,16 +2562,16 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalEditorLanguage.g:1094:4: ( (lv_html_3_0= ruleHtmlAnnotation ) )
-                    // InternalEditorLanguage.g:1095:5: (lv_html_3_0= ruleHtmlAnnotation )
+                    // InternalEditorLanguage.g:1088:4: ( (lv_html_3_0= ruleHtmlAnnotation ) )
+                    // InternalEditorLanguage.g:1089:5: (lv_html_3_0= ruleHtmlAnnotation )
                     {
-                    // InternalEditorLanguage.g:1095:5: (lv_html_3_0= ruleHtmlAnnotation )
-                    // InternalEditorLanguage.g:1096:6: lv_html_3_0= ruleHtmlAnnotation
+                    // InternalEditorLanguage.g:1089:5: (lv_html_3_0= ruleHtmlAnnotation )
+                    // InternalEditorLanguage.g:1090:6: lv_html_3_0= ruleHtmlAnnotation
                     {
 
                     						newCompositeNode(grammarAccess.getHtmlSnippetAccess().getHtmlHtmlAnnotationParserRuleCall_1_1_0());
                     					
-                    pushFollow(FOLLOW_25);
+                    pushFollow(FOLLOW_24);
                     lv_html_3_0=ruleHtmlAnnotation();
 
                     state._fsp--;
@@ -2614,31 +2593,31 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalEditorLanguage.g:1113:4: ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )*
-                    loop10:
+                    // InternalEditorLanguage.g:1107:4: ( ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) ) )*
+                    loop9:
                     do {
-                        int alt10=2;
-                        int LA10_0 = input.LA(1);
+                        int alt9=2;
+                        int LA9_0 = input.LA(1);
 
-                        if ( (LA10_0==RULE_CODEMID) ) {
-                            alt10=1;
+                        if ( (LA9_0==RULE_CODEMID) ) {
+                            alt9=1;
                         }
 
 
-                        switch (alt10) {
+                        switch (alt9) {
                     	case 1 :
-                    	    // InternalEditorLanguage.g:1114:5: ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) )
+                    	    // InternalEditorLanguage.g:1108:5: ( (lv_html_4_0= ruleCodeLiteralMid ) ) ( (lv_html_5_0= ruleHtmlAnnotation ) )
                     	    {
-                    	    // InternalEditorLanguage.g:1114:5: ( (lv_html_4_0= ruleCodeLiteralMid ) )
-                    	    // InternalEditorLanguage.g:1115:6: (lv_html_4_0= ruleCodeLiteralMid )
+                    	    // InternalEditorLanguage.g:1108:5: ( (lv_html_4_0= ruleCodeLiteralMid ) )
+                    	    // InternalEditorLanguage.g:1109:6: (lv_html_4_0= ruleCodeLiteralMid )
                     	    {
-                    	    // InternalEditorLanguage.g:1115:6: (lv_html_4_0= ruleCodeLiteralMid )
-                    	    // InternalEditorLanguage.g:1116:7: lv_html_4_0= ruleCodeLiteralMid
+                    	    // InternalEditorLanguage.g:1109:6: (lv_html_4_0= ruleCodeLiteralMid )
+                    	    // InternalEditorLanguage.g:1110:7: lv_html_4_0= ruleCodeLiteralMid
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getHtmlSnippetAccess().getHtmlCodeLiteralMidParserRuleCall_1_2_0_0());
                     	    						
-                    	    pushFollow(FOLLOW_24);
+                    	    pushFollow(FOLLOW_23);
                     	    lv_html_4_0=ruleCodeLiteralMid();
 
                     	    state._fsp--;
@@ -2660,16 +2639,16 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    // InternalEditorLanguage.g:1133:5: ( (lv_html_5_0= ruleHtmlAnnotation ) )
-                    	    // InternalEditorLanguage.g:1134:6: (lv_html_5_0= ruleHtmlAnnotation )
+                    	    // InternalEditorLanguage.g:1127:5: ( (lv_html_5_0= ruleHtmlAnnotation ) )
+                    	    // InternalEditorLanguage.g:1128:6: (lv_html_5_0= ruleHtmlAnnotation )
                     	    {
-                    	    // InternalEditorLanguage.g:1134:6: (lv_html_5_0= ruleHtmlAnnotation )
-                    	    // InternalEditorLanguage.g:1135:7: lv_html_5_0= ruleHtmlAnnotation
+                    	    // InternalEditorLanguage.g:1128:6: (lv_html_5_0= ruleHtmlAnnotation )
+                    	    // InternalEditorLanguage.g:1129:7: lv_html_5_0= ruleHtmlAnnotation
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getHtmlSnippetAccess().getHtmlHtmlAnnotationParserRuleCall_1_2_1_0());
                     	    						
-                    	    pushFollow(FOLLOW_25);
+                    	    pushFollow(FOLLOW_24);
                     	    lv_html_5_0=ruleHtmlAnnotation();
 
                     	    state._fsp--;
@@ -2696,15 +2675,15 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop10;
+                    	    break loop9;
                         }
                     } while (true);
 
-                    // InternalEditorLanguage.g:1153:4: ( (lv_html_6_0= ruleCodeLiteralEnd ) )
-                    // InternalEditorLanguage.g:1154:5: (lv_html_6_0= ruleCodeLiteralEnd )
+                    // InternalEditorLanguage.g:1147:4: ( (lv_html_6_0= ruleCodeLiteralEnd ) )
+                    // InternalEditorLanguage.g:1148:5: (lv_html_6_0= ruleCodeLiteralEnd )
                     {
-                    // InternalEditorLanguage.g:1154:5: (lv_html_6_0= ruleCodeLiteralEnd )
-                    // InternalEditorLanguage.g:1155:6: lv_html_6_0= ruleCodeLiteralEnd
+                    // InternalEditorLanguage.g:1148:5: (lv_html_6_0= ruleCodeLiteralEnd )
+                    // InternalEditorLanguage.g:1149:6: lv_html_6_0= ruleCodeLiteralEnd
                     {
 
                     						newCompositeNode(grammarAccess.getHtmlSnippetAccess().getHtmlCodeLiteralEndParserRuleCall_1_3_0());
@@ -2760,7 +2739,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleHtmlAnnotation"
-    // InternalEditorLanguage.g:1177:1: entryRuleHtmlAnnotation returns [EObject current=null] : iv_ruleHtmlAnnotation= ruleHtmlAnnotation EOF ;
+    // InternalEditorLanguage.g:1171:1: entryRuleHtmlAnnotation returns [EObject current=null] : iv_ruleHtmlAnnotation= ruleHtmlAnnotation EOF ;
     public final EObject entryRuleHtmlAnnotation() throws RecognitionException {
         EObject current = null;
 
@@ -2768,8 +2747,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalEditorLanguage.g:1177:55: (iv_ruleHtmlAnnotation= ruleHtmlAnnotation EOF )
-            // InternalEditorLanguage.g:1178:2: iv_ruleHtmlAnnotation= ruleHtmlAnnotation EOF
+            // InternalEditorLanguage.g:1171:55: (iv_ruleHtmlAnnotation= ruleHtmlAnnotation EOF )
+            // InternalEditorLanguage.g:1172:2: iv_ruleHtmlAnnotation= ruleHtmlAnnotation EOF
             {
              newCompositeNode(grammarAccess.getHtmlAnnotationRule()); 
             pushFollow(FOLLOW_1);
@@ -2796,7 +2775,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleHtmlAnnotation"
-    // InternalEditorLanguage.g:1184:1: ruleHtmlAnnotation returns [EObject current=null] : (this_TagId_0= ruleTagId | this_ChildId_1= ruleChildId | this_ComponentId_2= ruleComponentId ) ;
+    // InternalEditorLanguage.g:1178:1: ruleHtmlAnnotation returns [EObject current=null] : (this_TagId_0= ruleTagId | this_ChildId_1= ruleChildId | this_ComponentId_2= ruleComponentId ) ;
     public final EObject ruleHtmlAnnotation() throws RecognitionException {
         EObject current = null;
 
@@ -2811,37 +2790,37 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:1190:2: ( (this_TagId_0= ruleTagId | this_ChildId_1= ruleChildId | this_ComponentId_2= ruleComponentId ) )
-            // InternalEditorLanguage.g:1191:2: (this_TagId_0= ruleTagId | this_ChildId_1= ruleChildId | this_ComponentId_2= ruleComponentId )
+            // InternalEditorLanguage.g:1184:2: ( (this_TagId_0= ruleTagId | this_ChildId_1= ruleChildId | this_ComponentId_2= ruleComponentId ) )
+            // InternalEditorLanguage.g:1185:2: (this_TagId_0= ruleTagId | this_ChildId_1= ruleChildId | this_ComponentId_2= ruleComponentId )
             {
-            // InternalEditorLanguage.g:1191:2: (this_TagId_0= ruleTagId | this_ChildId_1= ruleChildId | this_ComponentId_2= ruleComponentId )
-            int alt12=3;
+            // InternalEditorLanguage.g:1185:2: (this_TagId_0= ruleTagId | this_ChildId_1= ruleChildId | this_ComponentId_2= ruleComponentId )
+            int alt11=3;
             switch ( input.LA(1) ) {
             case 28:
                 {
-                alt12=1;
+                alt11=1;
                 }
                 break;
             case 27:
                 {
-                alt12=2;
+                alt11=2;
                 }
                 break;
             case 22:
                 {
-                alt12=3;
+                alt11=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("", 11, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt12) {
+            switch (alt11) {
                 case 1 :
-                    // InternalEditorLanguage.g:1192:3: this_TagId_0= ruleTagId
+                    // InternalEditorLanguage.g:1186:3: this_TagId_0= ruleTagId
                     {
 
                     			newCompositeNode(grammarAccess.getHtmlAnnotationAccess().getTagIdParserRuleCall_0());
@@ -2859,7 +2838,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalEditorLanguage.g:1201:3: this_ChildId_1= ruleChildId
+                    // InternalEditorLanguage.g:1195:3: this_ChildId_1= ruleChildId
                     {
 
                     			newCompositeNode(grammarAccess.getHtmlAnnotationAccess().getChildIdParserRuleCall_1());
@@ -2877,7 +2856,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalEditorLanguage.g:1210:3: this_ComponentId_2= ruleComponentId
+                    // InternalEditorLanguage.g:1204:3: this_ComponentId_2= ruleComponentId
                     {
 
                     			newCompositeNode(grammarAccess.getHtmlAnnotationAccess().getComponentIdParserRuleCall_2());
@@ -2917,7 +2896,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCodeLiteral"
-    // InternalEditorLanguage.g:1222:1: entryRuleCodeLiteral returns [EObject current=null] : iv_ruleCodeLiteral= ruleCodeLiteral EOF ;
+    // InternalEditorLanguage.g:1216:1: entryRuleCodeLiteral returns [EObject current=null] : iv_ruleCodeLiteral= ruleCodeLiteral EOF ;
     public final EObject entryRuleCodeLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -2925,8 +2904,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalEditorLanguage.g:1222:52: (iv_ruleCodeLiteral= ruleCodeLiteral EOF )
-            // InternalEditorLanguage.g:1223:2: iv_ruleCodeLiteral= ruleCodeLiteral EOF
+            // InternalEditorLanguage.g:1216:52: (iv_ruleCodeLiteral= ruleCodeLiteral EOF )
+            // InternalEditorLanguage.g:1217:2: iv_ruleCodeLiteral= ruleCodeLiteral EOF
             {
              newCompositeNode(grammarAccess.getCodeLiteralRule()); 
             pushFollow(FOLLOW_1);
@@ -2953,7 +2932,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCodeLiteral"
-    // InternalEditorLanguage.g:1229:1: ruleCodeLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_CODENOTAG ) ) ;
+    // InternalEditorLanguage.g:1223:1: ruleCodeLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_CODENOTAG ) ) ;
     public final EObject ruleCodeLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -2963,14 +2942,14 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:1235:2: ( ( (lv_value_0_0= RULE_CODENOTAG ) ) )
-            // InternalEditorLanguage.g:1236:2: ( (lv_value_0_0= RULE_CODENOTAG ) )
+            // InternalEditorLanguage.g:1229:2: ( ( (lv_value_0_0= RULE_CODENOTAG ) ) )
+            // InternalEditorLanguage.g:1230:2: ( (lv_value_0_0= RULE_CODENOTAG ) )
             {
-            // InternalEditorLanguage.g:1236:2: ( (lv_value_0_0= RULE_CODENOTAG ) )
-            // InternalEditorLanguage.g:1237:3: (lv_value_0_0= RULE_CODENOTAG )
+            // InternalEditorLanguage.g:1230:2: ( (lv_value_0_0= RULE_CODENOTAG ) )
+            // InternalEditorLanguage.g:1231:3: (lv_value_0_0= RULE_CODENOTAG )
             {
-            // InternalEditorLanguage.g:1237:3: (lv_value_0_0= RULE_CODENOTAG )
-            // InternalEditorLanguage.g:1238:4: lv_value_0_0= RULE_CODENOTAG
+            // InternalEditorLanguage.g:1231:3: (lv_value_0_0= RULE_CODENOTAG )
+            // InternalEditorLanguage.g:1232:4: lv_value_0_0= RULE_CODENOTAG
             {
             lv_value_0_0=(Token)match(input,RULE_CODENOTAG,FOLLOW_2); 
 
@@ -3012,7 +2991,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCodeLiteralStart"
-    // InternalEditorLanguage.g:1257:1: entryRuleCodeLiteralStart returns [EObject current=null] : iv_ruleCodeLiteralStart= ruleCodeLiteralStart EOF ;
+    // InternalEditorLanguage.g:1251:1: entryRuleCodeLiteralStart returns [EObject current=null] : iv_ruleCodeLiteralStart= ruleCodeLiteralStart EOF ;
     public final EObject entryRuleCodeLiteralStart() throws RecognitionException {
         EObject current = null;
 
@@ -3020,8 +2999,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalEditorLanguage.g:1257:57: (iv_ruleCodeLiteralStart= ruleCodeLiteralStart EOF )
-            // InternalEditorLanguage.g:1258:2: iv_ruleCodeLiteralStart= ruleCodeLiteralStart EOF
+            // InternalEditorLanguage.g:1251:57: (iv_ruleCodeLiteralStart= ruleCodeLiteralStart EOF )
+            // InternalEditorLanguage.g:1252:2: iv_ruleCodeLiteralStart= ruleCodeLiteralStart EOF
             {
              newCompositeNode(grammarAccess.getCodeLiteralStartRule()); 
             pushFollow(FOLLOW_1);
@@ -3048,7 +3027,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCodeLiteralStart"
-    // InternalEditorLanguage.g:1264:1: ruleCodeLiteralStart returns [EObject current=null] : ( (lv_value_0_0= RULE_CODESTART ) ) ;
+    // InternalEditorLanguage.g:1258:1: ruleCodeLiteralStart returns [EObject current=null] : ( (lv_value_0_0= RULE_CODESTART ) ) ;
     public final EObject ruleCodeLiteralStart() throws RecognitionException {
         EObject current = null;
 
@@ -3058,14 +3037,14 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:1270:2: ( ( (lv_value_0_0= RULE_CODESTART ) ) )
-            // InternalEditorLanguage.g:1271:2: ( (lv_value_0_0= RULE_CODESTART ) )
+            // InternalEditorLanguage.g:1264:2: ( ( (lv_value_0_0= RULE_CODESTART ) ) )
+            // InternalEditorLanguage.g:1265:2: ( (lv_value_0_0= RULE_CODESTART ) )
             {
-            // InternalEditorLanguage.g:1271:2: ( (lv_value_0_0= RULE_CODESTART ) )
-            // InternalEditorLanguage.g:1272:3: (lv_value_0_0= RULE_CODESTART )
+            // InternalEditorLanguage.g:1265:2: ( (lv_value_0_0= RULE_CODESTART ) )
+            // InternalEditorLanguage.g:1266:3: (lv_value_0_0= RULE_CODESTART )
             {
-            // InternalEditorLanguage.g:1272:3: (lv_value_0_0= RULE_CODESTART )
-            // InternalEditorLanguage.g:1273:4: lv_value_0_0= RULE_CODESTART
+            // InternalEditorLanguage.g:1266:3: (lv_value_0_0= RULE_CODESTART )
+            // InternalEditorLanguage.g:1267:4: lv_value_0_0= RULE_CODESTART
             {
             lv_value_0_0=(Token)match(input,RULE_CODESTART,FOLLOW_2); 
 
@@ -3107,7 +3086,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCodeLiteralMid"
-    // InternalEditorLanguage.g:1292:1: entryRuleCodeLiteralMid returns [EObject current=null] : iv_ruleCodeLiteralMid= ruleCodeLiteralMid EOF ;
+    // InternalEditorLanguage.g:1286:1: entryRuleCodeLiteralMid returns [EObject current=null] : iv_ruleCodeLiteralMid= ruleCodeLiteralMid EOF ;
     public final EObject entryRuleCodeLiteralMid() throws RecognitionException {
         EObject current = null;
 
@@ -3115,8 +3094,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalEditorLanguage.g:1292:55: (iv_ruleCodeLiteralMid= ruleCodeLiteralMid EOF )
-            // InternalEditorLanguage.g:1293:2: iv_ruleCodeLiteralMid= ruleCodeLiteralMid EOF
+            // InternalEditorLanguage.g:1286:55: (iv_ruleCodeLiteralMid= ruleCodeLiteralMid EOF )
+            // InternalEditorLanguage.g:1287:2: iv_ruleCodeLiteralMid= ruleCodeLiteralMid EOF
             {
              newCompositeNode(grammarAccess.getCodeLiteralMidRule()); 
             pushFollow(FOLLOW_1);
@@ -3143,7 +3122,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCodeLiteralMid"
-    // InternalEditorLanguage.g:1299:1: ruleCodeLiteralMid returns [EObject current=null] : ( (lv_value_0_0= RULE_CODEMID ) ) ;
+    // InternalEditorLanguage.g:1293:1: ruleCodeLiteralMid returns [EObject current=null] : ( (lv_value_0_0= RULE_CODEMID ) ) ;
     public final EObject ruleCodeLiteralMid() throws RecognitionException {
         EObject current = null;
 
@@ -3153,14 +3132,14 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:1305:2: ( ( (lv_value_0_0= RULE_CODEMID ) ) )
-            // InternalEditorLanguage.g:1306:2: ( (lv_value_0_0= RULE_CODEMID ) )
+            // InternalEditorLanguage.g:1299:2: ( ( (lv_value_0_0= RULE_CODEMID ) ) )
+            // InternalEditorLanguage.g:1300:2: ( (lv_value_0_0= RULE_CODEMID ) )
             {
-            // InternalEditorLanguage.g:1306:2: ( (lv_value_0_0= RULE_CODEMID ) )
-            // InternalEditorLanguage.g:1307:3: (lv_value_0_0= RULE_CODEMID )
+            // InternalEditorLanguage.g:1300:2: ( (lv_value_0_0= RULE_CODEMID ) )
+            // InternalEditorLanguage.g:1301:3: (lv_value_0_0= RULE_CODEMID )
             {
-            // InternalEditorLanguage.g:1307:3: (lv_value_0_0= RULE_CODEMID )
-            // InternalEditorLanguage.g:1308:4: lv_value_0_0= RULE_CODEMID
+            // InternalEditorLanguage.g:1301:3: (lv_value_0_0= RULE_CODEMID )
+            // InternalEditorLanguage.g:1302:4: lv_value_0_0= RULE_CODEMID
             {
             lv_value_0_0=(Token)match(input,RULE_CODEMID,FOLLOW_2); 
 
@@ -3202,7 +3181,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCodeLiteralEnd"
-    // InternalEditorLanguage.g:1327:1: entryRuleCodeLiteralEnd returns [EObject current=null] : iv_ruleCodeLiteralEnd= ruleCodeLiteralEnd EOF ;
+    // InternalEditorLanguage.g:1321:1: entryRuleCodeLiteralEnd returns [EObject current=null] : iv_ruleCodeLiteralEnd= ruleCodeLiteralEnd EOF ;
     public final EObject entryRuleCodeLiteralEnd() throws RecognitionException {
         EObject current = null;
 
@@ -3210,8 +3189,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalEditorLanguage.g:1327:55: (iv_ruleCodeLiteralEnd= ruleCodeLiteralEnd EOF )
-            // InternalEditorLanguage.g:1328:2: iv_ruleCodeLiteralEnd= ruleCodeLiteralEnd EOF
+            // InternalEditorLanguage.g:1321:55: (iv_ruleCodeLiteralEnd= ruleCodeLiteralEnd EOF )
+            // InternalEditorLanguage.g:1322:2: iv_ruleCodeLiteralEnd= ruleCodeLiteralEnd EOF
             {
              newCompositeNode(grammarAccess.getCodeLiteralEndRule()); 
             pushFollow(FOLLOW_1);
@@ -3238,7 +3217,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCodeLiteralEnd"
-    // InternalEditorLanguage.g:1334:1: ruleCodeLiteralEnd returns [EObject current=null] : ( (lv_value_0_0= RULE_CODEEND ) ) ;
+    // InternalEditorLanguage.g:1328:1: ruleCodeLiteralEnd returns [EObject current=null] : ( (lv_value_0_0= RULE_CODEEND ) ) ;
     public final EObject ruleCodeLiteralEnd() throws RecognitionException {
         EObject current = null;
 
@@ -3248,14 +3227,14 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:1340:2: ( ( (lv_value_0_0= RULE_CODEEND ) ) )
-            // InternalEditorLanguage.g:1341:2: ( (lv_value_0_0= RULE_CODEEND ) )
+            // InternalEditorLanguage.g:1334:2: ( ( (lv_value_0_0= RULE_CODEEND ) ) )
+            // InternalEditorLanguage.g:1335:2: ( (lv_value_0_0= RULE_CODEEND ) )
             {
-            // InternalEditorLanguage.g:1341:2: ( (lv_value_0_0= RULE_CODEEND ) )
-            // InternalEditorLanguage.g:1342:3: (lv_value_0_0= RULE_CODEEND )
+            // InternalEditorLanguage.g:1335:2: ( (lv_value_0_0= RULE_CODEEND ) )
+            // InternalEditorLanguage.g:1336:3: (lv_value_0_0= RULE_CODEEND )
             {
-            // InternalEditorLanguage.g:1342:3: (lv_value_0_0= RULE_CODEEND )
-            // InternalEditorLanguage.g:1343:4: lv_value_0_0= RULE_CODEEND
+            // InternalEditorLanguage.g:1336:3: (lv_value_0_0= RULE_CODEEND )
+            // InternalEditorLanguage.g:1337:4: lv_value_0_0= RULE_CODEEND
             {
             lv_value_0_0=(Token)match(input,RULE_CODEEND,FOLLOW_2); 
 
@@ -3297,7 +3276,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJsSnippet"
-    // InternalEditorLanguage.g:1362:1: entryRuleJsSnippet returns [EObject current=null] : iv_ruleJsSnippet= ruleJsSnippet EOF ;
+    // InternalEditorLanguage.g:1356:1: entryRuleJsSnippet returns [EObject current=null] : iv_ruleJsSnippet= ruleJsSnippet EOF ;
     public final EObject entryRuleJsSnippet() throws RecognitionException {
         EObject current = null;
 
@@ -3305,8 +3284,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalEditorLanguage.g:1362:50: (iv_ruleJsSnippet= ruleJsSnippet EOF )
-            // InternalEditorLanguage.g:1363:2: iv_ruleJsSnippet= ruleJsSnippet EOF
+            // InternalEditorLanguage.g:1356:50: (iv_ruleJsSnippet= ruleJsSnippet EOF )
+            // InternalEditorLanguage.g:1357:2: iv_ruleJsSnippet= ruleJsSnippet EOF
             {
              newCompositeNode(grammarAccess.getJsSnippetRule()); 
             pushFollow(FOLLOW_1);
@@ -3333,7 +3312,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJsSnippet"
-    // InternalEditorLanguage.g:1369:1: ruleJsSnippet returns [EObject current=null] : ( ( () ( (lv_js_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) ) ) ;
+    // InternalEditorLanguage.g:1363:1: ruleJsSnippet returns [EObject current=null] : ( ( () ( (lv_js_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) ) ) ;
     public final EObject ruleJsSnippet() throws RecognitionException {
         EObject current = null;
 
@@ -3354,34 +3333,34 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:1375:2: ( ( ( () ( (lv_js_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) ) ) )
-            // InternalEditorLanguage.g:1376:2: ( ( () ( (lv_js_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) ) )
+            // InternalEditorLanguage.g:1369:2: ( ( ( () ( (lv_js_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) ) ) )
+            // InternalEditorLanguage.g:1370:2: ( ( () ( (lv_js_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) ) )
             {
-            // InternalEditorLanguage.g:1376:2: ( ( () ( (lv_js_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) ) )
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // InternalEditorLanguage.g:1370:2: ( ( () ( (lv_js_1_0= ruleCodeLiteral ) ) ) | ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) ) )
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA14_0==RULE_CODENOTAG) ) {
-                alt14=1;
+            if ( (LA13_0==RULE_CODENOTAG) ) {
+                alt13=1;
             }
-            else if ( (LA14_0==RULE_CODESTART) ) {
-                alt14=2;
+            else if ( (LA13_0==RULE_CODESTART) ) {
+                alt13=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 13, 0, input);
 
                 throw nvae;
             }
-            switch (alt14) {
+            switch (alt13) {
                 case 1 :
-                    // InternalEditorLanguage.g:1377:3: ( () ( (lv_js_1_0= ruleCodeLiteral ) ) )
+                    // InternalEditorLanguage.g:1371:3: ( () ( (lv_js_1_0= ruleCodeLiteral ) ) )
                     {
-                    // InternalEditorLanguage.g:1377:3: ( () ( (lv_js_1_0= ruleCodeLiteral ) ) )
-                    // InternalEditorLanguage.g:1378:4: () ( (lv_js_1_0= ruleCodeLiteral ) )
+                    // InternalEditorLanguage.g:1371:3: ( () ( (lv_js_1_0= ruleCodeLiteral ) ) )
+                    // InternalEditorLanguage.g:1372:4: () ( (lv_js_1_0= ruleCodeLiteral ) )
                     {
-                    // InternalEditorLanguage.g:1378:4: ()
-                    // InternalEditorLanguage.g:1379:5: 
+                    // InternalEditorLanguage.g:1372:4: ()
+                    // InternalEditorLanguage.g:1373:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -3391,11 +3370,11 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalEditorLanguage.g:1385:4: ( (lv_js_1_0= ruleCodeLiteral ) )
-                    // InternalEditorLanguage.g:1386:5: (lv_js_1_0= ruleCodeLiteral )
+                    // InternalEditorLanguage.g:1379:4: ( (lv_js_1_0= ruleCodeLiteral ) )
+                    // InternalEditorLanguage.g:1380:5: (lv_js_1_0= ruleCodeLiteral )
                     {
-                    // InternalEditorLanguage.g:1386:5: (lv_js_1_0= ruleCodeLiteral )
-                    // InternalEditorLanguage.g:1387:6: lv_js_1_0= ruleCodeLiteral
+                    // InternalEditorLanguage.g:1380:5: (lv_js_1_0= ruleCodeLiteral )
+                    // InternalEditorLanguage.g:1381:6: lv_js_1_0= ruleCodeLiteral
                     {
 
                     						newCompositeNode(grammarAccess.getJsSnippetAccess().getJsCodeLiteralParserRuleCall_0_1_0());
@@ -3429,16 +3408,16 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalEditorLanguage.g:1406:3: ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) )
+                    // InternalEditorLanguage.g:1400:3: ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) )
                     {
-                    // InternalEditorLanguage.g:1406:3: ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) )
-                    // InternalEditorLanguage.g:1407:4: ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) )
+                    // InternalEditorLanguage.g:1400:3: ( ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) ) )
+                    // InternalEditorLanguage.g:1401:4: ( (lv_js_2_0= ruleCodeLiteralStart ) ) ( (lv_js_3_0= ruleJsExtraTag ) ) ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )* ( (lv_js_6_0= ruleCodeLiteralEnd ) )
                     {
-                    // InternalEditorLanguage.g:1407:4: ( (lv_js_2_0= ruleCodeLiteralStart ) )
-                    // InternalEditorLanguage.g:1408:5: (lv_js_2_0= ruleCodeLiteralStart )
+                    // InternalEditorLanguage.g:1401:4: ( (lv_js_2_0= ruleCodeLiteralStart ) )
+                    // InternalEditorLanguage.g:1402:5: (lv_js_2_0= ruleCodeLiteralStart )
                     {
-                    // InternalEditorLanguage.g:1408:5: (lv_js_2_0= ruleCodeLiteralStart )
-                    // InternalEditorLanguage.g:1409:6: lv_js_2_0= ruleCodeLiteralStart
+                    // InternalEditorLanguage.g:1402:5: (lv_js_2_0= ruleCodeLiteralStart )
+                    // InternalEditorLanguage.g:1403:6: lv_js_2_0= ruleCodeLiteralStart
                     {
 
                     						newCompositeNode(grammarAccess.getJsSnippetAccess().getJsCodeLiteralStartParserRuleCall_1_0_0());
@@ -3465,16 +3444,16 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalEditorLanguage.g:1426:4: ( (lv_js_3_0= ruleJsExtraTag ) )
-                    // InternalEditorLanguage.g:1427:5: (lv_js_3_0= ruleJsExtraTag )
+                    // InternalEditorLanguage.g:1420:4: ( (lv_js_3_0= ruleJsExtraTag ) )
+                    // InternalEditorLanguage.g:1421:5: (lv_js_3_0= ruleJsExtraTag )
                     {
-                    // InternalEditorLanguage.g:1427:5: (lv_js_3_0= ruleJsExtraTag )
-                    // InternalEditorLanguage.g:1428:6: lv_js_3_0= ruleJsExtraTag
+                    // InternalEditorLanguage.g:1421:5: (lv_js_3_0= ruleJsExtraTag )
+                    // InternalEditorLanguage.g:1422:6: lv_js_3_0= ruleJsExtraTag
                     {
 
                     						newCompositeNode(grammarAccess.getJsSnippetAccess().getJsJsExtraTagParserRuleCall_1_1_0());
                     					
-                    pushFollow(FOLLOW_25);
+                    pushFollow(FOLLOW_24);
                     lv_js_3_0=ruleJsExtraTag();
 
                     state._fsp--;
@@ -3496,26 +3475,26 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalEditorLanguage.g:1445:4: ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )*
-                    loop13:
+                    // InternalEditorLanguage.g:1439:4: ( ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) ) )*
+                    loop12:
                     do {
-                        int alt13=2;
-                        int LA13_0 = input.LA(1);
+                        int alt12=2;
+                        int LA12_0 = input.LA(1);
 
-                        if ( (LA13_0==RULE_CODEMID) ) {
-                            alt13=1;
+                        if ( (LA12_0==RULE_CODEMID) ) {
+                            alt12=1;
                         }
 
 
-                        switch (alt13) {
+                        switch (alt12) {
                     	case 1 :
-                    	    // InternalEditorLanguage.g:1446:5: ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) )
+                    	    // InternalEditorLanguage.g:1440:5: ( (lv_js_4_0= ruleCodeLiteralMid ) ) ( (lv_js_5_0= ruleJsExtraTag ) )
                     	    {
-                    	    // InternalEditorLanguage.g:1446:5: ( (lv_js_4_0= ruleCodeLiteralMid ) )
-                    	    // InternalEditorLanguage.g:1447:6: (lv_js_4_0= ruleCodeLiteralMid )
+                    	    // InternalEditorLanguage.g:1440:5: ( (lv_js_4_0= ruleCodeLiteralMid ) )
+                    	    // InternalEditorLanguage.g:1441:6: (lv_js_4_0= ruleCodeLiteralMid )
                     	    {
-                    	    // InternalEditorLanguage.g:1447:6: (lv_js_4_0= ruleCodeLiteralMid )
-                    	    // InternalEditorLanguage.g:1448:7: lv_js_4_0= ruleCodeLiteralMid
+                    	    // InternalEditorLanguage.g:1441:6: (lv_js_4_0= ruleCodeLiteralMid )
+                    	    // InternalEditorLanguage.g:1442:7: lv_js_4_0= ruleCodeLiteralMid
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getJsSnippetAccess().getJsCodeLiteralMidParserRuleCall_1_2_0_0());
@@ -3542,16 +3521,16 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    // InternalEditorLanguage.g:1465:5: ( (lv_js_5_0= ruleJsExtraTag ) )
-                    	    // InternalEditorLanguage.g:1466:6: (lv_js_5_0= ruleJsExtraTag )
+                    	    // InternalEditorLanguage.g:1459:5: ( (lv_js_5_0= ruleJsExtraTag ) )
+                    	    // InternalEditorLanguage.g:1460:6: (lv_js_5_0= ruleJsExtraTag )
                     	    {
-                    	    // InternalEditorLanguage.g:1466:6: (lv_js_5_0= ruleJsExtraTag )
-                    	    // InternalEditorLanguage.g:1467:7: lv_js_5_0= ruleJsExtraTag
+                    	    // InternalEditorLanguage.g:1460:6: (lv_js_5_0= ruleJsExtraTag )
+                    	    // InternalEditorLanguage.g:1461:7: lv_js_5_0= ruleJsExtraTag
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getJsSnippetAccess().getJsJsExtraTagParserRuleCall_1_2_1_0());
                     	    						
-                    	    pushFollow(FOLLOW_25);
+                    	    pushFollow(FOLLOW_24);
                     	    lv_js_5_0=ruleJsExtraTag();
 
                     	    state._fsp--;
@@ -3578,15 +3557,15 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop13;
+                    	    break loop12;
                         }
                     } while (true);
 
-                    // InternalEditorLanguage.g:1485:4: ( (lv_js_6_0= ruleCodeLiteralEnd ) )
-                    // InternalEditorLanguage.g:1486:5: (lv_js_6_0= ruleCodeLiteralEnd )
+                    // InternalEditorLanguage.g:1479:4: ( (lv_js_6_0= ruleCodeLiteralEnd ) )
+                    // InternalEditorLanguage.g:1480:5: (lv_js_6_0= ruleCodeLiteralEnd )
                     {
-                    // InternalEditorLanguage.g:1486:5: (lv_js_6_0= ruleCodeLiteralEnd )
-                    // InternalEditorLanguage.g:1487:6: lv_js_6_0= ruleCodeLiteralEnd
+                    // InternalEditorLanguage.g:1480:5: (lv_js_6_0= ruleCodeLiteralEnd )
+                    // InternalEditorLanguage.g:1481:6: lv_js_6_0= ruleCodeLiteralEnd
                     {
 
                     						newCompositeNode(grammarAccess.getJsSnippetAccess().getJsCodeLiteralEndParserRuleCall_1_3_0());
@@ -3642,7 +3621,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJsExtraTag"
-    // InternalEditorLanguage.g:1509:1: entryRuleJsExtraTag returns [EObject current=null] : iv_ruleJsExtraTag= ruleJsExtraTag EOF ;
+    // InternalEditorLanguage.g:1503:1: entryRuleJsExtraTag returns [EObject current=null] : iv_ruleJsExtraTag= ruleJsExtraTag EOF ;
     public final EObject entryRuleJsExtraTag() throws RecognitionException {
         EObject current = null;
 
@@ -3650,8 +3629,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalEditorLanguage.g:1509:51: (iv_ruleJsExtraTag= ruleJsExtraTag EOF )
-            // InternalEditorLanguage.g:1510:2: iv_ruleJsExtraTag= ruleJsExtraTag EOF
+            // InternalEditorLanguage.g:1503:51: (iv_ruleJsExtraTag= ruleJsExtraTag EOF )
+            // InternalEditorLanguage.g:1504:2: iv_ruleJsExtraTag= ruleJsExtraTag EOF
             {
              newCompositeNode(grammarAccess.getJsExtraTagRule()); 
             pushFollow(FOLLOW_1);
@@ -3678,7 +3657,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJsExtraTag"
-    // InternalEditorLanguage.g:1516:1: ruleJsExtraTag returns [EObject current=null] : this_TagId_0= ruleTagId ;
+    // InternalEditorLanguage.g:1510:1: ruleJsExtraTag returns [EObject current=null] : this_TagId_0= ruleTagId ;
     public final EObject ruleJsExtraTag() throws RecognitionException {
         EObject current = null;
 
@@ -3689,8 +3668,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:1522:2: (this_TagId_0= ruleTagId )
-            // InternalEditorLanguage.g:1523:2: this_TagId_0= ruleTagId
+            // InternalEditorLanguage.g:1516:2: (this_TagId_0= ruleTagId )
+            // InternalEditorLanguage.g:1517:2: this_TagId_0= ruleTagId
             {
 
             		newCompositeNode(grammarAccess.getJsExtraTagAccess().getTagIdParserRuleCall());
@@ -3729,16 +3708,16 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000410000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000020010000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000004002L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000410002L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000020010002L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x00000000004D0000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x00000000200D0000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000060L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000650000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000020250000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000C00000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000001000000L});
@@ -3748,9 +3727,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000800000L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000001040000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000018400000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000180L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000001040000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000018400000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000000180L});
 
 }

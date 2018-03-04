@@ -487,22 +487,29 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 	public class ComponentDeclarationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.peweb.EditorLanguage.ComponentDeclaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPercentSignKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cComponentKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cPercentSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cControlAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cControlComponentControllerParserRuleCall_3_0 = (RuleCall)cControlAssignment_3.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cViewKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cViewAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cViewHtmlSnippetParserRuleCall_4_0 = (RuleCall)cViewAssignment_4.eContents().get(0);
+		private final Assignment cControlAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cControlComponentControllerParserRuleCall_5_0 = (RuleCall)cControlAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//ComponentDeclaration:
-		//	'%' name=ID '%' control=ComponentController?;
+		//	'Component' name=ID '{'
+		//	'view:' view=HtmlSnippet
+		//	control=ComponentController?
+		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'%' name=ID '%' control=ComponentController?
+		//'Component' name=ID '{' 'view:' view=HtmlSnippet control=ComponentController? '}'
 		public Group getGroup() { return cGroup; }
 		
-		//'%'
-		public Keyword getPercentSignKeyword_0() { return cPercentSignKeyword_0; }
+		//'Component'
+		public Keyword getComponentKeyword_0() { return cComponentKeyword_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -510,89 +517,75 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//'%'
-		public Keyword getPercentSignKeyword_2() { return cPercentSignKeyword_2; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//'view:'
+		public Keyword getViewKeyword_3() { return cViewKeyword_3; }
+		
+		//view=HtmlSnippet
+		public Assignment getViewAssignment_4() { return cViewAssignment_4; }
+		
+		//HtmlSnippet
+		public RuleCall getViewHtmlSnippetParserRuleCall_4_0() { return cViewHtmlSnippetParserRuleCall_4_0; }
 		
 		//control=ComponentController?
-		public Assignment getControlAssignment_3() { return cControlAssignment_3; }
+		public Assignment getControlAssignment_5() { return cControlAssignment_5; }
 		
 		//ComponentController
-		public RuleCall getControlComponentControllerParserRuleCall_3_0() { return cControlComponentControllerParserRuleCall_3_0; }
+		public RuleCall getControlComponentControllerParserRuleCall_5_0() { return cControlComponentControllerParserRuleCall_5_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	public class ComponentControllerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.peweb.EditorLanguage.ComponentController");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cViewKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cViewAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cViewHtmlSnippetParserRuleCall_2_0 = (RuleCall)cViewAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cGetKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cGetterAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cGetterJsSnippetParserRuleCall_3_1_0 = (RuleCall)cGetterAssignment_3_1.eContents().get(0);
-		private final Keyword cSetKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
-		private final Assignment cSetterAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
-		private final RuleCall cSetterJsSnippetParserRuleCall_3_3_0 = (RuleCall)cSetterAssignment_3_3.eContents().get(0);
-		private final Keyword cValidateKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Assignment cValidaterAssignment_3_5 = (Assignment)cGroup_3.eContents().get(5);
-		private final RuleCall cValidaterJsSnippetParserRuleCall_3_5_0 = (RuleCall)cValidaterAssignment_3_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cGetKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cGetterAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cGetterJsSnippetParserRuleCall_1_0 = (RuleCall)cGetterAssignment_1.eContents().get(0);
+		private final Keyword cSetKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cSetterAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSetterJsSnippetParserRuleCall_3_0 = (RuleCall)cSetterAssignment_3.eContents().get(0);
+		private final Keyword cValidateKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValidaterAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValidaterJsSnippetParserRuleCall_5_0 = (RuleCall)cValidaterAssignment_5.eContents().get(0);
 		
 		//ComponentController:
-		//	'{'
-		//	'view:' view=HtmlSnippet ('get:' getter=JsSnippet
+		//	'get:' getter=JsSnippet
 		//	'set:' setter=JsSnippet
-		//	'validate:' validater=JsSnippet)?
-		//	'}';
+		//	'validate:' validater=JsSnippet;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' 'view:' view=HtmlSnippet ('get:' getter=JsSnippet 'set:' setter=JsSnippet 'validate:' validater=JsSnippet)? '}'
+		//'get:' getter=JsSnippet 'set:' setter=JsSnippet 'validate:' validater=JsSnippet
 		public Group getGroup() { return cGroup; }
 		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
-		
-		//'view:'
-		public Keyword getViewKeyword_1() { return cViewKeyword_1; }
-		
-		//view=HtmlSnippet
-		public Assignment getViewAssignment_2() { return cViewAssignment_2; }
-		
-		//HtmlSnippet
-		public RuleCall getViewHtmlSnippetParserRuleCall_2_0() { return cViewHtmlSnippetParserRuleCall_2_0; }
-		
-		//('get:' getter=JsSnippet 'set:' setter=JsSnippet 'validate:' validater=JsSnippet)?
-		public Group getGroup_3() { return cGroup_3; }
-		
 		//'get:'
-		public Keyword getGetKeyword_3_0() { return cGetKeyword_3_0; }
+		public Keyword getGetKeyword_0() { return cGetKeyword_0; }
 		
 		//getter=JsSnippet
-		public Assignment getGetterAssignment_3_1() { return cGetterAssignment_3_1; }
+		public Assignment getGetterAssignment_1() { return cGetterAssignment_1; }
 		
 		//JsSnippet
-		public RuleCall getGetterJsSnippetParserRuleCall_3_1_0() { return cGetterJsSnippetParserRuleCall_3_1_0; }
+		public RuleCall getGetterJsSnippetParserRuleCall_1_0() { return cGetterJsSnippetParserRuleCall_1_0; }
 		
 		//'set:'
-		public Keyword getSetKeyword_3_2() { return cSetKeyword_3_2; }
+		public Keyword getSetKeyword_2() { return cSetKeyword_2; }
 		
 		//setter=JsSnippet
-		public Assignment getSetterAssignment_3_3() { return cSetterAssignment_3_3; }
+		public Assignment getSetterAssignment_3() { return cSetterAssignment_3; }
 		
 		//JsSnippet
-		public RuleCall getSetterJsSnippetParserRuleCall_3_3_0() { return cSetterJsSnippetParserRuleCall_3_3_0; }
+		public RuleCall getSetterJsSnippetParserRuleCall_3_0() { return cSetterJsSnippetParserRuleCall_3_0; }
 		
 		//'validate:'
-		public Keyword getValidateKeyword_3_4() { return cValidateKeyword_3_4; }
+		public Keyword getValidateKeyword_4() { return cValidateKeyword_4; }
 		
 		//validater=JsSnippet
-		public Assignment getValidaterAssignment_3_5() { return cValidaterAssignment_3_5; }
+		public Assignment getValidaterAssignment_5() { return cValidaterAssignment_5; }
 		
 		//JsSnippet
-		public RuleCall getValidaterJsSnippetParserRuleCall_3_5_0() { return cValidaterJsSnippetParserRuleCall_3_5_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public RuleCall getValidaterJsSnippetParserRuleCall_5_0() { return cValidaterJsSnippetParserRuleCall_5_0; }
 	}
 	public class HtmlSnippetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.peweb.EditorLanguage.HtmlSnippet");
@@ -1068,7 +1061,10 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ComponentDeclaration:
-	//	'%' name=ID '%' control=ComponentController?;
+	//	'Component' name=ID '{'
+	//	'view:' view=HtmlSnippet
+	//	control=ComponentController?
+	//	'}';
 	public ComponentDeclarationElements getComponentDeclarationAccess() {
 		return pComponentDeclaration;
 	}
@@ -1078,11 +1074,9 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ComponentController:
-	//	'{'
-	//	'view:' view=HtmlSnippet ('get:' getter=JsSnippet
+	//	'get:' getter=JsSnippet
 	//	'set:' setter=JsSnippet
-	//	'validate:' validater=JsSnippet)?
-	//	'}';
+	//	'validate:' validater=JsSnippet;
 	public ComponentControllerElements getComponentControllerAccess() {
 		return pComponentController;
 	}

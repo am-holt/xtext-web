@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration#getView <em>View</em>}</li>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration#getControl <em>Control</em>}</li>
  * </ul>
  *
@@ -49,6 +50,32 @@ public interface ComponentDeclaration extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>View</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>View</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>View</em>' containment reference.
+   * @see #setView(HtmlSnippet)
+   * @see org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage#getComponentDeclaration_View()
+   * @model containment="true"
+   * @generated
+   */
+  HtmlSnippet getView();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration#getView <em>View</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>View</em>' containment reference.
+   * @see #getView()
+   * @generated
+   */
+  void setView(HtmlSnippet value);
 
   /**
    * Returns the value of the '<em><b>Control</b></em>' containment reference.
