@@ -317,15 +317,15 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cComponentTypeComponentDeclarationIDTerminalRuleCall_1_0_1 = (RuleCall)cComponentTypeComponentDeclarationCrossReference_1_0.eContents().get(1);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cComponentIdAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cComponentIdIDTerminalRuleCall_2_1_0 = (RuleCall)cComponentIdAssignment_2_1.eContents().get(0);
+		private final Assignment cAttributeNameAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cAttributeNameIDTerminalRuleCall_2_1_0 = (RuleCall)cAttributeNameAssignment_2_1.eContents().get(0);
 		private final Keyword cPercentSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//ComponentId:
-		//	'%' componentType=[ComponentDeclaration] (':' componentId=ID)? '%';
+		//	'%' componentType=[ComponentDeclaration] (':' attributeName=ID)? '%';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'%' componentType=[ComponentDeclaration] (':' componentId=ID)? '%'
+		//'%' componentType=[ComponentDeclaration] (':' attributeName=ID)? '%'
 		public Group getGroup() { return cGroup; }
 		
 		//'%'
@@ -340,17 +340,17 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getComponentTypeComponentDeclarationIDTerminalRuleCall_1_0_1() { return cComponentTypeComponentDeclarationIDTerminalRuleCall_1_0_1; }
 		
-		//(':' componentId=ID)?
+		//(':' attributeName=ID)?
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//':'
 		public Keyword getColonKeyword_2_0() { return cColonKeyword_2_0; }
 		
-		//componentId=ID
-		public Assignment getComponentIdAssignment_2_1() { return cComponentIdAssignment_2_1; }
+		//attributeName=ID
+		public Assignment getAttributeNameAssignment_2_1() { return cAttributeNameAssignment_2_1; }
 		
 		//ID
-		public RuleCall getComponentIdIDTerminalRuleCall_2_1_0() { return cComponentIdIDTerminalRuleCall_2_1_0; }
+		public RuleCall getAttributeNameIDTerminalRuleCall_2_1_0() { return cAttributeNameIDTerminalRuleCall_2_1_0; }
 		
 		//'%'
 		public Keyword getPercentSignKeyword_3() { return cPercentSignKeyword_3; }
@@ -366,19 +366,19 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSetterAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cSetterJsSnippetParserRuleCall_4_0 = (RuleCall)cSetterAssignment_4.eContents().get(0);
 		private final Keyword cValidateKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cValidaterAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cValidaterJsSnippetParserRuleCall_6_0 = (RuleCall)cValidaterAssignment_6.eContents().get(0);
+		private final Assignment cValidatorAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cValidatorJsSnippetParserRuleCall_6_0 = (RuleCall)cValidatorAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//AttributeController:
 		//	'{'
 		//	'get:' getter=JsSnippet
 		//	'set:' setter=JsSnippet
-		//	'validate:' validater=JsSnippet
+		//	'validate:' validator=JsSnippet
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' 'get:' getter=JsSnippet 'set:' setter=JsSnippet 'validate:' validater=JsSnippet '}'
+		//'{' 'get:' getter=JsSnippet 'set:' setter=JsSnippet 'validate:' validator=JsSnippet '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'{'
@@ -405,11 +405,11 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 		//'validate:'
 		public Keyword getValidateKeyword_5() { return cValidateKeyword_5; }
 		
-		//validater=JsSnippet
-		public Assignment getValidaterAssignment_6() { return cValidaterAssignment_6; }
+		//validator=JsSnippet
+		public Assignment getValidatorAssignment_6() { return cValidatorAssignment_6; }
 		
 		//JsSnippet
-		public RuleCall getValidaterJsSnippetParserRuleCall_6_0() { return cValidaterJsSnippetParserRuleCall_6_0; }
+		public RuleCall getValidatorJsSnippetParserRuleCall_6_0() { return cValidatorJsSnippetParserRuleCall_6_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -548,16 +548,16 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSetterAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cSetterJsSnippetParserRuleCall_3_0 = (RuleCall)cSetterAssignment_3.eContents().get(0);
 		private final Keyword cValidateKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cValidaterAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cValidaterJsSnippetParserRuleCall_5_0 = (RuleCall)cValidaterAssignment_5.eContents().get(0);
+		private final Assignment cValidatorAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValidatorJsSnippetParserRuleCall_5_0 = (RuleCall)cValidatorAssignment_5.eContents().get(0);
 		
 		//ComponentController:
 		//	'get:' getter=JsSnippet
 		//	'set:' setter=JsSnippet
-		//	'validate:' validater=JsSnippet;
+		//	'validate:' validator=JsSnippet;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'get:' getter=JsSnippet 'set:' setter=JsSnippet 'validate:' validater=JsSnippet
+		//'get:' getter=JsSnippet 'set:' setter=JsSnippet 'validate:' validator=JsSnippet
 		public Group getGroup() { return cGroup; }
 		
 		//'get:'
@@ -581,11 +581,11 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 		//'validate:'
 		public Keyword getValidateKeyword_4() { return cValidateKeyword_4; }
 		
-		//validater=JsSnippet
-		public Assignment getValidaterAssignment_5() { return cValidaterAssignment_5; }
+		//validator=JsSnippet
+		public Assignment getValidatorAssignment_5() { return cValidatorAssignment_5; }
 		
 		//JsSnippet
-		public RuleCall getValidaterJsSnippetParserRuleCall_5_0() { return cValidaterJsSnippetParserRuleCall_5_0; }
+		public RuleCall getValidatorJsSnippetParserRuleCall_5_0() { return cValidatorJsSnippetParserRuleCall_5_0; }
 	}
 	public class HtmlSnippetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.eclipse.xtext.peweb.EditorLanguage.HtmlSnippet");
@@ -1017,7 +1017,7 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ComponentId:
-	//	'%' componentType=[ComponentDeclaration] (':' componentId=ID)? '%';
+	//	'%' componentType=[ComponentDeclaration] (':' attributeName=ID)? '%';
 	public ComponentIdElements getComponentIdAccess() {
 		return pComponentId;
 	}
@@ -1030,7 +1030,7 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 	//	'{'
 	//	'get:' getter=JsSnippet
 	//	'set:' setter=JsSnippet
-	//	'validate:' validater=JsSnippet
+	//	'validate:' validator=JsSnippet
 	//	'}';
 	public AttributeControllerElements getAttributeControllerAccess() {
 		return pAttributeController;
@@ -1076,7 +1076,7 @@ public class EditorLanguageGrammarAccess extends AbstractGrammarElementFinder {
 	//ComponentController:
 	//	'get:' getter=JsSnippet
 	//	'set:' setter=JsSnippet
-	//	'validate:' validater=JsSnippet;
+	//	'validate:' validator=JsSnippet;
 	public ComponentControllerElements getComponentControllerAccess() {
 		return pComponentController;
 	}

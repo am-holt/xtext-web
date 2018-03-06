@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.AttributeController#getGetter <em>Getter</em>}</li>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.AttributeController#getSetter <em>Setter</em>}</li>
- *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.AttributeController#getValidater <em>Validater</em>}</li>
+ *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.AttributeController#getValidator <em>Validator</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage#getAttributeController()
@@ -78,29 +78,29 @@ public interface AttributeController extends EObject
   void setSetter(JsSnippet value);
 
   /**
-   * Returns the value of the '<em><b>Validater</b></em>' containment reference.
+   * Returns the value of the '<em><b>Validator</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Validater</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Validator</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Validater</em>' containment reference.
-   * @see #setValidater(JsSnippet)
-   * @see org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage#getAttributeController_Validater()
+   * @return the value of the '<em>Validator</em>' containment reference.
+   * @see #setValidator(JsSnippet)
+   * @see org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage#getAttributeController_Validator()
    * @model containment="true"
    * @generated
    */
-  JsSnippet getValidater();
+  JsSnippet getValidator();
 
   /**
-   * Sets the value of the '{@link org.eclipse.xtext.peweb.editorLanguage.AttributeController#getValidater <em>Validater</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.xtext.peweb.editorLanguage.AttributeController#getValidator <em>Validator</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Validater</em>' containment reference.
-   * @see #getValidater()
+   * @param value the new value of the '<em>Validator</em>' containment reference.
+   * @see #getValidator()
    * @generated
    */
-  void setValidater(JsSnippet value);
+  void setValidator(JsSnippet value);
 
 } // AttributeController

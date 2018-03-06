@@ -44,14 +44,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentId" eSuperTypes="#//HtmlAnnotation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentType" eType="#//ComponentDeclaration"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttributeController">
     <eStructuralFeatures xsi:type="ecore:EReference" name="getter" eType="#//JsSnippet"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setter" eType="#//JsSnippet"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="validater" eType="#//JsSnippet"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validator" eType="#//JsSnippet"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ChildId" eSuperTypes="#//HtmlAnnotation">
@@ -73,7 +73,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setter" eType="#//JsSnippet"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="validater" eType="#//JsSnippet"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validator" eType="#//JsSnippet"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HtmlSnippet">

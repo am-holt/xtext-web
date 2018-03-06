@@ -30,6 +30,11 @@ export class NodeReference{
 
 export class DefaultViewDescriptor  implements ViewDescriptor{
 	
+	static readonly DEFAULT_TYPE = "default"
+
+	//The type of the descriptor
+	type:string;
+
 	//List of the nodes attributes to display
 	attributes: Attribute[];
 
@@ -40,6 +45,7 @@ export class DefaultViewDescriptor  implements ViewDescriptor{
 	nodeId: string;
 
 	constructor(atts:Attribute[],refs:Reference[],id:string){
+		this.type = "default";
 		this.attributes = atts;
 		this.references = refs;
 		this.nodeId = id;

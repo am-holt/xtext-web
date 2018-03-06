@@ -37,12 +37,12 @@
     </genClasses>
     <genClasses ecoreClass="EditorLanguage.ecore#//ComponentId">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentId/componentType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EditorLanguage.ecore#//ComponentId/componentId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EditorLanguage.ecore#//ComponentId/attributeName"/>
     </genClasses>
     <genClasses ecoreClass="EditorLanguage.ecore#//AttributeController">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//AttributeController/getter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//AttributeController/setter"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//AttributeController/validater"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//AttributeController/validator"/>
     </genClasses>
     <genClasses ecoreClass="EditorLanguage.ecore#//ChildId">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EditorLanguage.ecore#//ChildId/childId"/>
@@ -59,7 +59,7 @@
     <genClasses ecoreClass="EditorLanguage.ecore#//ComponentController">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentController/getter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentController/setter"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentController/validater"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//ComponentController/validator"/>
     </genClasses>
     <genClasses ecoreClass="EditorLanguage.ecore#//HtmlSnippet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EditorLanguage.ecore#//HtmlSnippet/html"/>

@@ -4,18 +4,27 @@ import java.util.Map;
 
 import org.eclipse.xtext.peweb.OpenFileState;
 import org.eclipse.xtext.peweb.ResourceAbstractSyntaxTree;
+import org.eclipse.xtext.peweb.customview.generatoritems.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ViewRetriever {
 
 	
 	public Map<ProjectionIdentifier,HtmlProjectionSpecification> nodeMap;
-	public Map<ProjectionIdentifier,HtmlComponentSpecification> componentMap;
+	public Map<String,HtmlComponentSpecification> componentMap;
+	
+	private int idCount = 0;
 	
 	public ProjectionDescription getView(OpenFileState ofs, ResourceAbstractSyntaxTree node) {
 		
 		ProjectionIdentifier projId = new ProjectionIdentifier(node.getName(),"main");
+		return getView(ofs,node,projId);
+	}
+	
+	public ProjectionDescription getView(OpenFileState ofs, ResourceAbstractSyntaxTree node, ProjectionIdentifier projId) {
+		
 		ProjectionDescription result;
 
 		if(nodeMap == null ) {
@@ -25,26 +34,12 @@ public class ViewRetriever {
 			result = generateDefaultProjection(ofs, node);
 		}else {
 			HtmlProjectionSpecification spec = nodeMap.get(projId);
-			result = generateHtmlProjection(ofs, spec,node);
+			result = spec.generate("", ofs, node, nodeMap, componentMap);
 		}
 		return result;
 	}
-	
-	
+		
 	private DefaultProjectionDescription generateDefaultProjection(OpenFileState ofs, ResourceAbstractSyntaxTree node) {
 		return new DefaultProjectionDescription(ofs, node);
 	}
-
-
-	private CustomHtmlProjectionDescription generateHtmlProjection(OpenFileState ofs, HtmlProjectionSpecification spec, ResourceAbstractSyntaxTree node) {
-		
-		
-		throw new UnsupportedOperationException();
-	}
-	
-	//private String 
-
-
-
-
 }

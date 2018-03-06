@@ -75,10 +75,10 @@ public class EditorLanguageParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAttributeDeclarationAccess().getAttributeNameAssignment_1(), "rule__AttributeDeclaration__AttributeNameAssignment_1");
 			builder.put(grammarAccess.getAttributeDeclarationAccess().getControllerAssignment_2(), "rule__AttributeDeclaration__ControllerAssignment_2");
 			builder.put(grammarAccess.getComponentIdAccess().getComponentTypeAssignment_1(), "rule__ComponentId__ComponentTypeAssignment_1");
-			builder.put(grammarAccess.getComponentIdAccess().getComponentIdAssignment_2_1(), "rule__ComponentId__ComponentIdAssignment_2_1");
+			builder.put(grammarAccess.getComponentIdAccess().getAttributeNameAssignment_2_1(), "rule__ComponentId__AttributeNameAssignment_2_1");
 			builder.put(grammarAccess.getAttributeControllerAccess().getGetterAssignment_2(), "rule__AttributeController__GetterAssignment_2");
 			builder.put(grammarAccess.getAttributeControllerAccess().getSetterAssignment_4(), "rule__AttributeController__SetterAssignment_4");
-			builder.put(grammarAccess.getAttributeControllerAccess().getValidaterAssignment_6(), "rule__AttributeController__ValidaterAssignment_6");
+			builder.put(grammarAccess.getAttributeControllerAccess().getValidatorAssignment_6(), "rule__AttributeController__ValidatorAssignment_6");
 			builder.put(grammarAccess.getChildIdAccess().getChildIdAssignment_1(), "rule__ChildId__ChildIdAssignment_1");
 			builder.put(grammarAccess.getChildIdAccess().getProjectionIdAssignment_3(), "rule__ChildId__ProjectionIdAssignment_3");
 			builder.put(grammarAccess.getTagIdAccess().getTagNameAssignment_1(), "rule__TagId__TagNameAssignment_1");
@@ -87,7 +87,7 @@ public class EditorLanguageParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getComponentDeclarationAccess().getControlAssignment_5(), "rule__ComponentDeclaration__ControlAssignment_5");
 			builder.put(grammarAccess.getComponentControllerAccess().getGetterAssignment_1(), "rule__ComponentController__GetterAssignment_1");
 			builder.put(grammarAccess.getComponentControllerAccess().getSetterAssignment_3(), "rule__ComponentController__SetterAssignment_3");
-			builder.put(grammarAccess.getComponentControllerAccess().getValidaterAssignment_5(), "rule__ComponentController__ValidaterAssignment_5");
+			builder.put(grammarAccess.getComponentControllerAccess().getValidatorAssignment_5(), "rule__ComponentController__ValidatorAssignment_5");
 			builder.put(grammarAccess.getHtmlSnippetAccess().getHtmlAssignment_0_1(), "rule__HtmlSnippet__HtmlAssignment_0_1");
 			builder.put(grammarAccess.getHtmlSnippetAccess().getHtmlAssignment_1_0(), "rule__HtmlSnippet__HtmlAssignment_1_0");
 			builder.put(grammarAccess.getHtmlSnippetAccess().getHtmlAssignment_1_1(), "rule__HtmlSnippet__HtmlAssignment_1_1");

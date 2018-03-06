@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, AfterViewChecked, ViewEncapsulation } from '@angular/core';
 
 import { EditService } from'../services/edit.service';
 import { FileDetails } from '../file-details';
@@ -17,10 +17,10 @@ import {AttributeId} from '../attribute-id';
 export class CustomNodeEditorComponent implements OnInit {
 
 	private timer;
-	private readonly pollDelay = 5000;
+	private readonly pollDelay = 500;
 	private readonly pollTime = 5000;
   private readonly attributeValueMap = new Map();
-  
+  private setVal = true;
 
 
   constructor(
@@ -28,19 +28,31 @@ export class CustomNodeEditorComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  	
+  	//console.log("OnInit")
+  }
+
+  ngOnChanges(){
+    this.setVal = true;
+    //console.log("setVal tru");
+  }
+
+  ngAfterViewChecked(){
+    //console.log("afterViewChecked")
+
+    if(this.setVal){
+      //Initialise attribute caches and set them to initial values
+      //console.log("setVal");
+      this.initAttributes();
+      this.setVal = false;  
+    }
+    
   }
 
   ngAfterViewInit() {
-  	console.log("afterViewInit" );
-  	eval("(X=>{"+this.nodeViewDescriptor.attributeControllers[0].setter+"})(\""+ this.nodeViewDescriptor.attributeControllers[0].initialValue + "\")" );
-
-    //Initialise attribute caches and set them to initial values
-    this.initAttributes();
-
+  	//console.log("afterViewInit" );
     //Set up a timer to regularly poll attributes for changes
-  	this.timer = Observable.timer(this.pollDelay,this.pollTime)
-  	this.timer.subscribe((t) => this.onGetPoll());
+    this.timer = Observable.timer(this.pollDelay,this.pollTime)
+    this.timer.subscribe((t) => this.onGetPoll());    
   }
 
   @Input() projId: string;
@@ -52,10 +64,11 @@ export class CustomNodeEditorComponent implements OnInit {
 
   	for( var attribute of this.nodeViewDescriptor.attributeControllers){
       var currentValue = eval(attribute.getter);
-      if( currentValue !== this.attributeValueMap.get(attribute.attributeId)){
-        changedValues.push(attribute.attributeId);
-        this.attributeValueMap.set(attribute.attributeId, currentValue);
-        console.log("VALUE CHANGED: " + attribute.attributeId.name + " VAL: " + currentValue)
+      if( currentValue !== this.attributeValueMap.get(attribute.nodeId).get(attribute.attributeName)){
+        changedValues.push(new AttributeId(attribute));
+        this.attributeValueMap.get(attribute.nodeId).set(attribute.attributeName, currentValue);
+        console.log("VALUE CHANGED: " + attribute.attributeName + " VAL: " + currentValue)
+        this.editService.updateAttribute(this.projId,this.fileDetails,attribute.nodeId,attribute.attributeName,currentValue).subscribe();
       }
   	}
   }
@@ -64,7 +77,10 @@ export class CustomNodeEditorComponent implements OnInit {
     for(var attribute of this.nodeViewDescriptor.attributeControllers){
 
       //Set the attributeValue cache with the initial values
-      this.attributeValueMap.set(attribute.attributeId,attribute.initialValue);
+      if(!this.attributeValueMap.has(attribute.nodeId)){
+        this.attributeValueMap.set(attribute.nodeId, new Map());
+      }
+      this.attributeValueMap.get(attribute.nodeId).set(attribute.attributeName,attribute.initialValue);
 
       //Set the attribute value in the view
       eval("(X=>{"+this.nodeViewDescriptor.attributeControllers[0].setter+"})")(this.nodeViewDescriptor.attributeControllers[0].initialValue);

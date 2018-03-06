@@ -10,6 +10,16 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import org.eclipse.xtext.peweb.editorLanguage.NodeDeclaration
 import org.eclipse.xtext.peweb.editorLanguage.ComponentDeclaration
 import org.eclipse.xtext.peweb.editorLanguage.ProjectionDeclaration
+import org.eclipse.xtext.peweb.editorLanguage.CodeLiteral
+import org.eclipse.xtext.peweb.editorLanguage.CodeLiteralStart
+import org.eclipse.xtext.peweb.editorLanguage.CodeLiteralEnd
+import org.eclipse.xtext.peweb.editorLanguage.CodeLiteralMid
+import org.eclipse.xtext.peweb.editorLanguage.TagId
+import org.eclipse.xtext.peweb.editorLanguage.ComponentId
+import org.eclipse.xtext.peweb.editorLanguage.ChildId
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.peweb.editorLanguage.AttributeDeclaration
+import org.eclipse.xtext.peweb.editorLanguage.ComponentController
 
 /**
  * Generates code from your model files on save.
@@ -32,24 +42,40 @@ class EditorLanguageGenerator extends AbstractGenerator {
 			test += (e as NodeDeclaration).nodeName + "/n";
 		
 		}
-		System.out.println(contents);
+		System.out.println("Generating");
 		
-		fsa.generateFile('ViewSpecification.java', '''		
+		fsa.generateFile('/org/eclipse/xtext/peweb/editorgen/ViewSpecification.java', '''		
+		package org.eclipse.xtext.peweb.editorgen;
 		import java.util.Map;
 		import java.util.HashMap;
 		import org.eclipse.xtext.peweb.customview.*;
+		import org.eclipse.xtext.peweb.customview.generatoritems.*;
 		
 		public class ViewSpecification {
 			
 			public static  Map<ProjectionIdentifier,HtmlProjectionSpecification> getNodeMap(){
 				Map<ProjectionIdentifier,HtmlProjectionSpecification> result 
 					= new HashMap<ProjectionIdentifier,HtmlProjectionSpecification>();
+					
+				«FOR node : resource.allContents.toIterable.filter(NodeDeclaration)»
+					«FOR proj : node.projections»
+						result.put((new ProjectionIdentifier("«node.nodeName»","«proj.name»")),
+							«proj.generateProjectionSpecification»);
+					«ENDFOR»
+				«ENDFOR»
+				
 				return result;	
 			}
 			
-			public static  Map<ProjectionIdentifier,HtmlComponentSpecification> getComponentMap(){
-				Map<ProjectionIdentifier,HtmlComponentSpecification> result 
-					= new HashMap<ProjectionIdentifier,HtmlComponentSpecification>();
+			public static  Map<String,HtmlComponentSpecification> getComponentMap(){
+				Map<String,HtmlComponentSpecification> result 
+					= new HashMap<String,HtmlComponentSpecification>();
+					
+				«FOR comp : resource.allContents.toIterable.filter(ComponentDeclaration)»
+					result.put("«comp.name»",
+						«comp.generateComponentSpecification»);
+				«ENDFOR»
+					
 				return result;	
 			}
 			 
@@ -58,10 +84,124 @@ class EditorLanguageGenerator extends AbstractGenerator {
 		
 		
 	}
+		
+	def String generateProjectionSpecification(ProjectionDeclaration proj){
+		'''
+		new HtmlProjectionSpecification()
+		«FOR gItem : proj.view.html »
+			.addItemToView(«gItem.declareGeneratorItem»)
+		«ENDFOR»
+		«FOR att : proj.attributes »
+			.addAttributeController(«att.generateAttributeController»)
+		«ENDFOR»
+		'''
+	}
 	
+	def String generateAttributeController(AttributeDeclaration att){
+		'''
+		new AttributeControllerSpecification("«att.attributeName»")
+			«FOR getterItem : att.controller.getter.js»
+				.addGetterItem(«getterItem.declareGeneratorItem»)
+			«ENDFOR»
+			«FOR setterItem : att.controller.setter.js»
+				.addSetterItem(«setterItem.declareGeneratorItem»)
+			«ENDFOR»
+			«FOR validatorItem : att.controller.validator.js»
+				.addValidatorItem(«validatorItem.declareGeneratorItem»)
+			«ENDFOR»			
+		'''
+	}
 	
+	def String generateAttributeController(ComponentController att){
+		'''
+		new AttributeControllerSpecification()
+			«FOR getterItem : att.getter.js»
+				.addGetterItem(«getterItem.declareGeneratorItem»)
+			«ENDFOR»
+			«FOR setterItem : att.setter.js»
+				.addSetterItem(«setterItem.declareGeneratorItem»)
+			«ENDFOR»
+			«FOR validatorItem : att.validator.js»
+				.addValidatorItem(«validatorItem.declareGeneratorItem»)
+			«ENDFOR»			
+		'''
+	}
+	
+	def String generateComponentSpecification(ComponentDeclaration comp){
+		'''
+		new HtmlComponentSpecification()
+		«FOR gItem : comp.view.html »
+			.addItemToView(«gItem.declareGeneratorItem»)
+		«ENDFOR»
+		«IF comp.control !== null »
+			.addAttributeController(«comp.control.generateAttributeController»)
+		«ENDIF»
+		'''
+	}	
+	
+	def String declareGeneratorItem(EObject e){
+		
+		if(e instanceof CodeLiteral){
+			(e as CodeLiteral).declareGeneratorItem
+		}else if(e instanceof CodeLiteralStart){
+			(e as CodeLiteralStart).declareGeneratorItem
+		}else if(e instanceof CodeLiteralMid){
+			(e as CodeLiteralMid).declareGeneratorItem
+		}else if(e instanceof CodeLiteralEnd){
+			(e as CodeLiteralEnd).declareGeneratorItem
+		}else if(e instanceof TagId){
+			(e as TagId).declareGeneratorItem
+		}else if(e instanceof ComponentId){
+			(e as ComponentId).declareGeneratorItem
+		}else if(e instanceof ChildId){
+			(e as ChildId).declareGeneratorItem
+		}else{
+			"CLASS NOT SUPPORTED:" + e.eClass.name.toString()
+		}
+	}
+	
+	def String declareGeneratorItem(CodeLiteral c){
+		'''
+		new CodeLiteral("«c.value»")
+		'''
+	}
+	def String declareGeneratorItem(CodeLiteralStart c){
+		'''
+		new CodeLiteral("«c.value»")
+		'''
+	}
+	def String declareGeneratorItem(CodeLiteralMid c){
+		'''
+		new CodeLiteral("«c.value»")
+		'''
+	}
+	def String declareGeneratorItem(CodeLiteralEnd c){
+		'''
+		new CodeLiteral("«c.value»")
+		'''
+	}
+	def String declareGeneratorItem(TagId t){
+		'''
+		new IdentifierTag("«t.tagName»")
+		'''
+	}
+	def String declareGeneratorItem(ComponentId c){
+		'''
+		new ComponentRef("«c.componentType.name»","«c.attributeName»")
+		'''
+	}
+	def String declareGeneratorItem(ChildId c){
+		'''
+		new ChildRef("«c.childId»","«c.projectionId.name»")
+		'''
+	}
+}	
+
 //	def String generateViewList(Resource resource){
-//		
+//            «FOR f : e.features»
+//                «f.compile»
+//            «ENDFOR»		
+
 //		for(e: resource.allContents.toIterable.filter(NodeDeclaration)){
 //			for(view: e.eAllContents.toIterable){
 //				
@@ -69,7 +209,7 @@ class EditorLanguageGenerator extends AbstractGenerator {
 //		
 //		}
 //	} 
-}
+
 
 /*
  * Want to put all into two hashmaps: 

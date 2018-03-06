@@ -3,9 +3,15 @@
  */
 package org.eclipse.xtext.peweb
 
+import org.eclipse.xtext.conversion.IValueConverterService
+import org.eclipse.xtext.peweb.valueconversion.MyTerminalConverters
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class EditorLanguageRuntimeModule extends AbstractEditorLanguageRuntimeModule {
+	
+	override Class<? extends IValueConverterService> bindIValueConverterService() {
+        return MyTerminalConverters
+    }
 }

@@ -364,13 +364,13 @@ public interface EditorLanguagePackage extends EPackage
   int COMPONENT_ID__COMPONENT_TYPE = HTML_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Component Id</b></em>' attribute.
+   * The feature id for the '<em><b>Attribute Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT_ID__COMPONENT_ID = HTML_ANNOTATION_FEATURE_COUNT + 1;
+  int COMPONENT_ID__ATTRIBUTE_NAME = HTML_ANNOTATION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Component Id</em>' class.
@@ -410,13 +410,13 @@ public interface EditorLanguagePackage extends EPackage
   int ATTRIBUTE_CONTROLLER__SETTER = 1;
 
   /**
-   * The feature id for the '<em><b>Validater</b></em>' containment reference.
+   * The feature id for the '<em><b>Validator</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_CONTROLLER__VALIDATER = 2;
+  int ATTRIBUTE_CONTROLLER__VALIDATOR = 2;
 
   /**
    * The number of structural features of the '<em>Attribute Controller</em>' class.
@@ -567,13 +567,13 @@ public interface EditorLanguagePackage extends EPackage
   int COMPONENT_CONTROLLER__SETTER = 1;
 
   /**
-   * The feature id for the '<em><b>Validater</b></em>' containment reference.
+   * The feature id for the '<em><b>Validator</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT_CONTROLLER__VALIDATER = 2;
+  int COMPONENT_CONTROLLER__VALIDATOR = 2;
 
   /**
    * The number of structural features of the '<em>Component Controller</em>' class.
@@ -1029,15 +1029,15 @@ public interface EditorLanguagePackage extends EPackage
   EReference getComponentId_ComponentType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentId#getComponentId <em>Component Id</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentId#getAttributeName <em>Attribute Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Component Id</em>'.
-   * @see org.eclipse.xtext.peweb.editorLanguage.ComponentId#getComponentId()
+   * @return the meta object for the attribute '<em>Attribute Name</em>'.
+   * @see org.eclipse.xtext.peweb.editorLanguage.ComponentId#getAttributeName()
    * @see #getComponentId()
    * @generated
    */
-  EAttribute getComponentId_ComponentId();
+  EAttribute getComponentId_AttributeName();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.peweb.editorLanguage.AttributeController <em>Attribute Controller</em>}'.
@@ -1072,15 +1072,15 @@ public interface EditorLanguagePackage extends EPackage
   EReference getAttributeController_Setter();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.peweb.editorLanguage.AttributeController#getValidater <em>Validater</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.peweb.editorLanguage.AttributeController#getValidator <em>Validator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Validater</em>'.
-   * @see org.eclipse.xtext.peweb.editorLanguage.AttributeController#getValidater()
+   * @return the meta object for the containment reference '<em>Validator</em>'.
+   * @see org.eclipse.xtext.peweb.editorLanguage.AttributeController#getValidator()
    * @see #getAttributeController()
    * @generated
    */
-  EReference getAttributeController_Validater();
+  EReference getAttributeController_Validator();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.peweb.editorLanguage.ChildId <em>Child Id</em>}'.
@@ -1211,15 +1211,15 @@ public interface EditorLanguagePackage extends EPackage
   EReference getComponentController_Setter();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentController#getValidater <em>Validater</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentController#getValidator <em>Validator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Validater</em>'.
-   * @see org.eclipse.xtext.peweb.editorLanguage.ComponentController#getValidater()
+   * @return the meta object for the containment reference '<em>Validator</em>'.
+   * @see org.eclipse.xtext.peweb.editorLanguage.ComponentController#getValidator()
    * @see #getComponentController()
    * @generated
    */
-  EReference getComponentController_Validater();
+  EReference getComponentController_Validator();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.xtext.peweb.editorLanguage.HtmlSnippet <em>Html Snippet</em>}'.
@@ -1599,12 +1599,12 @@ public interface EditorLanguagePackage extends EPackage
     EReference COMPONENT_ID__COMPONENT_TYPE = eINSTANCE.getComponentId_ComponentType();
 
     /**
-     * The meta object literal for the '<em><b>Component Id</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Attribute Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMPONENT_ID__COMPONENT_ID = eINSTANCE.getComponentId_ComponentId();
+    EAttribute COMPONENT_ID__ATTRIBUTE_NAME = eINSTANCE.getComponentId_AttributeName();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.peweb.editorLanguage.impl.AttributeControllerImpl <em>Attribute Controller</em>}' class.
@@ -1633,12 +1633,12 @@ public interface EditorLanguagePackage extends EPackage
     EReference ATTRIBUTE_CONTROLLER__SETTER = eINSTANCE.getAttributeController_Setter();
 
     /**
-     * The meta object literal for the '<em><b>Validater</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Validator</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ATTRIBUTE_CONTROLLER__VALIDATER = eINSTANCE.getAttributeController_Validater();
+    EReference ATTRIBUTE_CONTROLLER__VALIDATOR = eINSTANCE.getAttributeController_Validator();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.peweb.editorLanguage.impl.ChildIdImpl <em>Child Id</em>}' class.
@@ -1745,12 +1745,12 @@ public interface EditorLanguagePackage extends EPackage
     EReference COMPONENT_CONTROLLER__SETTER = eINSTANCE.getComponentController_Setter();
 
     /**
-     * The meta object literal for the '<em><b>Validater</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Validator</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPONENT_CONTROLLER__VALIDATER = eINSTANCE.getComponentController_Validater();
+    EReference COMPONENT_CONTROLLER__VALIDATOR = eINSTANCE.getComponentController_Validator();
 
     /**
      * The meta object literal for the '{@link org.eclipse.xtext.peweb.editorLanguage.impl.HtmlSnippetImpl <em>Html Snippet</em>}' class.

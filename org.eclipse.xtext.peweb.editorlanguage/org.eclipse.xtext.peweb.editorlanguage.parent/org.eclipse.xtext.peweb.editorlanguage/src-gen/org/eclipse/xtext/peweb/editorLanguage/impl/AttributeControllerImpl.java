@@ -26,7 +26,7 @@ import org.eclipse.xtext.peweb.editorLanguage.JsSnippet;
  * <ul>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.AttributeControllerImpl#getGetter <em>Getter</em>}</li>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.AttributeControllerImpl#getSetter <em>Setter</em>}</li>
- *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.AttributeControllerImpl#getValidater <em>Validater</em>}</li>
+ *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.AttributeControllerImpl#getValidator <em>Validator</em>}</li>
  * </ul>
  *
  * @generated
@@ -54,14 +54,14 @@ public class AttributeControllerImpl extends MinimalEObjectImpl.Container implem
   protected JsSnippet setter;
 
   /**
-   * The cached value of the '{@link #getValidater() <em>Validater</em>}' containment reference.
+   * The cached value of the '{@link #getValidator() <em>Validator</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValidater()
+   * @see #getValidator()
    * @generated
    * @ordered
    */
-  protected JsSnippet validater;
+  protected JsSnippet validator;
 
   /**
    * <!-- begin-user-doc -->
@@ -185,9 +185,9 @@ public class AttributeControllerImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public JsSnippet getValidater()
+  public JsSnippet getValidator()
   {
-    return validater;
+    return validator;
   }
 
   /**
@@ -195,13 +195,13 @@ public class AttributeControllerImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValidater(JsSnippet newValidater, NotificationChain msgs)
+  public NotificationChain basicSetValidator(JsSnippet newValidator, NotificationChain msgs)
   {
-    JsSnippet oldValidater = validater;
-    validater = newValidater;
+    JsSnippet oldValidator = validator;
+    validator = newValidator;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATER, oldValidater, newValidater);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATOR, oldValidator, newValidator);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -212,20 +212,20 @@ public class AttributeControllerImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValidater(JsSnippet newValidater)
+  public void setValidator(JsSnippet newValidator)
   {
-    if (newValidater != validater)
+    if (newValidator != validator)
     {
       NotificationChain msgs = null;
-      if (validater != null)
-        msgs = ((InternalEObject)validater).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATER, null, msgs);
-      if (newValidater != null)
-        msgs = ((InternalEObject)newValidater).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATER, null, msgs);
-      msgs = basicSetValidater(newValidater, msgs);
+      if (validator != null)
+        msgs = ((InternalEObject)validator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATOR, null, msgs);
+      if (newValidator != null)
+        msgs = ((InternalEObject)newValidator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATOR, null, msgs);
+      msgs = basicSetValidator(newValidator, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATER, newValidater, newValidater));
+      eNotify(new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATOR, newValidator, newValidator));
   }
 
   /**
@@ -242,8 +242,8 @@ public class AttributeControllerImpl extends MinimalEObjectImpl.Container implem
         return basicSetGetter(null, msgs);
       case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__SETTER:
         return basicSetSetter(null, msgs);
-      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATER:
-        return basicSetValidater(null, msgs);
+      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATOR:
+        return basicSetValidator(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -262,8 +262,8 @@ public class AttributeControllerImpl extends MinimalEObjectImpl.Container implem
         return getGetter();
       case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__SETTER:
         return getSetter();
-      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATER:
-        return getValidater();
+      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATOR:
+        return getValidator();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -284,8 +284,8 @@ public class AttributeControllerImpl extends MinimalEObjectImpl.Container implem
       case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__SETTER:
         setSetter((JsSnippet)newValue);
         return;
-      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATER:
-        setValidater((JsSnippet)newValue);
+      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATOR:
+        setValidator((JsSnippet)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -307,8 +307,8 @@ public class AttributeControllerImpl extends MinimalEObjectImpl.Container implem
       case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__SETTER:
         setSetter((JsSnippet)null);
         return;
-      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATER:
-        setValidater((JsSnippet)null);
+      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATOR:
+        setValidator((JsSnippet)null);
         return;
     }
     super.eUnset(featureID);
@@ -328,8 +328,8 @@ public class AttributeControllerImpl extends MinimalEObjectImpl.Container implem
         return getter != null;
       case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__SETTER:
         return setter != null;
-      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATER:
-        return validater != null;
+      case EditorLanguagePackage.ATTRIBUTE_CONTROLLER__VALIDATOR:
+        return validator != null;
     }
     return super.eIsSet(featureID);
   }

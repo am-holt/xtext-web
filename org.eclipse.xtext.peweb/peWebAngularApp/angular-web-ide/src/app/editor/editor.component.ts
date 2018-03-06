@@ -49,7 +49,6 @@ export class EditorComponent implements OnInit {
 
   newFileClick(){
    var name : string = "";
-    console.log("test");
     while(name == "" ){
       var name = prompt("Please enter file name:");
       if (name == null) {
@@ -66,7 +65,6 @@ export class EditorComponent implements OnInit {
   getNodeView(node:AbstractSyntaxTree){
     this.projectService.getNode(this.project.details.id,this.openFile.details,node).subscribe(a =>
       {
-        console.log("Instance of (sub): " + (a instanceof CustomViewDescriptor ));
         this.nodeViewDescriptor = a;
       })
   }
@@ -76,13 +74,10 @@ export class EditorComponent implements OnInit {
   }
 
   isDefaultView(obj :any){
-    return (obj instanceof DefaultViewDescriptor);
+    return (obj.type == DefaultViewDescriptor.DEFAULT_TYPE);
   }
 
-  isCustomView(obj :any){
-    console.log(obj);
-    console.log("Instance of (isCustom): " + (obj instanceof CustomViewDescriptor ));
-    console.log("typeof " +  typeof obj)
-    return (obj instanceof CustomViewDescriptor);
+  isCustomView(obj :ViewDescriptor){
+    return (obj.type == CustomViewDescriptor.CUSTOM_TYPE);
   }
 }

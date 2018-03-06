@@ -11,7 +11,8 @@ export class MOCKNODEDETAILS{
 				getter:'document.getElementById("inputId").value',
 				setter:'document.getElementById("inputId").value = X',
 				validator:'true', 
-				attributeId: {name:'name',nodeId:'2'},
+				attributeName:'name',
+				nodeId:'2',
 				initialValue : 'INITIAL VALUE'
 	}
 

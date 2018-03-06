@@ -5008,31 +5008,31 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
 
 
     // $ANTLR start "rule__ComponentId__Group_2__1__Impl"
-    // InternalEditorLanguage.g:1616:1: rule__ComponentId__Group_2__1__Impl : ( ( rule__ComponentId__ComponentIdAssignment_2_1 ) ) ;
+    // InternalEditorLanguage.g:1616:1: rule__ComponentId__Group_2__1__Impl : ( ( rule__ComponentId__AttributeNameAssignment_2_1 ) ) ;
     public final void rule__ComponentId__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalEditorLanguage.g:1620:1: ( ( ( rule__ComponentId__ComponentIdAssignment_2_1 ) ) )
-            // InternalEditorLanguage.g:1621:1: ( ( rule__ComponentId__ComponentIdAssignment_2_1 ) )
+            // InternalEditorLanguage.g:1620:1: ( ( ( rule__ComponentId__AttributeNameAssignment_2_1 ) ) )
+            // InternalEditorLanguage.g:1621:1: ( ( rule__ComponentId__AttributeNameAssignment_2_1 ) )
             {
-            // InternalEditorLanguage.g:1621:1: ( ( rule__ComponentId__ComponentIdAssignment_2_1 ) )
-            // InternalEditorLanguage.g:1622:2: ( rule__ComponentId__ComponentIdAssignment_2_1 )
+            // InternalEditorLanguage.g:1621:1: ( ( rule__ComponentId__AttributeNameAssignment_2_1 ) )
+            // InternalEditorLanguage.g:1622:2: ( rule__ComponentId__AttributeNameAssignment_2_1 )
             {
-             before(grammarAccess.getComponentIdAccess().getComponentIdAssignment_2_1()); 
-            // InternalEditorLanguage.g:1623:2: ( rule__ComponentId__ComponentIdAssignment_2_1 )
-            // InternalEditorLanguage.g:1623:3: rule__ComponentId__ComponentIdAssignment_2_1
+             before(grammarAccess.getComponentIdAccess().getAttributeNameAssignment_2_1()); 
+            // InternalEditorLanguage.g:1623:2: ( rule__ComponentId__AttributeNameAssignment_2_1 )
+            // InternalEditorLanguage.g:1623:3: rule__ComponentId__AttributeNameAssignment_2_1
             {
             pushFollow(FOLLOW_2);
-            rule__ComponentId__ComponentIdAssignment_2_1();
+            rule__ComponentId__AttributeNameAssignment_2_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getComponentIdAccess().getComponentIdAssignment_2_1()); 
+             after(grammarAccess.getComponentIdAccess().getAttributeNameAssignment_2_1()); 
 
             }
 
@@ -5563,31 +5563,31 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
 
 
     // $ANTLR start "rule__AttributeController__Group__6__Impl"
-    // InternalEditorLanguage.g:1806:1: rule__AttributeController__Group__6__Impl : ( ( rule__AttributeController__ValidaterAssignment_6 ) ) ;
+    // InternalEditorLanguage.g:1806:1: rule__AttributeController__Group__6__Impl : ( ( rule__AttributeController__ValidatorAssignment_6 ) ) ;
     public final void rule__AttributeController__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalEditorLanguage.g:1810:1: ( ( ( rule__AttributeController__ValidaterAssignment_6 ) ) )
-            // InternalEditorLanguage.g:1811:1: ( ( rule__AttributeController__ValidaterAssignment_6 ) )
+            // InternalEditorLanguage.g:1810:1: ( ( ( rule__AttributeController__ValidatorAssignment_6 ) ) )
+            // InternalEditorLanguage.g:1811:1: ( ( rule__AttributeController__ValidatorAssignment_6 ) )
             {
-            // InternalEditorLanguage.g:1811:1: ( ( rule__AttributeController__ValidaterAssignment_6 ) )
-            // InternalEditorLanguage.g:1812:2: ( rule__AttributeController__ValidaterAssignment_6 )
+            // InternalEditorLanguage.g:1811:1: ( ( rule__AttributeController__ValidatorAssignment_6 ) )
+            // InternalEditorLanguage.g:1812:2: ( rule__AttributeController__ValidatorAssignment_6 )
             {
-             before(grammarAccess.getAttributeControllerAccess().getValidaterAssignment_6()); 
-            // InternalEditorLanguage.g:1813:2: ( rule__AttributeController__ValidaterAssignment_6 )
-            // InternalEditorLanguage.g:1813:3: rule__AttributeController__ValidaterAssignment_6
+             before(grammarAccess.getAttributeControllerAccess().getValidatorAssignment_6()); 
+            // InternalEditorLanguage.g:1813:2: ( rule__AttributeController__ValidatorAssignment_6 )
+            // InternalEditorLanguage.g:1813:3: rule__AttributeController__ValidatorAssignment_6
             {
             pushFollow(FOLLOW_2);
-            rule__AttributeController__ValidaterAssignment_6();
+            rule__AttributeController__ValidatorAssignment_6();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getAttributeControllerAccess().getValidaterAssignment_6()); 
+             after(grammarAccess.getAttributeControllerAccess().getValidatorAssignment_6()); 
 
             }
 
@@ -7289,31 +7289,31 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
 
 
     // $ANTLR start "rule__ComponentController__Group__5__Impl"
-    // InternalEditorLanguage.g:2399:1: rule__ComponentController__Group__5__Impl : ( ( rule__ComponentController__ValidaterAssignment_5 ) ) ;
+    // InternalEditorLanguage.g:2399:1: rule__ComponentController__Group__5__Impl : ( ( rule__ComponentController__ValidatorAssignment_5 ) ) ;
     public final void rule__ComponentController__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalEditorLanguage.g:2403:1: ( ( ( rule__ComponentController__ValidaterAssignment_5 ) ) )
-            // InternalEditorLanguage.g:2404:1: ( ( rule__ComponentController__ValidaterAssignment_5 ) )
+            // InternalEditorLanguage.g:2403:1: ( ( ( rule__ComponentController__ValidatorAssignment_5 ) ) )
+            // InternalEditorLanguage.g:2404:1: ( ( rule__ComponentController__ValidatorAssignment_5 ) )
             {
-            // InternalEditorLanguage.g:2404:1: ( ( rule__ComponentController__ValidaterAssignment_5 ) )
-            // InternalEditorLanguage.g:2405:2: ( rule__ComponentController__ValidaterAssignment_5 )
+            // InternalEditorLanguage.g:2404:1: ( ( rule__ComponentController__ValidatorAssignment_5 ) )
+            // InternalEditorLanguage.g:2405:2: ( rule__ComponentController__ValidatorAssignment_5 )
             {
-             before(grammarAccess.getComponentControllerAccess().getValidaterAssignment_5()); 
-            // InternalEditorLanguage.g:2406:2: ( rule__ComponentController__ValidaterAssignment_5 )
-            // InternalEditorLanguage.g:2406:3: rule__ComponentController__ValidaterAssignment_5
+             before(grammarAccess.getComponentControllerAccess().getValidatorAssignment_5()); 
+            // InternalEditorLanguage.g:2406:2: ( rule__ComponentController__ValidatorAssignment_5 )
+            // InternalEditorLanguage.g:2406:3: rule__ComponentController__ValidatorAssignment_5
             {
             pushFollow(FOLLOW_2);
-            rule__ComponentController__ValidaterAssignment_5();
+            rule__ComponentController__ValidatorAssignment_5();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getComponentControllerAccess().getValidaterAssignment_5()); 
+             after(grammarAccess.getComponentControllerAccess().getValidatorAssignment_5()); 
 
             }
 
@@ -9329,9 +9329,9 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
     // $ANTLR end "rule__ComponentId__ComponentTypeAssignment_1"
 
 
-    // $ANTLR start "rule__ComponentId__ComponentIdAssignment_2_1"
-    // InternalEditorLanguage.g:3091:1: rule__ComponentId__ComponentIdAssignment_2_1 : ( RULE_ID ) ;
-    public final void rule__ComponentId__ComponentIdAssignment_2_1() throws RecognitionException {
+    // $ANTLR start "rule__ComponentId__AttributeNameAssignment_2_1"
+    // InternalEditorLanguage.g:3091:1: rule__ComponentId__AttributeNameAssignment_2_1 : ( RULE_ID ) ;
+    public final void rule__ComponentId__AttributeNameAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -9342,9 +9342,9 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
             // InternalEditorLanguage.g:3096:2: ( RULE_ID )
             // InternalEditorLanguage.g:3097:3: RULE_ID
             {
-             before(grammarAccess.getComponentIdAccess().getComponentIdIDTerminalRuleCall_2_1_0()); 
+             before(grammarAccess.getComponentIdAccess().getAttributeNameIDTerminalRuleCall_2_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getComponentIdAccess().getComponentIdIDTerminalRuleCall_2_1_0()); 
+             after(grammarAccess.getComponentIdAccess().getAttributeNameIDTerminalRuleCall_2_1_0()); 
 
             }
 
@@ -9363,7 +9363,7 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
         }
         return ;
     }
-    // $ANTLR end "rule__ComponentId__ComponentIdAssignment_2_1"
+    // $ANTLR end "rule__ComponentId__AttributeNameAssignment_2_1"
 
 
     // $ANTLR start "rule__AttributeController__GetterAssignment_2"
@@ -9448,9 +9448,9 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
     // $ANTLR end "rule__AttributeController__SetterAssignment_4"
 
 
-    // $ANTLR start "rule__AttributeController__ValidaterAssignment_6"
-    // InternalEditorLanguage.g:3136:1: rule__AttributeController__ValidaterAssignment_6 : ( ruleJsSnippet ) ;
-    public final void rule__AttributeController__ValidaterAssignment_6() throws RecognitionException {
+    // $ANTLR start "rule__AttributeController__ValidatorAssignment_6"
+    // InternalEditorLanguage.g:3136:1: rule__AttributeController__ValidatorAssignment_6 : ( ruleJsSnippet ) ;
+    public final void rule__AttributeController__ValidatorAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -9461,13 +9461,13 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
             // InternalEditorLanguage.g:3141:2: ( ruleJsSnippet )
             // InternalEditorLanguage.g:3142:3: ruleJsSnippet
             {
-             before(grammarAccess.getAttributeControllerAccess().getValidaterJsSnippetParserRuleCall_6_0()); 
+             before(grammarAccess.getAttributeControllerAccess().getValidatorJsSnippetParserRuleCall_6_0()); 
             pushFollow(FOLLOW_2);
             ruleJsSnippet();
 
             state._fsp--;
 
-             after(grammarAccess.getAttributeControllerAccess().getValidaterJsSnippetParserRuleCall_6_0()); 
+             after(grammarAccess.getAttributeControllerAccess().getValidatorJsSnippetParserRuleCall_6_0()); 
 
             }
 
@@ -9486,7 +9486,7 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
         }
         return ;
     }
-    // $ANTLR end "rule__AttributeController__ValidaterAssignment_6"
+    // $ANTLR end "rule__AttributeController__ValidatorAssignment_6"
 
 
     // $ANTLR start "rule__ChildId__ChildIdAssignment_1"
@@ -9809,9 +9809,9 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
     // $ANTLR end "rule__ComponentController__SetterAssignment_3"
 
 
-    // $ANTLR start "rule__ComponentController__ValidaterAssignment_5"
-    // InternalEditorLanguage.g:3275:1: rule__ComponentController__ValidaterAssignment_5 : ( ruleJsSnippet ) ;
-    public final void rule__ComponentController__ValidaterAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__ComponentController__ValidatorAssignment_5"
+    // InternalEditorLanguage.g:3275:1: rule__ComponentController__ValidatorAssignment_5 : ( ruleJsSnippet ) ;
+    public final void rule__ComponentController__ValidatorAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -9822,13 +9822,13 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
             // InternalEditorLanguage.g:3280:2: ( ruleJsSnippet )
             // InternalEditorLanguage.g:3281:3: ruleJsSnippet
             {
-             before(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0()); 
+             before(grammarAccess.getComponentControllerAccess().getValidatorJsSnippetParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
             ruleJsSnippet();
 
             state._fsp--;
 
-             after(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0()); 
+             after(grammarAccess.getComponentControllerAccess().getValidatorJsSnippetParserRuleCall_5_0()); 
 
             }
 
@@ -9847,7 +9847,7 @@ public class InternalEditorLanguageParser extends AbstractInternalContentAssistP
         }
         return ;
     }
-    // $ANTLR end "rule__ComponentController__ValidaterAssignment_5"
+    // $ANTLR end "rule__ComponentController__ValidatorAssignment_5"
 
 
     // $ANTLR start "rule__HtmlSnippet__HtmlAssignment_0_1"

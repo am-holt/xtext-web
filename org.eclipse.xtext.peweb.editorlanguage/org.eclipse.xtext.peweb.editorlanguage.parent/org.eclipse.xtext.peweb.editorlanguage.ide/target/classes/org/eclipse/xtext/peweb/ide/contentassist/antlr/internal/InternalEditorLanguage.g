@@ -1619,9 +1619,9 @@ rule__ComponentId__Group_2__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getComponentIdAccess().getComponentIdAssignment_2_1()); }
-	(rule__ComponentId__ComponentIdAssignment_2_1)
-	{ after(grammarAccess.getComponentIdAccess().getComponentIdAssignment_2_1()); }
+	{ before(grammarAccess.getComponentIdAccess().getAttributeNameAssignment_2_1()); }
+	(rule__ComponentId__AttributeNameAssignment_2_1)
+	{ after(grammarAccess.getComponentIdAccess().getAttributeNameAssignment_2_1()); }
 )
 ;
 finally {
@@ -1809,9 +1809,9 @@ rule__AttributeController__Group__6__Impl
 	}
 :
 (
-	{ before(grammarAccess.getAttributeControllerAccess().getValidaterAssignment_6()); }
-	(rule__AttributeController__ValidaterAssignment_6)
-	{ after(grammarAccess.getAttributeControllerAccess().getValidaterAssignment_6()); }
+	{ before(grammarAccess.getAttributeControllerAccess().getValidatorAssignment_6()); }
+	(rule__AttributeController__ValidatorAssignment_6)
+	{ after(grammarAccess.getAttributeControllerAccess().getValidatorAssignment_6()); }
 )
 ;
 finally {
@@ -2402,9 +2402,9 @@ rule__ComponentController__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getComponentControllerAccess().getValidaterAssignment_5()); }
-	(rule__ComponentController__ValidaterAssignment_5)
-	{ after(grammarAccess.getComponentControllerAccess().getValidaterAssignment_5()); }
+	{ before(grammarAccess.getComponentControllerAccess().getValidatorAssignment_5()); }
+	(rule__ComponentController__ValidatorAssignment_5)
+	{ after(grammarAccess.getComponentControllerAccess().getValidatorAssignment_5()); }
 )
 ;
 finally {
@@ -3088,15 +3088,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ComponentId__ComponentIdAssignment_2_1
+rule__ComponentId__AttributeNameAssignment_2_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getComponentIdAccess().getComponentIdIDTerminalRuleCall_2_1_0()); }
+		{ before(grammarAccess.getComponentIdAccess().getAttributeNameIDTerminalRuleCall_2_1_0()); }
 		RULE_ID
-		{ after(grammarAccess.getComponentIdAccess().getComponentIdIDTerminalRuleCall_2_1_0()); }
+		{ after(grammarAccess.getComponentIdAccess().getAttributeNameIDTerminalRuleCall_2_1_0()); }
 	)
 ;
 finally {
@@ -3133,15 +3133,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__AttributeController__ValidaterAssignment_6
+rule__AttributeController__ValidatorAssignment_6
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getAttributeControllerAccess().getValidaterJsSnippetParserRuleCall_6_0()); }
+		{ before(grammarAccess.getAttributeControllerAccess().getValidatorJsSnippetParserRuleCall_6_0()); }
 		ruleJsSnippet
-		{ after(grammarAccess.getAttributeControllerAccess().getValidaterJsSnippetParserRuleCall_6_0()); }
+		{ after(grammarAccess.getAttributeControllerAccess().getValidatorJsSnippetParserRuleCall_6_0()); }
 	)
 ;
 finally {
@@ -3272,15 +3272,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ComponentController__ValidaterAssignment_5
+rule__ComponentController__ValidatorAssignment_5
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0()); }
+		{ before(grammarAccess.getComponentControllerAccess().getValidatorJsSnippetParserRuleCall_5_0()); }
 		ruleJsSnippet
-		{ after(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0()); }
+		{ after(grammarAccess.getComponentControllerAccess().getValidatorJsSnippetParserRuleCall_5_0()); }
 	)
 ;
 finally {

@@ -44,14 +44,14 @@ AttributeDeclaration:
 ;
 
 ComponentId:
-	'%'componentType=[ComponentDeclaration] (':' componentId=ID)? '%' 
+	'%'componentType=[ComponentDeclaration] (':' attributeName=ID)? '%' 
 ;
 
 AttributeController:
 	'{' 
 		'get:' getter=JsSnippet
 		'set:' setter=JsSnippet
-		'validate:' validater=JsSnippet
+		'validate:' validator=JsSnippet
 	'}'
 ;
 
@@ -74,7 +74,7 @@ ComponentController:
 	 
 		'get:' getter=JsSnippet
 		'set:' setter=JsSnippet
-		'validate:' validater=JsSnippet
+		'validate:' validator=JsSnippet
 ;
 
 HtmlSnippet:
@@ -82,7 +82,7 @@ HtmlSnippet:
 	html += CodeLiteral | (html +=CodeLiteralStart ( html+=HtmlAnnotation) (html+=CodeLiteralMid ( html+=HtmlAnnotation))* html+=CodeLiteralEnd) 
 ;
 
-HtmlAnnotation:
+HtmlAnnotation:	
 	TagId|ChildId|ComponentId
 ;
 

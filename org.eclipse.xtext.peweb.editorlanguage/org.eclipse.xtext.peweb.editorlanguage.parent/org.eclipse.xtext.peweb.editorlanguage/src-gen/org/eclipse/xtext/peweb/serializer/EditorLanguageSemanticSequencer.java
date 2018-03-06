@@ -117,7 +117,7 @@ public class EditorLanguageSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     AttributeController returns AttributeController
 	 *
 	 * Constraint:
-	 *     (getter=JsSnippet setter=JsSnippet validater=JsSnippet)
+	 *     (getter=JsSnippet setter=JsSnippet validator=JsSnippet)
 	 */
 	protected void sequence_AttributeController(ISerializationContext context, AttributeController semanticObject) {
 		if (errorAcceptor != null) {
@@ -125,13 +125,13 @@ public class EditorLanguageSemanticSequencer extends AbstractDelegatingSemanticS
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.ATTRIBUTE_CONTROLLER__GETTER));
 			if (transientValues.isValueTransient(semanticObject, EditorLanguagePackage.Literals.ATTRIBUTE_CONTROLLER__SETTER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.ATTRIBUTE_CONTROLLER__SETTER));
-			if (transientValues.isValueTransient(semanticObject, EditorLanguagePackage.Literals.ATTRIBUTE_CONTROLLER__VALIDATER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.ATTRIBUTE_CONTROLLER__VALIDATER));
+			if (transientValues.isValueTransient(semanticObject, EditorLanguagePackage.Literals.ATTRIBUTE_CONTROLLER__VALIDATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.ATTRIBUTE_CONTROLLER__VALIDATOR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAttributeControllerAccess().getGetterJsSnippetParserRuleCall_2_0(), semanticObject.getGetter());
 		feeder.accept(grammarAccess.getAttributeControllerAccess().getSetterJsSnippetParserRuleCall_4_0(), semanticObject.getSetter());
-		feeder.accept(grammarAccess.getAttributeControllerAccess().getValidaterJsSnippetParserRuleCall_6_0(), semanticObject.getValidater());
+		feeder.accept(grammarAccess.getAttributeControllerAccess().getValidatorJsSnippetParserRuleCall_6_0(), semanticObject.getValidator());
 		feeder.finish();
 	}
 	
@@ -256,7 +256,7 @@ public class EditorLanguageSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     ComponentController returns ComponentController
 	 *
 	 * Constraint:
-	 *     (getter=JsSnippet setter=JsSnippet validater=JsSnippet)
+	 *     (getter=JsSnippet setter=JsSnippet validator=JsSnippet)
 	 */
 	protected void sequence_ComponentController(ISerializationContext context, ComponentController semanticObject) {
 		if (errorAcceptor != null) {
@@ -264,13 +264,13 @@ public class EditorLanguageSemanticSequencer extends AbstractDelegatingSemanticS
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__GETTER));
 			if (transientValues.isValueTransient(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__SETTER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__SETTER));
-			if (transientValues.isValueTransient(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__VALIDATER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__VALIDATER));
+			if (transientValues.isValueTransient(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__VALIDATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EditorLanguagePackage.Literals.COMPONENT_CONTROLLER__VALIDATOR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getComponentControllerAccess().getGetterJsSnippetParserRuleCall_1_0(), semanticObject.getGetter());
 		feeder.accept(grammarAccess.getComponentControllerAccess().getSetterJsSnippetParserRuleCall_3_0(), semanticObject.getSetter());
-		feeder.accept(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0(), semanticObject.getValidater());
+		feeder.accept(grammarAccess.getComponentControllerAccess().getValidatorJsSnippetParserRuleCall_5_0(), semanticObject.getValidator());
 		feeder.finish();
 	}
 	
@@ -293,7 +293,7 @@ public class EditorLanguageSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     HtmlAnnotation returns ComponentId
 	 *
 	 * Constraint:
-	 *     (componentType=[ComponentDeclaration|ID] componentId=ID?)
+	 *     (componentType=[ComponentDeclaration|ID] attributeName=ID?)
 	 */
 	protected void sequence_ComponentId(ISerializationContext context, ComponentId semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

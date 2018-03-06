@@ -23,7 +23,7 @@ import org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentIdImpl#getComponentType <em>Component Type</em>}</li>
- *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentIdImpl#getComponentId <em>Component Id</em>}</li>
+ *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.impl.ComponentIdImpl#getAttributeName <em>Attribute Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,24 +41,24 @@ public class ComponentIdImpl extends HtmlAnnotationImpl implements ComponentId
   protected ComponentDeclaration componentType;
 
   /**
-   * The default value of the '{@link #getComponentId() <em>Component Id</em>}' attribute.
+   * The default value of the '{@link #getAttributeName() <em>Attribute Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getComponentId()
+   * @see #getAttributeName()
    * @generated
    * @ordered
    */
-  protected static final String COMPONENT_ID_EDEFAULT = null;
+  protected static final String ATTRIBUTE_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getComponentId() <em>Component Id</em>}' attribute.
+   * The cached value of the '{@link #getAttributeName() <em>Attribute Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getComponentId()
+   * @see #getAttributeName()
    * @generated
    * @ordered
    */
-  protected String componentId = COMPONENT_ID_EDEFAULT;
+  protected String attributeName = ATTRIBUTE_NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -129,9 +129,9 @@ public class ComponentIdImpl extends HtmlAnnotationImpl implements ComponentId
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getComponentId()
+  public String getAttributeName()
   {
-    return componentId;
+    return attributeName;
   }
 
   /**
@@ -139,12 +139,12 @@ public class ComponentIdImpl extends HtmlAnnotationImpl implements ComponentId
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setComponentId(String newComponentId)
+  public void setAttributeName(String newAttributeName)
   {
-    String oldComponentId = componentId;
-    componentId = newComponentId;
+    String oldAttributeName = attributeName;
+    attributeName = newAttributeName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.COMPONENT_ID__COMPONENT_ID, oldComponentId, componentId));
+      eNotify(new ENotificationImpl(this, Notification.SET, EditorLanguagePackage.COMPONENT_ID__ATTRIBUTE_NAME, oldAttributeName, attributeName));
   }
 
   /**
@@ -160,8 +160,8 @@ public class ComponentIdImpl extends HtmlAnnotationImpl implements ComponentId
       case EditorLanguagePackage.COMPONENT_ID__COMPONENT_TYPE:
         if (resolve) return getComponentType();
         return basicGetComponentType();
-      case EditorLanguagePackage.COMPONENT_ID__COMPONENT_ID:
-        return getComponentId();
+      case EditorLanguagePackage.COMPONENT_ID__ATTRIBUTE_NAME:
+        return getAttributeName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -179,8 +179,8 @@ public class ComponentIdImpl extends HtmlAnnotationImpl implements ComponentId
       case EditorLanguagePackage.COMPONENT_ID__COMPONENT_TYPE:
         setComponentType((ComponentDeclaration)newValue);
         return;
-      case EditorLanguagePackage.COMPONENT_ID__COMPONENT_ID:
-        setComponentId((String)newValue);
+      case EditorLanguagePackage.COMPONENT_ID__ATTRIBUTE_NAME:
+        setAttributeName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -199,8 +199,8 @@ public class ComponentIdImpl extends HtmlAnnotationImpl implements ComponentId
       case EditorLanguagePackage.COMPONENT_ID__COMPONENT_TYPE:
         setComponentType((ComponentDeclaration)null);
         return;
-      case EditorLanguagePackage.COMPONENT_ID__COMPONENT_ID:
-        setComponentId(COMPONENT_ID_EDEFAULT);
+      case EditorLanguagePackage.COMPONENT_ID__ATTRIBUTE_NAME:
+        setAttributeName(ATTRIBUTE_NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -218,8 +218,8 @@ public class ComponentIdImpl extends HtmlAnnotationImpl implements ComponentId
     {
       case EditorLanguagePackage.COMPONENT_ID__COMPONENT_TYPE:
         return componentType != null;
-      case EditorLanguagePackage.COMPONENT_ID__COMPONENT_ID:
-        return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
+      case EditorLanguagePackage.COMPONENT_ID__ATTRIBUTE_NAME:
+        return ATTRIBUTE_NAME_EDEFAULT == null ? attributeName != null : !ATTRIBUTE_NAME_EDEFAULT.equals(attributeName);
     }
     return super.eIsSet(featureID);
   }
@@ -235,8 +235,8 @@ public class ComponentIdImpl extends HtmlAnnotationImpl implements ComponentId
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (componentId: ");
-    result.append(componentId);
+    result.append(" (attributeName: ");
+    result.append(attributeName);
     result.append(')');
     return result.toString();
   }

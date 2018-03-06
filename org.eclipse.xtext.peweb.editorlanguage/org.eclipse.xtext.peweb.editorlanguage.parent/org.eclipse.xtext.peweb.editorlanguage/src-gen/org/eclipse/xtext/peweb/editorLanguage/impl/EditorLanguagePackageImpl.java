@@ -497,7 +497,7 @@ public class EditorLanguagePackageImpl extends EPackageImpl implements EditorLan
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getComponentId_ComponentId()
+  public EAttribute getComponentId_AttributeName()
   {
     return (EAttribute)componentIdEClass.getEStructuralFeatures().get(1);
   }
@@ -537,7 +537,7 @@ public class EditorLanguagePackageImpl extends EPackageImpl implements EditorLan
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAttributeController_Validater()
+  public EReference getAttributeController_Validator()
   {
     return (EReference)attributeControllerEClass.getEStructuralFeatures().get(2);
   }
@@ -667,7 +667,7 @@ public class EditorLanguagePackageImpl extends EPackageImpl implements EditorLan
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComponentController_Validater()
+  public EReference getComponentController_Validator()
   {
     return (EReference)componentControllerEClass.getEStructuralFeatures().get(2);
   }
@@ -873,12 +873,12 @@ public class EditorLanguagePackageImpl extends EPackageImpl implements EditorLan
 
     componentIdEClass = createEClass(COMPONENT_ID);
     createEReference(componentIdEClass, COMPONENT_ID__COMPONENT_TYPE);
-    createEAttribute(componentIdEClass, COMPONENT_ID__COMPONENT_ID);
+    createEAttribute(componentIdEClass, COMPONENT_ID__ATTRIBUTE_NAME);
 
     attributeControllerEClass = createEClass(ATTRIBUTE_CONTROLLER);
     createEReference(attributeControllerEClass, ATTRIBUTE_CONTROLLER__GETTER);
     createEReference(attributeControllerEClass, ATTRIBUTE_CONTROLLER__SETTER);
-    createEReference(attributeControllerEClass, ATTRIBUTE_CONTROLLER__VALIDATER);
+    createEReference(attributeControllerEClass, ATTRIBUTE_CONTROLLER__VALIDATOR);
 
     childIdEClass = createEClass(CHILD_ID);
     createEAttribute(childIdEClass, CHILD_ID__CHILD_ID);
@@ -895,7 +895,7 @@ public class EditorLanguagePackageImpl extends EPackageImpl implements EditorLan
     componentControllerEClass = createEClass(COMPONENT_CONTROLLER);
     createEReference(componentControllerEClass, COMPONENT_CONTROLLER__GETTER);
     createEReference(componentControllerEClass, COMPONENT_CONTROLLER__SETTER);
-    createEReference(componentControllerEClass, COMPONENT_CONTROLLER__VALIDATER);
+    createEReference(componentControllerEClass, COMPONENT_CONTROLLER__VALIDATOR);
 
     htmlSnippetEClass = createEClass(HTML_SNIPPET);
     createEReference(htmlSnippetEClass, HTML_SNIPPET__HTML);
@@ -986,12 +986,12 @@ public class EditorLanguagePackageImpl extends EPackageImpl implements EditorLan
 
     initEClass(componentIdEClass, ComponentId.class, "ComponentId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getComponentId_ComponentType(), this.getComponentDeclaration(), null, "componentType", null, 0, 1, ComponentId.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComponentId_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, ComponentId.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getComponentId_AttributeName(), ecorePackage.getEString(), "attributeName", null, 0, 1, ComponentId.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeControllerEClass, AttributeController.class, "AttributeController", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAttributeController_Getter(), this.getJsSnippet(), null, "getter", null, 0, 1, AttributeController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttributeController_Setter(), this.getJsSnippet(), null, "setter", null, 0, 1, AttributeController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAttributeController_Validater(), this.getJsSnippet(), null, "validater", null, 0, 1, AttributeController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttributeController_Validator(), this.getJsSnippet(), null, "validator", null, 0, 1, AttributeController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(childIdEClass, ChildId.class, "ChildId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getChildId_ChildId(), ecorePackage.getEString(), "childId", null, 0, 1, ChildId.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1008,7 +1008,7 @@ public class EditorLanguagePackageImpl extends EPackageImpl implements EditorLan
     initEClass(componentControllerEClass, ComponentController.class, "ComponentController", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getComponentController_Getter(), this.getJsSnippet(), null, "getter", null, 0, 1, ComponentController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponentController_Setter(), this.getJsSnippet(), null, "setter", null, 0, 1, ComponentController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentController_Validater(), this.getJsSnippet(), null, "validater", null, 0, 1, ComponentController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComponentController_Validator(), this.getJsSnippet(), null, "validator", null, 0, 1, ComponentController.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(htmlSnippetEClass, HtmlSnippet.class, "HtmlSnippet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getHtmlSnippet_Html(), ecorePackage.getEObject(), null, "html", null, 0, -1, HtmlSnippet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

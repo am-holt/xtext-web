@@ -1442,25 +1442,25 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComponentId"
-    // InternalEditorLanguage.g:585:1: ruleComponentId returns [EObject current=null] : (otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_componentId_3_0= RULE_ID ) ) )? otherlv_4= '%' ) ;
+    // InternalEditorLanguage.g:585:1: ruleComponentId returns [EObject current=null] : (otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_attributeName_3_0= RULE_ID ) ) )? otherlv_4= '%' ) ;
     public final EObject ruleComponentId() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
         Token otherlv_2=null;
-        Token lv_componentId_3_0=null;
+        Token lv_attributeName_3_0=null;
         Token otherlv_4=null;
 
 
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:591:2: ( (otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_componentId_3_0= RULE_ID ) ) )? otherlv_4= '%' ) )
-            // InternalEditorLanguage.g:592:2: (otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_componentId_3_0= RULE_ID ) ) )? otherlv_4= '%' )
+            // InternalEditorLanguage.g:591:2: ( (otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_attributeName_3_0= RULE_ID ) ) )? otherlv_4= '%' ) )
+            // InternalEditorLanguage.g:592:2: (otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_attributeName_3_0= RULE_ID ) ) )? otherlv_4= '%' )
             {
-            // InternalEditorLanguage.g:592:2: (otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_componentId_3_0= RULE_ID ) ) )? otherlv_4= '%' )
-            // InternalEditorLanguage.g:593:3: otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_componentId_3_0= RULE_ID ) ) )? otherlv_4= '%'
+            // InternalEditorLanguage.g:592:2: (otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_attributeName_3_0= RULE_ID ) ) )? otherlv_4= '%' )
+            // InternalEditorLanguage.g:593:3: otherlv_0= '%' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ':' ( (lv_attributeName_3_0= RULE_ID ) ) )? otherlv_4= '%'
             {
             otherlv_0=(Token)match(input,22,FOLLOW_5); 
 
@@ -1487,7 +1487,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalEditorLanguage.g:610:3: (otherlv_2= ':' ( (lv_componentId_3_0= RULE_ID ) ) )?
+            // InternalEditorLanguage.g:610:3: (otherlv_2= ':' ( (lv_attributeName_3_0= RULE_ID ) ) )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1496,21 +1496,21 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
             }
             switch (alt7) {
                 case 1 :
-                    // InternalEditorLanguage.g:611:4: otherlv_2= ':' ( (lv_componentId_3_0= RULE_ID ) )
+                    // InternalEditorLanguage.g:611:4: otherlv_2= ':' ( (lv_attributeName_3_0= RULE_ID ) )
                     {
                     otherlv_2=(Token)match(input,23,FOLLOW_5); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getComponentIdAccess().getColonKeyword_2_0());
                     			
-                    // InternalEditorLanguage.g:615:4: ( (lv_componentId_3_0= RULE_ID ) )
-                    // InternalEditorLanguage.g:616:5: (lv_componentId_3_0= RULE_ID )
+                    // InternalEditorLanguage.g:615:4: ( (lv_attributeName_3_0= RULE_ID ) )
+                    // InternalEditorLanguage.g:616:5: (lv_attributeName_3_0= RULE_ID )
                     {
-                    // InternalEditorLanguage.g:616:5: (lv_componentId_3_0= RULE_ID )
-                    // InternalEditorLanguage.g:617:6: lv_componentId_3_0= RULE_ID
+                    // InternalEditorLanguage.g:616:5: (lv_attributeName_3_0= RULE_ID )
+                    // InternalEditorLanguage.g:617:6: lv_attributeName_3_0= RULE_ID
                     {
-                    lv_componentId_3_0=(Token)match(input,RULE_ID,FOLLOW_14); 
+                    lv_attributeName_3_0=(Token)match(input,RULE_ID,FOLLOW_14); 
 
-                    						newLeafNode(lv_componentId_3_0, grammarAccess.getComponentIdAccess().getComponentIdIDTerminalRuleCall_2_1_0());
+                    						newLeafNode(lv_attributeName_3_0, grammarAccess.getComponentIdAccess().getAttributeNameIDTerminalRuleCall_2_1_0());
                     					
 
                     						if (current==null) {
@@ -1518,8 +1518,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
                     						}
                     						setWithLastConsumed(
                     							current,
-                    							"componentId",
-                    							lv_componentId_3_0,
+                    							"attributeName",
+                    							lv_attributeName_3_0,
                     							"org.eclipse.xtext.peweb.EditorLanguage.ID");
                     					
 
@@ -1597,7 +1597,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAttributeController"
-    // InternalEditorLanguage.g:649:1: ruleAttributeController returns [EObject current=null] : (otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validater_6_0= ruleJsSnippet ) ) otherlv_7= '}' ) ;
+    // InternalEditorLanguage.g:649:1: ruleAttributeController returns [EObject current=null] : (otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validator_6_0= ruleJsSnippet ) ) otherlv_7= '}' ) ;
     public final EObject ruleAttributeController() throws RecognitionException {
         EObject current = null;
 
@@ -1610,18 +1610,18 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
         EObject lv_setter_4_0 = null;
 
-        EObject lv_validater_6_0 = null;
+        EObject lv_validator_6_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:655:2: ( (otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validater_6_0= ruleJsSnippet ) ) otherlv_7= '}' ) )
-            // InternalEditorLanguage.g:656:2: (otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validater_6_0= ruleJsSnippet ) ) otherlv_7= '}' )
+            // InternalEditorLanguage.g:655:2: ( (otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validator_6_0= ruleJsSnippet ) ) otherlv_7= '}' ) )
+            // InternalEditorLanguage.g:656:2: (otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validator_6_0= ruleJsSnippet ) ) otherlv_7= '}' )
             {
-            // InternalEditorLanguage.g:656:2: (otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validater_6_0= ruleJsSnippet ) ) otherlv_7= '}' )
-            // InternalEditorLanguage.g:657:3: otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validater_6_0= ruleJsSnippet ) ) otherlv_7= '}'
+            // InternalEditorLanguage.g:656:2: (otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validator_6_0= ruleJsSnippet ) ) otherlv_7= '}' )
+            // InternalEditorLanguage.g:657:3: otherlv_0= '{' otherlv_1= 'get:' ( (lv_getter_2_0= ruleJsSnippet ) ) otherlv_3= 'set:' ( (lv_setter_4_0= ruleJsSnippet ) ) otherlv_5= 'validate:' ( (lv_validator_6_0= ruleJsSnippet ) ) otherlv_7= '}'
             {
             otherlv_0=(Token)match(input,17,FOLLOW_15); 
 
@@ -1701,17 +1701,17 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_5, grammarAccess.getAttributeControllerAccess().getValidateKeyword_5());
             		
-            // InternalEditorLanguage.g:711:3: ( (lv_validater_6_0= ruleJsSnippet ) )
-            // InternalEditorLanguage.g:712:4: (lv_validater_6_0= ruleJsSnippet )
+            // InternalEditorLanguage.g:711:3: ( (lv_validator_6_0= ruleJsSnippet ) )
+            // InternalEditorLanguage.g:712:4: (lv_validator_6_0= ruleJsSnippet )
             {
-            // InternalEditorLanguage.g:712:4: (lv_validater_6_0= ruleJsSnippet )
-            // InternalEditorLanguage.g:713:5: lv_validater_6_0= ruleJsSnippet
+            // InternalEditorLanguage.g:712:4: (lv_validator_6_0= ruleJsSnippet )
+            // InternalEditorLanguage.g:713:5: lv_validator_6_0= ruleJsSnippet
             {
 
-            					newCompositeNode(grammarAccess.getAttributeControllerAccess().getValidaterJsSnippetParserRuleCall_6_0());
+            					newCompositeNode(grammarAccess.getAttributeControllerAccess().getValidatorJsSnippetParserRuleCall_6_0());
             				
             pushFollow(FOLLOW_18);
-            lv_validater_6_0=ruleJsSnippet();
+            lv_validator_6_0=ruleJsSnippet();
 
             state._fsp--;
 
@@ -1721,8 +1721,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
             					}
             					set(
             						current,
-            						"validater",
-            						lv_validater_6_0,
+            						"validator",
+            						lv_validator_6_0,
             						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
             					afterParserOrEnumRuleCall();
             				
@@ -2242,7 +2242,7 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComponentController"
-    // InternalEditorLanguage.g:943:1: ruleComponentController returns [EObject current=null] : (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) ) ) ;
+    // InternalEditorLanguage.g:943:1: ruleComponentController returns [EObject current=null] : (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validator_5_0= ruleJsSnippet ) ) ) ;
     public final EObject ruleComponentController() throws RecognitionException {
         EObject current = null;
 
@@ -2253,18 +2253,18 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
         EObject lv_setter_3_0 = null;
 
-        EObject lv_validater_5_0 = null;
+        EObject lv_validator_5_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalEditorLanguage.g:949:2: ( (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) ) ) )
-            // InternalEditorLanguage.g:950:2: (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) ) )
+            // InternalEditorLanguage.g:949:2: ( (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validator_5_0= ruleJsSnippet ) ) ) )
+            // InternalEditorLanguage.g:950:2: (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validator_5_0= ruleJsSnippet ) ) )
             {
-            // InternalEditorLanguage.g:950:2: (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) ) )
-            // InternalEditorLanguage.g:951:3: otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validater_5_0= ruleJsSnippet ) )
+            // InternalEditorLanguage.g:950:2: (otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validator_5_0= ruleJsSnippet ) ) )
+            // InternalEditorLanguage.g:951:3: otherlv_0= 'get:' ( (lv_getter_1_0= ruleJsSnippet ) ) otherlv_2= 'set:' ( (lv_setter_3_0= ruleJsSnippet ) ) otherlv_4= 'validate:' ( (lv_validator_5_0= ruleJsSnippet ) )
             {
             otherlv_0=(Token)match(input,24,FOLLOW_11); 
 
@@ -2340,17 +2340,17 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_4, grammarAccess.getComponentControllerAccess().getValidateKeyword_4());
             		
-            // InternalEditorLanguage.g:1001:3: ( (lv_validater_5_0= ruleJsSnippet ) )
-            // InternalEditorLanguage.g:1002:4: (lv_validater_5_0= ruleJsSnippet )
+            // InternalEditorLanguage.g:1001:3: ( (lv_validator_5_0= ruleJsSnippet ) )
+            // InternalEditorLanguage.g:1002:4: (lv_validator_5_0= ruleJsSnippet )
             {
-            // InternalEditorLanguage.g:1002:4: (lv_validater_5_0= ruleJsSnippet )
-            // InternalEditorLanguage.g:1003:5: lv_validater_5_0= ruleJsSnippet
+            // InternalEditorLanguage.g:1002:4: (lv_validator_5_0= ruleJsSnippet )
+            // InternalEditorLanguage.g:1003:5: lv_validator_5_0= ruleJsSnippet
             {
 
-            					newCompositeNode(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0());
+            					newCompositeNode(grammarAccess.getComponentControllerAccess().getValidatorJsSnippetParserRuleCall_5_0());
             				
             pushFollow(FOLLOW_2);
-            lv_validater_5_0=ruleJsSnippet();
+            lv_validator_5_0=ruleJsSnippet();
 
             state._fsp--;
 
@@ -2360,8 +2360,8 @@ public class InternalEditorLanguageParser extends AbstractInternalAntlrParser {
             					}
             					set(
             						current,
-            						"validater",
-            						lv_validater_5_0,
+            						"validator",
+            						lv_validator_5_0,
             						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
             					afterParserOrEnumRuleCall();
             				

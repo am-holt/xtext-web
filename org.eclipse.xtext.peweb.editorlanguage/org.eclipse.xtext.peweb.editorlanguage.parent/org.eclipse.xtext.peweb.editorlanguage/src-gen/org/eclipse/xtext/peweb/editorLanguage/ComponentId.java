@@ -14,7 +14,7 @@ package org.eclipse.xtext.peweb.editorLanguage;
  * </p>
  * <ul>
  *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.ComponentId#getComponentType <em>Component Type</em>}</li>
- *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.ComponentId#getComponentId <em>Component Id</em>}</li>
+ *   <li>{@link org.eclipse.xtext.peweb.editorLanguage.ComponentId#getAttributeName <em>Attribute Name</em>}</li>
  * </ul>
  *
  * @see org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage#getComponentId()
@@ -50,29 +50,29 @@ public interface ComponentId extends HtmlAnnotation
   void setComponentType(ComponentDeclaration value);
 
   /**
-   * Returns the value of the '<em><b>Component Id</b></em>' attribute.
+   * Returns the value of the '<em><b>Attribute Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Component Id</em>' attribute isn't clear,
+   * If the meaning of the '<em>Attribute Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Component Id</em>' attribute.
-   * @see #setComponentId(String)
-   * @see org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage#getComponentId_ComponentId()
+   * @return the value of the '<em>Attribute Name</em>' attribute.
+   * @see #setAttributeName(String)
+   * @see org.eclipse.xtext.peweb.editorLanguage.EditorLanguagePackage#getComponentId_AttributeName()
    * @model
    * @generated
    */
-  String getComponentId();
+  String getAttributeName();
 
   /**
-   * Sets the value of the '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentId#getComponentId <em>Component Id</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.xtext.peweb.editorLanguage.ComponentId#getAttributeName <em>Attribute Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Component Id</em>' attribute.
-   * @see #getComponentId()
+   * @param value the new value of the '<em>Attribute Name</em>' attribute.
+   * @see #getAttributeName()
    * @generated
    */
-  void setComponentId(String value);
+  void setAttributeName(String value);
 
 } // ComponentId

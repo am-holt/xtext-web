@@ -45,6 +45,7 @@ export class EditService {
 
   updateAttribute(projId: string, fileDetails: FileDetails, nodeId: string, attributeName: string, newValue: any): Observable<UpdateNodeResponse> {
     //TODO change to post
+    console.log("updating attribute")
     return this.http.get<UpdateNodeRawResponse>(this.serviceUrl,
       {
         params: new HttpParams()

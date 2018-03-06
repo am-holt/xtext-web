@@ -614,9 +614,9 @@ ruleComponentId returns [EObject current=null]
 			}
 			(
 				(
-					lv_componentId_3_0=RULE_ID
+					lv_attributeName_3_0=RULE_ID
 					{
-						newLeafNode(lv_componentId_3_0, grammarAccess.getComponentIdAccess().getComponentIdIDTerminalRuleCall_2_1_0());
+						newLeafNode(lv_attributeName_3_0, grammarAccess.getComponentIdAccess().getAttributeNameIDTerminalRuleCall_2_1_0());
 					}
 					{
 						if ($current==null) {
@@ -624,8 +624,8 @@ ruleComponentId returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"componentId",
-							lv_componentId_3_0,
+							"attributeName",
+							lv_attributeName_3_0,
 							"org.eclipse.xtext.peweb.EditorLanguage.ID");
 					}
 				)
@@ -711,17 +711,17 @@ ruleAttributeController returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAttributeControllerAccess().getValidaterJsSnippetParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getAttributeControllerAccess().getValidatorJsSnippetParserRuleCall_6_0());
 				}
-				lv_validater_6_0=ruleJsSnippet
+				lv_validator_6_0=ruleJsSnippet
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAttributeControllerRule());
 					}
 					set(
 						$current,
-						"validater",
-						lv_validater_6_0,
+						"validator",
+						lv_validator_6_0,
 						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
 					afterParserOrEnumRuleCall();
 				}
@@ -1001,17 +1001,17 @@ ruleComponentController returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getComponentControllerAccess().getValidaterJsSnippetParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getComponentControllerAccess().getValidatorJsSnippetParserRuleCall_5_0());
 				}
-				lv_validater_5_0=ruleJsSnippet
+				lv_validator_5_0=ruleJsSnippet
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getComponentControllerRule());
 					}
 					set(
 						$current,
-						"validater",
-						lv_validater_5_0,
+						"validator",
+						lv_validator_5_0,
 						"org.eclipse.xtext.peweb.EditorLanguage.JsSnippet");
 					afterParserOrEnumRuleCall();
 				}
