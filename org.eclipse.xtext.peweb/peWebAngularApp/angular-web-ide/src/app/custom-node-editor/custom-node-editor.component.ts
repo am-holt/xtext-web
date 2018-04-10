@@ -83,7 +83,7 @@ export class CustomNodeEditorComponent implements OnInit {
       this.attributeValueMap.get(attribute.nodeId).set(attribute.attributeName,attribute.initialValue);
 
       //Set the attribute value in the view
-      eval("(X=>{"+this.nodeViewDescriptor.attributeControllers[0].setter+"})")(this.nodeViewDescriptor.attributeControllers[0].initialValue);
+      eval("(X=>{"+attribute.setter+"})")(attribute.initialValue);
     }
   }
 

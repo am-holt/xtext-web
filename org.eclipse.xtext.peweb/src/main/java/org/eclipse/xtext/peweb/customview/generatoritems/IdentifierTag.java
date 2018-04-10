@@ -29,7 +29,7 @@ public class IdentifierTag implements GeneratorItem, JavascriptGeneratorItem  {
 		if(idMap.containsKey(this.identifier)) {
 			htmlView = idMap.get(this.identifier);
 		}else {
-			htmlView =this.identifier + '_' + htmlIdSuffix;
+			htmlView =this.identifier + htmlIdSuffix;
 			idMap.put(this.identifier, htmlView);
 		}
 		

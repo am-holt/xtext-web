@@ -46,9 +46,10 @@ public class HtmlProjectionSpecification {
 		
 		Map<String, String> idMap =  new HashMap<String,String>();
 		CustomHtmlProjectionDescription result = new CustomHtmlProjectionDescription();
-		
+		int suffixAddition = 0;
 		for(GeneratorItem genItem : this.htmlViewItems) {
-			result.append(genItem.generate(htmlIdSuffix, idMap, ofs, node, nodeMap, componentMap));
+			result.append(genItem.generate(htmlIdSuffix + "_" + suffixAddition, idMap, ofs, node, nodeMap, componentMap));
+			suffixAddition+=1;
 		}
 		
 		for(AttributeControllerSpecification attSpec : this.attributeControllers) {

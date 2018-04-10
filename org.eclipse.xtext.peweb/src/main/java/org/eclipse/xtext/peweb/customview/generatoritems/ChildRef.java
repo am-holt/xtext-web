@@ -40,7 +40,7 @@ public class ChildRef implements GeneratorItem  {
 		
 		CustomHtmlProjectionDescription result = new CustomHtmlProjectionDescription(); 
 		
-		int idSuffix = 0;
+		int suffixAddition = 0;
 		
 		for(EObject refObject : eObjects){
 			ResourceAbstractSyntaxTree childNode = ofs.getNode(ofs.getEObjectId(refObject));
@@ -49,8 +49,9 @@ public class ChildRef implements GeneratorItem  {
 			if(!nodeMap.containsKey(childProjId)) {
 				throw new RuntimeException("Node type: " + childProjId.nodeName + " does not have " +childProjId.projectionName+" projection");
 			}else {
-				result.append(nodeMap.get(childProjId).generate(htmlIdSuffix + "_" + idSuffix,ofs, childNode, nodeMap, componentMap));
+				result.append(nodeMap.get(childProjId).generate(htmlIdSuffix + "_" + suffixAddition,ofs, childNode, nodeMap, componentMap));
 			}
+			suffixAddition +=1;
 		}
 		
 		return result;
