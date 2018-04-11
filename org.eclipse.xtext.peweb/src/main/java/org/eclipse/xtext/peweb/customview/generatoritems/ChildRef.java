@@ -2,6 +2,7 @@ package org.eclipse.xtext.peweb.customview.generatoritems;
 
 import static com.google.common.collect.Sets.intersection;
 
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,6 +12,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.peweb.NodeRef;
 import org.eclipse.xtext.peweb.OpenFileState;
 import org.eclipse.xtext.peweb.ResourceAbstractSyntaxTree;
+import org.eclipse.xtext.peweb.TypeHelper;
 import org.eclipse.xtext.peweb.customview.CustomHtmlProjectionDescription;
 import org.eclipse.xtext.peweb.customview.HtmlComponentSpecification;
 import org.eclipse.xtext.peweb.customview.HtmlProjectionSpecification;
@@ -29,7 +31,7 @@ public class ChildRef implements GeneratorItem  {
 	}
 
 	@Override
-	public CustomHtmlProjectionDescription generate(String htmlIdSuffix, Map<String, String> idMap, OpenFileState ofs,
+	public CustomHtmlProjectionDescription generate(String htmlIdSuffix, Map<String, String> idMap, OpenFileState ofs, TypeHelper typeHelper,
 			ResourceAbstractSyntaxTree node, Map<ProjectionIdentifier, HtmlProjectionSpecification> nodeMap,
 			Map<String, HtmlComponentSpecification> componentMap) {
 		
@@ -45,7 +47,11 @@ public class ChildRef implements GeneratorItem  {
 		
 		int suffixAddition = 0;
 		String addBtnId = "addChildBtn" + this.childName + htmlIdSuffix;
-		ReferenceController referenceController = new ReferenceController(node.getNodeId(),this.childName, addBtnId );
+		
+		EReference eRef = (EReference)node.getEClass().getEStructuralFeature(childName);
+			
+		List<String> possibleTypes = typeHelper.getSubtypes(eRef.getEType().getName());
+		ReferenceController referenceController = new ReferenceController(node.getNodeId(),this.childName, addBtnId, possibleTypes);
 		
 		for(EObject refObject : eObjects){
 
@@ -62,7 +68,7 @@ public class ChildRef implements GeneratorItem  {
 				result.append("<div id=\"" + divId + "\">");
 				result.append("<hr>");
 				result.append("<button id=\""+removeBtnId+"\">Remove Node</button>");
-				result.append(nodeMap.get(childProjId).generate(htmlIdSuffix + "_" + suffixAddition,ofs, childNode, nodeMap, componentMap));
+				result.append(nodeMap.get(childProjId).generate(htmlIdSuffix + "_" + suffixAddition,ofs,typeHelper, childNode, nodeMap, componentMap));
 				result.append("</div>");
 				
 				referenceController.addReferenceItem(childNode.getNodeId(), removeBtnId, divId);
@@ -72,7 +78,10 @@ public class ChildRef implements GeneratorItem  {
 			suffixAddition +=1;
 		}
 		result.append("<hr>");
-		result.append("<button id=\""+addBtnId+"\">Remove Node</button>");
+		for(String pt : possibleTypes) {
+			result.append("<button id=\""+addBtnId+"_"+pt+"\">Add" +pt + " Node</button>");
+		}
+		
 		
 		result.append(referenceController);
 		//Append above as ReferenceController to result

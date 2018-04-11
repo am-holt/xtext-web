@@ -18,7 +18,11 @@
 						<span class="textbtn" (click)="RemoveReferenceClick(refNode.nodeId,ref)">X</span> {{refNode.name}}  : ({{refNode.nodeId}})
 					</li>
 				</ul>
-				<span class="textbtn" (click)="AddReferenceClick(ref)">Add {{ref.name}}</span>
+				<ul>
+					<li *ngFor="let type of ref.possibleTypes">
+						<span class="textbtn" (click)="AddReferenceClick(ref,type)">Add {{type}}</span>
+					</li>
+				</ul>
 			</li>
 		</ul>		
 	</div>

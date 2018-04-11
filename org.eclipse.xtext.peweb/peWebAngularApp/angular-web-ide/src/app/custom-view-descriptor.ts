@@ -32,6 +32,9 @@ export class ReferenceController{
 	//The id of the button used to add another reference
 	addButtonId: string;
 
+	//The types possible to create here
+	possibleTypes: string[];
+
 	//An array of the referenced nodes contained in this reference feature
 	references: ReferenceItemController[];
 

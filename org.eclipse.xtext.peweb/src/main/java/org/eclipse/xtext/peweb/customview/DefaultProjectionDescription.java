@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.peweb.NodeRef;
 import org.eclipse.xtext.peweb.OpenFileState;
 import org.eclipse.xtext.peweb.ResourceAbstractSyntaxTree;
+import org.eclipse.xtext.peweb.TypeHelper;
 
 public class DefaultProjectionDescription extends ProjectionDescription {
 
@@ -25,11 +26,13 @@ public class DefaultProjectionDescription extends ProjectionDescription {
 	}
 
 	public class Reference{ 
-		String name; 
+		String name;
+		List<String> possibleTypes;
 		List<NodeRef> nodes = new ArrayList<NodeRef>();
-		public Reference(String name, List<NodeRef> nodes){
+		public Reference(String name, List<NodeRef> nodes, List<String> possibleTypes){
 			this.name = name;
 			this.nodes = nodes;
+			this.possibleTypes = possibleTypes;
 		}
 	}
 	
@@ -40,7 +43,7 @@ public class DefaultProjectionDescription extends ProjectionDescription {
 	
 	
 	//TODO is it necessary to pass OFS here? Could extend RAST so children match to reference name easily!
-	public DefaultProjectionDescription(OpenFileState ofs, ResourceAbstractSyntaxTree node){
+	public DefaultProjectionDescription(TypeHelper typeHelper, OpenFileState ofs, ResourceAbstractSyntaxTree node){
 		this.nodeId = node.getNodeId();
 		this.type = "default";
 		EObject eObject = node.getEObject();
@@ -62,7 +65,8 @@ public class DefaultProjectionDescription extends ProjectionDescription {
 			for(EObject refObject : eObjects){
 				refNodes.add(new NodeRef(ofs.getEObjectId(refObject),refObject.eClass().getName()));
 			}
-			this.addReference(eRef.getName(), refNodes);
+			
+			this.addReference(eRef, refNodes, typeHelper.getSubtypes(eRef.getEType().getName()));
 		}
 	}
 	
@@ -70,7 +74,9 @@ public class DefaultProjectionDescription extends ProjectionDescription {
 		this.attributes.add(new Attribute(type,name, value));
 	}
 	
-	private void addReference(String referenceName, List<NodeRef> references){
-		this.references.add(new Reference(referenceName,references));
+	private void addReference(EReference ref, List<NodeRef> references, List<String> subTypes){
+		
+		Reference toAdd = new Reference(ref.getName(),references,subTypes);
+		this.references.add(toAdd);
 	}
 }

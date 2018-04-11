@@ -40,6 +40,7 @@ public class AddNodeReferenceService implements PEService {
 		String fileName = serviceContext.getParameter("file-name");
 		String projectName = serviceContext.getParameter("project-name");
 		String referenceName = serviceContext.getParameter("reference-name");
+		String childType = serviceContext.getParameter("child-type");
 		if(nodeId == null){
 			throw new InvalidRequestException("A \'add-reference' request must have a \'node-id\' parameter!");
 		}
@@ -59,10 +60,17 @@ public class AddNodeReferenceService implements PEService {
 				ofs = openResources.getFileState(fileLocation);
 				ResourceAbstractSyntaxTree node = ofs.getNode(nodeId);
 				EStructuralFeature refFeature = node.getEClass().getEStructuralFeature(referenceName);
-				EClass referenceEClass = node.getEClass().getFeatureType(refFeature).eClass();
-				EClassifier a = refFeature.getEType();
+								
+				EClassifier classifier;
+				//If the request specified a class to add then we add a node of that class, otherwise we default to the reference features type
+				if(childType == null) {
+					classifier = refFeature.getEType();
+				}else {
+					classifier = node.getEClass().getEPackage().getEClassifier(childType);
+				}
 				
-				EObject toAdd = EcoreUtil.create((EClass)a);
+				
+				EObject toAdd = EcoreUtil.create((EClass)classifier);
 				
 				//TODO Investigate if this cast safe, references always list?
 				EList<EObject> refs = ((EList<EObject>)node.getEObject().eGet(refFeature));

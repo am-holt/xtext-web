@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.eclipse.xtext.peweb.OpenFileState;
 import org.eclipse.xtext.peweb.ResourceAbstractSyntaxTree;
+import org.eclipse.xtext.peweb.TypeHelper;
 import org.eclipse.xtext.peweb.customview.generatoritems.*;
 
 import java.util.HashMap;
@@ -17,29 +18,29 @@ public class ViewRetriever {
 	
 	private int idCount = 0;
 	
-	public ProjectionDescription getView(OpenFileState ofs, ResourceAbstractSyntaxTree node) {
+	public ProjectionDescription getView(TypeHelper typeHelper, OpenFileState ofs, ResourceAbstractSyntaxTree node) {
 		
 		ProjectionIdentifier projId = new ProjectionIdentifier(node.getName(),"main");
-		return getView(ofs,node,projId);
+		return getView(typeHelper, ofs,node,projId);
 	}
 	
-	public ProjectionDescription getView(OpenFileState ofs, ResourceAbstractSyntaxTree node, ProjectionIdentifier projId) {
+	public ProjectionDescription getView(TypeHelper typeHelper, OpenFileState ofs, ResourceAbstractSyntaxTree node, ProjectionIdentifier projId) {
 		
 		ProjectionDescription result;
 
 		if(nodeMap == null ) {
 			System.out.println("WARN: ViewRetriever's nodeMap is not set!");
-			result = generateDefaultProjection(ofs, node);
+			result = generateDefaultProjection(typeHelper, ofs, node);
 		}else if(!nodeMap.containsKey(projId)) {
-			result = generateDefaultProjection(ofs, node);
+			result = generateDefaultProjection(typeHelper, ofs, node);
 		}else {
 			HtmlProjectionSpecification spec = nodeMap.get(projId);
-			result = spec.generate("", ofs, node, nodeMap, componentMap);
+			result = spec.generate("", ofs,typeHelper, node, nodeMap, componentMap);
 		}
 		return result;
 	}
 		
-	private DefaultProjectionDescription generateDefaultProjection(OpenFileState ofs, ResourceAbstractSyntaxTree node) {
-		return new DefaultProjectionDescription(ofs, node);
+	private DefaultProjectionDescription generateDefaultProjection(TypeHelper typeHelper, OpenFileState ofs, ResourceAbstractSyntaxTree node) {
+		return new DefaultProjectionDescription(typeHelper, ofs, node);
 	}
 }

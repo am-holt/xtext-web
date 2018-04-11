@@ -8,10 +8,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.peweb.OpenFileState;
 import org.eclipse.xtext.peweb.OpenResources;
 import org.eclipse.xtext.peweb.ResourceAbstractSyntaxTree;
+import org.eclipse.xtext.peweb.TypeHelper;
 import org.eclipse.xtext.peweb.customview.ProjectionDescription;
 import org.eclipse.xtext.peweb.customview.ViewRetriever;
 import org.eclipse.xtext.peweb.exceptions.ResourceLoadingException;
@@ -52,8 +54,9 @@ public class GetNodeService implements PEService {
 					
 			OpenFileState ofs = this.openResources.getFileState(fileLocation);
 			ResourceAbstractSyntaxTree node = ofs.getNode(nodeId);
+			TypeHelper th = this.openResources.getTypeHelper(node.getEClass().getEPackage());
 			
-			ProjectionDescription result = this.viewRetriever.getView(ofs, node);
+			ProjectionDescription result = this.viewRetriever.getView(th, ofs, node);
 						
 			return result;
 			

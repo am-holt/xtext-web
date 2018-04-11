@@ -15,6 +15,9 @@ export class Reference{
 	//The name of the referenceSet
 	name:string;
 
+	//The possible types this reference may contain
+	possibleTypes:string[];
+
 	//The list of nodes references
 	nodes:NodeReference[];
 }

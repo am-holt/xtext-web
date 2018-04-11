@@ -58,16 +58,21 @@ export class EditService {
       }).map(a => new UpdateNodeResponse(a));
   }
 
-  addReference(projId: string, fileDetails: FileDetails, nodeId: string, referenceName: string): Observable<AbstractSyntaxTree> {
-
-    return this.http.get<AddReferenceRawResponse>(this.serviceUrl,
-      {
-        params: new HttpParams()
+  addReference(projId: string, fileDetails: FileDetails, nodeId: string, referenceName: string, type?:string): Observable<AbstractSyntaxTree> {
+    var paramsparams = new HttpParams()
           .append('serviceType', 'add-reference')
           .append('file-name', fileDetails.name)
           .append('project-name', projId)
           .append('node-id', nodeId)
           .append('reference-name', referenceName)
+
+    if(type != null){
+      paramsparams = paramsparams.append('child-type',type);
+    }
+          
+    return this.http.get<AddReferenceRawResponse>(this.serviceUrl,
+      {
+        params: paramsparams
       }).map(a => new AddReferenceResponse(a).getAst()); 
   }
 

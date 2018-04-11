@@ -79,7 +79,10 @@ export class CustomNodeEditorComponent implements OnInit {
 
   initReferences(){
     for(var reference of this.nodeViewDescriptor.referenceControllers){
-      document.getElementById(reference.addButtonId).addEventListener("click",this.addReference(reference.nodeId,reference.referenceName));
+      for(var pt of reference.possibleTypes){
+        document.getElementById(reference.addButtonId+"_"+pt).addEventListener("click",this.addReference(reference.nodeId,reference.referenceName,pt));  
+      }
+      
       for(var referenceItem of reference.references){
         document.getElementById(referenceItem.removeButtonId).addEventListener("click",this.removeReference(reference.nodeId,reference.referenceName , referenceItem.nodeId,referenceItem.divId));
       }
@@ -100,7 +103,7 @@ export class CustomNodeEditorComponent implements OnInit {
     }
   }
 
-  addReference(nodeId:string, referenceName:string ) : EventListener {
+  addReference(nodeId:string, referenceName:string , childType:string) : EventListener {
     var editService = this.editService;
     var projId = this.projId;
     var fileDetails = this.fileDetails;
@@ -108,7 +111,7 @@ export class CustomNodeEditorComponent implements OnInit {
     var refresh = this.refresh;
 
     return function(){
-      editService.addReference(projId,fileDetails,nodeId,referenceName).subscribe(a=>{nodeAST.addChild(a,nodeId);refresh.emit(true);})
+      editService.addReference(projId,fileDetails,nodeId,referenceName,childType).subscribe(a=>{nodeAST.addChild(a,nodeId);refresh.emit(true);})
     }
   }
 

@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.eclipse.xtext.peweb.OpenFileState;
 import org.eclipse.xtext.peweb.ResourceAbstractSyntaxTree;
+import org.eclipse.xtext.peweb.TypeHelper;
 import org.eclipse.xtext.peweb.customview.CustomHtmlProjectionDescription;
 import org.eclipse.xtext.peweb.customview.HtmlComponentSpecification;
 import org.eclipse.xtext.peweb.customview.HtmlProjectionSpecification;
@@ -18,7 +19,7 @@ public class IdentifierTag implements GeneratorItem, JavascriptGeneratorItem  {
 	}
 
 	@Override
-	public CustomHtmlProjectionDescription generate(String htmlIdSuffix, Map<String, String> idMap, OpenFileState ofs,
+	public CustomHtmlProjectionDescription generate(String htmlIdSuffix, Map<String, String> idMap, OpenFileState ofs, TypeHelper typeHelper,
 			ResourceAbstractSyntaxTree node, Map<ProjectionIdentifier, HtmlProjectionSpecification> nodeMap,
 			Map<String, HtmlComponentSpecification> componentMap) {
 		

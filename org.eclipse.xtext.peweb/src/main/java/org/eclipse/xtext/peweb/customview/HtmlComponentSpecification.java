@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.eclipse.xtext.peweb.OpenFileState;
 import org.eclipse.xtext.peweb.ResourceAbstractSyntaxTree;
+import org.eclipse.xtext.peweb.TypeHelper;
 import org.eclipse.xtext.peweb.customview.generatoritems.GeneratorItem;
 
 public class HtmlComponentSpecification {
@@ -40,6 +41,7 @@ public class HtmlComponentSpecification {
 			String attributeName,
 			String htmlIdSuffix,
 			OpenFileState ofs,
+			TypeHelper typeHelper,
 			ResourceAbstractSyntaxTree node,
 			Map<ProjectionIdentifier,HtmlProjectionSpecification> nodeMap,
 			Map<String,HtmlComponentSpecification> componentMap) {
@@ -49,7 +51,7 @@ public class HtmlComponentSpecification {
 		int suffixAddition = 0;
 	
 		for(GeneratorItem genItem : this.htmlViewItems) {
-			result.append(genItem.generate(htmlIdSuffix + "_" + suffixAddition , idMap, ofs, node, nodeMap, componentMap));
+			result.append(genItem.generate(htmlIdSuffix + "_" + suffixAddition , idMap, ofs, typeHelper, node, nodeMap, componentMap));
 			suffixAddition +=1;
 		}
 		
