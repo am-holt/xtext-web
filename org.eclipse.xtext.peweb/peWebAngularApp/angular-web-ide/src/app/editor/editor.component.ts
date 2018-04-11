@@ -26,6 +26,7 @@ export class EditorComponent implements OnInit {
   openFile : File; //open file if is one
   nodeViewDescriptor : ViewDescriptor; //Data about current node, used to draw the nodeEdit
   valid : boolean; //Is the current file state valid?
+  openNodeAST: AbstractSyntaxTree; //the node currently being projected (null if no such node)
 
   constructor(
   	private route:ActivatedRoute,
@@ -65,6 +66,7 @@ export class EditorComponent implements OnInit {
   getNodeView(node:AbstractSyntaxTree){
     this.projectService.getNode(this.project.details.id,this.openFile.details,node).subscribe(a =>
       {
+        this.openNodeAST = node;
         this.nodeViewDescriptor = a;
       })
   }
@@ -79,5 +81,10 @@ export class EditorComponent implements OnInit {
 
   isCustomView(obj :ViewDescriptor){
     return (obj.type == CustomViewDescriptor.CUSTOM_TYPE);
+  }
+
+  //Updates the skeleton AST rooted at the currently projected node to updatedNode
+  updateASTFromOpenNode(updatedNode: AbstractSyntaxTree){
+    this.openNodeAST.update(updatedNode);
   }
 }

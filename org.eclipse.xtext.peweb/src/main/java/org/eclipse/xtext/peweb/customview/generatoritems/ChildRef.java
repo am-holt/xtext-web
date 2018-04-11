@@ -1,5 +1,7 @@
 package org.eclipse.xtext.peweb.customview.generatoritems;
 
+import static com.google.common.collect.Sets.intersection;
+
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -13,6 +15,7 @@ import org.eclipse.xtext.peweb.customview.CustomHtmlProjectionDescription;
 import org.eclipse.xtext.peweb.customview.HtmlComponentSpecification;
 import org.eclipse.xtext.peweb.customview.HtmlProjectionSpecification;
 import org.eclipse.xtext.peweb.customview.ProjectionIdentifier;
+import org.eclipse.xtext.peweb.customview.ReferenceController;
 import org.eclipse.xtext.peweb.customview.ViewRetriever;
 
 public class ChildRef implements GeneratorItem  {
@@ -41,18 +44,38 @@ public class ChildRef implements GeneratorItem  {
 		CustomHtmlProjectionDescription result = new CustomHtmlProjectionDescription(); 
 		
 		int suffixAddition = 0;
+		String addBtnId = "addChildBtn" + this.childName + htmlIdSuffix;
+		ReferenceController referenceController = new ReferenceController(node.getNodeId(),this.childName, addBtnId );
 		
 		for(EObject refObject : eObjects){
-			ResourceAbstractSyntaxTree childNode = ofs.getNode(ofs.getEObjectId(refObject));
+
 			
+			ResourceAbstractSyntaxTree childNode = ofs.getNode(ofs.getEObjectId(refObject));		
 			ProjectionIdentifier childProjId = new ProjectionIdentifier(childNode.getName(),this.projectionName); 
 			if(!nodeMap.containsKey(childProjId)) {
 				throw new RuntimeException("Node type: " + childProjId.nodeName + " does not have " +childProjId.projectionName+" projection");
 			}else {
+				
+				String divId = "childDiv" + childNode.getNodeId() + htmlIdSuffix + "_" + suffixAddition;
+				String removeBtnId = "removeChildBtn" + childNode.getNodeId() + htmlIdSuffix + "_" + suffixAddition;
+				
+				result.append("<div id=\"" + divId + "\">");
+				result.append("<hr>");
+				result.append("<button id=\""+removeBtnId+"\">Remove Node</button>");
 				result.append(nodeMap.get(childProjId).generate(htmlIdSuffix + "_" + suffixAddition,ofs, childNode, nodeMap, componentMap));
+				result.append("</div>");
+				
+				referenceController.addReferenceItem(childNode.getNodeId(), removeBtnId, divId);
+				
 			}
+			
 			suffixAddition +=1;
 		}
+		result.append("<hr>");
+		result.append("<button id=\""+addBtnId+"\">Remove Node</button>");
+		
+		result.append(referenceController);
+		//Append above as ReferenceController to result
 		
 		return result;
 		

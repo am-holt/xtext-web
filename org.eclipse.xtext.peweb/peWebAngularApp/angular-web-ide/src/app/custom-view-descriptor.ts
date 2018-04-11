@@ -22,6 +22,33 @@ export class AttributeController{
 	validator:string;
 }
 
+export class ReferenceController{
+	//The id of the node the reference belongs to
+	nodeId: string;
+
+	//The name of the reference feature this controller is for
+	referenceName:string;
+
+	//The id of the button used to add another reference
+	addButtonId: string;
+
+	//An array of the referenced nodes contained in this reference feature
+	references: ReferenceItemController[];
+
+}
+
+export class ReferenceItemController{
+	//The id of the node being referenced;
+	nodeId: string;
+
+	//The id of the button used to remove the button;
+	removeButtonId: string;
+
+	//The identifier of the div that the referenced node is contained within
+	divId: string;
+
+}
+
 export class CustomViewDescriptor  implements ViewDescriptor{
 
 	static readonly CUSTOM_TYPE = "custom"
@@ -35,12 +62,14 @@ export class CustomViewDescriptor  implements ViewDescriptor{
 	//Descibes how to get and set the attributes in the view
 	attributeControllers : AttributeController[];
 
-	//TODO: References
+	//Describes how to add and remove references in the view
+	referenceControllers : ReferenceController[];
 
-	constructor(htmlView:string, attributes:AttributeController[]){
+	constructor(htmlView:string, attributes:AttributeController[], references:ReferenceController[]){
 		this.type = "custom";
 		this.htmlView = htmlView;
 		this.attributeControllers = attributes;
+		this.referenceControllers = references;
 	}
 }
 

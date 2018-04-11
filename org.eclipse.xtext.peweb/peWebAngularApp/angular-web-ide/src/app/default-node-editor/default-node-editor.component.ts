@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component,EventEmitter, Input, Output, OnInit, ViewEncapsulation } from '@angular/core';
 import { DefaultViewDescriptor, Attribute, Reference, NodeReference } from '../default-view-descriptor';
 import { EditService } from'../services/edit.service';
 import {FileDetails } from '../file-details';
@@ -22,6 +22,8 @@ export class DefaultNodeEditorComponent implements OnInit {
   @Input() projId: string;
   @Input() fileDetails: FileDetails;
   @Input() nodeViewDescriptor: DefaultViewDescriptor;
+  @Input() nodeAST : AbstractSyntaxTree;
+
 
   test(o: any) {
     console.log("edit" + o);
@@ -39,14 +41,13 @@ export class DefaultNodeEditorComponent implements OnInit {
 
   AddReferenceClick(ref: Reference): void {
     console.log("Add " + ref.name);
-    this.editService.addReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, ref.name).subscribe(a=>null);
+    this.editService.addReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, ref.name).subscribe(a=>this.nodeAST.addChild(a));
   }
 
 	RemoveReferenceClick(nodeId: string, ref:Reference) {
     console.log("Remove " + nodeId);
     this.editService.removeReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, nodeId, ref.name)
-    .subscribe(a=>null);
-
+    .subscribe(a=>this.nodeAST.removeChild(nodeId));
 	}
 
 }

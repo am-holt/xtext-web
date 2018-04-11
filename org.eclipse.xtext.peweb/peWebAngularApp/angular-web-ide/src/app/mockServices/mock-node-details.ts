@@ -17,6 +17,6 @@ export class MOCKNODEDETAILS{
 	}
 
 	public static DeclarationMain : CustomViewDescriptor = 
-		new CustomViewDescriptor( MOCKNODEDETAILS.htmlView, [MOCKNODEDETAILS.attributeController]);
+		new CustomViewDescriptor( MOCKNODEDETAILS.htmlView, [MOCKNODEDETAILS.attributeController], []);
 		 
 }

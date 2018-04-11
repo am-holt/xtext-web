@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, AfterViewChecked, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges, AfterViewChecked, ViewEncapsulation } from '@angular/core';
 
 import { EditService } from'../services/edit.service';
 import { FileDetails } from '../file-details';
@@ -23,6 +23,7 @@ export class CustomNodeEditorComponent implements OnInit {
   private setVal = true;
 
 
+
   constructor(
     private editService: EditService
   ) { }
@@ -43,6 +44,7 @@ export class CustomNodeEditorComponent implements OnInit {
       //Initialise attribute caches and set them to initial values
       //console.log("setVal");
       this.initAttributes();
+      this.initReferences();
       this.setVal = false;  
     }
     
@@ -58,6 +60,7 @@ export class CustomNodeEditorComponent implements OnInit {
   @Input() projId: string;
   @Input() fileDetails: FileDetails;
   @Input() nodeViewDescriptor: CustomViewDescriptor;
+  @Input() nodeAST : AbstractSyntaxTree;
 
   onGetPoll(){
     var changedValues : AttributeId[] = [];
@@ -73,6 +76,15 @@ export class CustomNodeEditorComponent implements OnInit {
   	}
   }
 
+  initReferences(){
+    for(var reference of this.nodeViewDescriptor.referenceControllers){
+      document.getElementById(reference.addButtonId).addEventListener("click",this.addReference(reference.nodeId,reference.referenceName));
+      for(var referenceItem of reference.references){
+        document.getElementById(referenceItem.removeButtonId).addEventListener("click",this.removeReference(reference.nodeId,reference.referenceName , referenceItem.nodeId,referenceItem.divId));
+      }
+    }
+  }
+
   initAttributes() {
     for(var attribute of this.nodeViewDescriptor.attributeControllers){
 
@@ -84,6 +96,29 @@ export class CustomNodeEditorComponent implements OnInit {
 
       //Set the attribute value in the view
       eval("(X=>{"+attribute.setter+"})")(attribute.initialValue);
+    }
+  }
+
+  addReference(nodeId:string, referenceName:string ) : EventListener {
+    var editService = this.editService;
+    var projId = this.projId;
+    var fileDetails = this.fileDetails;
+    var nodeAST = this.nodeAST;
+
+    return function(){
+      editService.addReference(projId,fileDetails,nodeId,referenceName).subscribe(a=>nodeAST.addChild(a,nodeId));
+    }
+  }
+
+  removeReference(nodeId:string, referenceName:string, childId:string,  divId:string ): EventListener {
+    var editService = this.editService;
+    var projId = this.projId;
+    var fileDetails = this.fileDetails;
+    var nodeAST = this.nodeAST;
+
+    return function(){
+      editService.removeReference(projId,fileDetails,nodeId,childId,referenceName).subscribe(a=>nodeAST.removeChild(childId,nodeId));
+      document.getElementById(divId).remove();
     }
   }
 

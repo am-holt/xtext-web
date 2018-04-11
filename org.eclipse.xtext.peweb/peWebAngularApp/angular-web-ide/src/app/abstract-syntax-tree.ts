@@ -32,15 +32,52 @@ export class AbstractSyntaxTree{
 		}
 	}
 
-	addChild(child:AbstractSyntaxTree){
-		this.children.push(child);
-	}
-
-	removeChild(removeId:string){
-		for(var i = this.children.length; i>=0;i--){
-			if(this.children[i].nodeId === removeId ){
-				this.children.splice(i,1);
+	findChild(findId:string){
+		var ast = null;
+		if(this.nodeId == findId){
+			return this;
+		}else{
+			for(var child of this.children){
+				var childResult = child.findChild(findId);
+				if(childResult !=null){
+					return childResult;
+				}
 			}
 		}
+		return null;
+	}
+
+	addChild(child: AbstractSyntaxTree, addId?:string,){
+		var toModify = this;
+		if(addId != null){
+			toModify = this.findChild(addId);
+			if(toModify == null){
+				throw new Error("Couldn't find a node with Id " + addId);
+			}
+		}
+		toModify.children.push(child);
+	}
+
+	removeChild(removeId:string, rootId?:string){
+		var toModify = this;
+		if(rootId != null){
+			toModify = this.findChild(rootId);
+			if(toModify == null){
+				throw new Error("Couldn't find a node with Id " + rootId);
+			}
+		}
+		console.log("remove, len:" + this.children.length);
+		for(var i = this.children.length -1; i>=0;i--){
+			if(this.children[i].nodeId === removeId ){
+				this.children.splice(i,1);
+				console.log(this.children.length);
+			}
+		}
+	}
+
+	update(ast: AbstractSyntaxTree){
+		this.name = ast.name;
+		this.nodeId = ast.nodeId;
+		this.children = ast.children;
 	}
 }
