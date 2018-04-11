@@ -83,8 +83,8 @@ export class EditorComponent implements OnInit {
     return (obj.type == CustomViewDescriptor.CUSTOM_TYPE);
   }
 
-  //Updates the skeleton AST rooted at the currently projected node to updatedNode
-  updateASTFromOpenNode(updatedNode: AbstractSyntaxTree){
-    this.openNodeAST.update(updatedNode);
+  //Refreshes the node view for the currently projected node
+  refreshView(){
+    this.getNodeView(this.openNodeAST);
   }
 }

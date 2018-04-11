@@ -23,10 +23,10 @@
 	    <h3>Edit</h3>
 	    <div *ngIf="nodeViewDescriptor">
 	    	<div *ngIf="isCustomView(nodeViewDescriptor)">
-	     		<custom-node-editor [nodeViewDescriptor]="nodeViewDescriptor" [fileDetails]="openFile.details" [projId]="project.details.id" [nodeAST]="openNodeAST"></custom-node-editor>	
+	     		<custom-node-editor [nodeViewDescriptor]="nodeViewDescriptor" [fileDetails]="openFile.details" [projId]="project.details.id" [nodeAST]="openNodeAST" (refresh)="refreshView()"></custom-node-editor>	
 		  	</div>
 		  	<div *ngIf="isDefaultView(nodeViewDescriptor)">
-	     		<default-node-editor [nodeViewDescriptor]="nodeViewDescriptor" [fileDetails]="openFile.details" [projId]="project.details.id" [nodeAST]="openNodeAST"></default-node-editor>
+	     		<default-node-editor [nodeViewDescriptor]="nodeViewDescriptor" [fileDetails]="openFile.details" [projId]="project.details.id" [nodeAST]="openNodeAST" (refresh)="refreshView()"></default-node-editor>
 		  	</div>
 		  </div>
 	  </div>

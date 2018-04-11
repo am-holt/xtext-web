@@ -61,6 +61,7 @@ export class CustomNodeEditorComponent implements OnInit {
   @Input() fileDetails: FileDetails;
   @Input() nodeViewDescriptor: CustomViewDescriptor;
   @Input() nodeAST : AbstractSyntaxTree;
+  @Output() refresh = new EventEmitter<Boolean>();; 
 
   onGetPoll(){
     var changedValues : AttributeId[] = [];
@@ -104,9 +105,10 @@ export class CustomNodeEditorComponent implements OnInit {
     var projId = this.projId;
     var fileDetails = this.fileDetails;
     var nodeAST = this.nodeAST;
+    var refresh = this.refresh;
 
     return function(){
-      editService.addReference(projId,fileDetails,nodeId,referenceName).subscribe(a=>nodeAST.addChild(a,nodeId));
+      editService.addReference(projId,fileDetails,nodeId,referenceName).subscribe(a=>{nodeAST.addChild(a,nodeId);refresh.emit(true);})
     }
   }
 

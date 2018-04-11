@@ -23,6 +23,7 @@ export class DefaultNodeEditorComponent implements OnInit {
   @Input() fileDetails: FileDetails;
   @Input() nodeViewDescriptor: DefaultViewDescriptor;
   @Input() nodeAST : AbstractSyntaxTree;
+  @Output() refresh = new EventEmitter<Boolean>();
 
 
   test(o: any) {
@@ -41,13 +42,17 @@ export class DefaultNodeEditorComponent implements OnInit {
 
   AddReferenceClick(ref: Reference): void {
     console.log("Add " + ref.name);
-    this.editService.addReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, ref.name).subscribe(a=>this.nodeAST.addChild(a));
+    this.editService.addReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, ref.name).subscribe(a=>{this.nodeAST.addChild(a);this.refreshView()});
   }
 
 	RemoveReferenceClick(nodeId: string, ref:Reference) {
     console.log("Remove " + nodeId);
     this.editService.removeReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, nodeId, ref.name)
-    .subscribe(a=>this.nodeAST.removeChild(nodeId));
+    .subscribe(a=>{this.nodeAST.removeChild(nodeId);this.refreshView()});
 	}
+
+  refreshView(){
+    this.refresh.emit(true);
+  }
 
 }
