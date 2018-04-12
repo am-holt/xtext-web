@@ -1,5 +1,6 @@
 import { ViewDescriptor } from './view-descriptor';
 import { AttributeId} from './attribute-id';
+import { NodeReference } from './node-reference';
 
 export class AttributeController{
 	
@@ -30,10 +31,16 @@ export class ReferenceController{
 	referenceName:string;
 
 	//The id of the button used to add another reference
-	addButtonId: string;
+	addSelectorId: string;
 
 	//The types possible to create here
 	possibleTypes: string[];
+
+	//Whether or not this reference represents a crossReference
+	crossReference :boolean;
+
+	//The possible nodes this reference could cross reference
+	possibleCrossReferences : NodeReference[];
 
 	//An array of the referenced nodes contained in this reference feature
 	references: ReferenceItemController[];

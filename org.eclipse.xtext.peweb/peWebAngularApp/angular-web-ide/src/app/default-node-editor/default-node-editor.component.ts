@@ -1,5 +1,6 @@
 import { Component,EventEmitter, Input, Output, OnInit, ViewEncapsulation } from '@angular/core';
-import { DefaultViewDescriptor, Attribute, Reference, NodeReference } from '../default-view-descriptor';
+import { DefaultViewDescriptor, Attribute, Reference } from '../default-view-descriptor';
+import {NodeReference} from '../node-reference';
 import { EditService } from'../services/edit.service';
 import {FileDetails } from '../file-details';
 import {AbstractSyntaxTree } from '../abstract-syntax-tree';
@@ -40,9 +41,9 @@ export class DefaultNodeEditorComponent implements OnInit {
   }
 
 
-  AddReferenceClick(ref: Reference): void {
+  AddReferenceClick(ref: Reference,type?:string): void {
     console.log("Add " + ref.name);
-    this.editService.addReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, ref.name).subscribe(a=>{this.nodeAST.addChild(a);this.refreshView()});
+    this.editService.addReference(this.projId, this.fileDetails, this.nodeViewDescriptor.nodeId, ref.name, type).subscribe(a=>{this.nodeAST.addChild(a);this.refreshView()});
   }
 
 	RemoveReferenceClick(nodeId: string, ref:Reference) {
@@ -51,8 +52,16 @@ export class DefaultNodeEditorComponent implements OnInit {
     .subscribe(a=>{this.nodeAST.removeChild(nodeId);this.refreshView()});
 	}
 
+  AddCrossReference(ref:Reference, childId:string) : void{
+    console.log("add cross ref childID: " + childId);
+
+    this.editService.addCrossReference(this.projId,this.fileDetails,this.nodeViewDescriptor.nodeId,ref.name,childId).subscribe(a=>{this.refreshView()});
+  }
+
   refreshView(){
     this.refresh.emit(true);
   }
+
+
 
 }

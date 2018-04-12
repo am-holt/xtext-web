@@ -7,4 +7,12 @@ public class NodeRef{
 		this.name = name; 
 		this.nodeId = nodeId;
 	}
+	
+	public String getNodeId() {
+		return nodeId;
+	}
+	
+	public String getName() {
+		return name;
+	}
 };

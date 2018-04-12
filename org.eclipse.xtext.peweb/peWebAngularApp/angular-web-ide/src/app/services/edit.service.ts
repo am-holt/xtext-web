@@ -76,6 +76,22 @@ export class EditService {
       }).map(a => new AddReferenceResponse(a).getAst()); 
   }
 
+  addCrossReference(projId: string, fileDetails: FileDetails, nodeId: string, referenceName: string, childId:string): Observable<any> {
+    var paramsparams = new HttpParams()
+          .append('serviceType', 'add-reference')
+          .append('file-name', fileDetails.name)
+          .append('project-name', projId)
+          .append('node-id', nodeId)
+          .append('reference-name', referenceName)
+          .append('cross-reference', 'true')
+          .append('child-id',childId)
+          
+    return this.http.get<AddReferenceRawResponse>(this.serviceUrl,
+      {
+        params: paramsparams
+      }); 
+  }
+
   removeReference(projId: string, fileDetails: FileDetails, nodeId: string, toRemoveId: string, referenceName:string): Observable<boolean> {
 
     return this.http.get<RemoveReferenceRawResponse>(this.serviceUrl,

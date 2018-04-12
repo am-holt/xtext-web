@@ -6,6 +6,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -71,9 +72,15 @@ public class RemoveNodeReferenceService implements PEService {
 				//TODO Investigate if this cast safe, references always list?
 				EList<EObject> refs = ((EList<EObject>)node.getEObject().eGet(refFeature));
 				
-				refs.remove(toRemove.getEObject());
+				boolean result = true;
+				if(((EReference)refFeature).isContainment()) {
+					EcoreUtil.delete(toRemove.getEObject(), true);
+					result = ofs.removeChildNode(node, toRemove);
+				}else {
+					refs.remove(toRemove.getEObject());
+				}
 				
-				return new RemoveNodeReferenceResult(ofs.removeChildNode(node, toRemove));
+				return new RemoveNodeReferenceResult(result);
 		
 			} catch (ResourceLoadingException e) {
 				//TODO fix this

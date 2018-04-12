@@ -18,11 +18,21 @@
 						<span class="textbtn" (click)="RemoveReferenceClick(refNode.nodeId,ref)">X</span> {{refNode.name}}  : ({{refNode.nodeId}})
 					</li>
 				</ul>
-				<ul>
-					<li *ngFor="let type of ref.possibleTypes">
-						<span class="textbtn" (click)="AddReferenceClick(ref,type)">Add {{type}}</span>
-					</li>
-				</ul>
+				<div *ngIf="ref.crossReference == false">
+					<ul>
+						<li *ngFor="let type of ref.possibleTypes">
+							<span class="textbtn" (click)="AddReferenceClick(ref,type)">Add {{type}}</span>
+						</li>
+					</ul>
+				</div>
+				<div *ngIf="ref.crossReference == true" >
+					<select (change)="AddCrossReference(ref,$event.target.value)">
+						<option selected disabled>Add Cross Reference</option>
+						<option *ngFor="let node of ref.possibleCrossReferences" [value]="node.nodeId">
+  						{{node.name}}
+						</option>
+					</select>
+				</div>
 			</li>
 		</ul>		
 	</div>

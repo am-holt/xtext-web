@@ -41,6 +41,10 @@ public class ResourceAbstractSyntaxTree {
 	public String getNodeId() {
 		return nodeId;
 	}
+	
+	public NodeRef getNodeRef() {
+		return new NodeRef(nodeId,name);
+	}
 
 	public EObject getEObject() {
 		return eObject;

@@ -2,6 +2,7 @@ package org.eclipse.xtext.peweb.customview.generatoritems;
 
 import static com.google.common.collect.Sets.intersection;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ import org.eclipse.xtext.peweb.customview.HtmlProjectionSpecification;
 import org.eclipse.xtext.peweb.customview.ProjectionIdentifier;
 import org.eclipse.xtext.peweb.customview.ReferenceController;
 import org.eclipse.xtext.peweb.customview.ViewRetriever;
+import org.eclipse.xtext.peweb.customview.DefaultProjectionDescription.Reference;
 
 public class ChildRef implements GeneratorItem  {
 	
@@ -46,12 +48,26 @@ public class ChildRef implements GeneratorItem  {
 		CustomHtmlProjectionDescription result = new CustomHtmlProjectionDescription(); 
 		
 		int suffixAddition = 0;
-		String addBtnId = "addChildBtn" + this.childName + htmlIdSuffix;
+		String addRefSelectorId = "addRefSelector" + this.childName + htmlIdSuffix;
 		
 		EReference eRef = (EReference)node.getEClass().getEStructuralFeature(childName);
 			
 		List<String> possibleTypes = typeHelper.getSubtypes(eRef.getEType().getName());
-		ReferenceController referenceController = new ReferenceController(node.getNodeId(),this.childName, addBtnId, possibleTypes);
+		List<NodeRef> possibleCrossRefs = new ArrayList<NodeRef>();
+		ReferenceController referenceController;
+		
+		if(eRef.isContainment()) {
+			referenceController = new ReferenceController(node.getNodeId(),this.childName, addRefSelectorId, possibleTypes);
+		}else {
+			 		
+			for(String t : possibleTypes) {
+				for(String id: ofs.getNodesOfType(t)) {
+					possibleCrossRefs.add(ofs.getNode(id).getNodeRef());
+				}
+			}
+			referenceController = new ReferenceController(node.getNodeId(),this.childName, addRefSelectorId,true, possibleCrossRefs);
+		}
+		
 		
 		for(EObject refObject : eObjects){
 
@@ -78,9 +94,28 @@ public class ChildRef implements GeneratorItem  {
 			suffixAddition +=1;
 		}
 		result.append("<hr>");
-		for(String pt : possibleTypes) {
-			result.append("<button id=\""+addBtnId+"_"+pt+"\">Add" +pt + " Node</button>");
+		/*<select (change)="AddCrossReference(ref,$event.target.value)">
+		<option selected disabled>Add Cross Reference</option>
+		<option *ngFor="let node of ref.possibleCrossReferences" [value]="node.nodeId">
+			{{node.name}}
+		</option>
+	</select>
+*/		
+		result.append("<select id=\""+addRefSelectorId+"\">");
+		if(eRef.isContainment()) {
+			result.append("<option selected disabled>Add Child</option>");
+			for(String pt : possibleTypes) {
+				result.append("<option value=\""+pt+"\">Add " +pt + " Node</option>");
+			}
+		}else {
+			result.append("<option selected disabled>Add Reference</option>");
+			for(NodeRef nr : possibleCrossRefs) {
+				result.append("<option value=\""+nr.getNodeId() +"\">Add " +nr.getName() + " </option>");
+			}
 		}
+		result.append("</select>");
+		
+		
 		
 		
 		result.append(referenceController);

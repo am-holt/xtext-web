@@ -40,6 +40,8 @@ public class AddNodeReferenceService implements PEService {
 		String fileName = serviceContext.getParameter("file-name");
 		String projectName = serviceContext.getParameter("project-name");
 		String referenceName = serviceContext.getParameter("reference-name");
+		boolean crossReference = Boolean.valueOf(serviceContext.getParameter("cross-reference"));
+		String childId = serviceContext.getParameter("child-id");
 		String childType = serviceContext.getParameter("child-type");
 		if(nodeId == null){
 			throw new InvalidRequestException("A \'add-reference' request must have a \'node-id\' parameter!");
@@ -50,6 +52,9 @@ public class AddNodeReferenceService implements PEService {
 		if(projectName == null){
 			throw new InvalidRequestException("A \'add-reference' request must have a \'project-name\' parameter!");
 		}
+		if(childId == null && crossReference) {
+			throw new InvalidRequestException("A 'add-reference' request must have a 'child-id' parameter for a cross-reference!");
+		}
 		
 		
 		String fileLocation = ("user-files" + File.separator + projectName + File.separator + fileName);
@@ -58,24 +63,35 @@ public class AddNodeReferenceService implements PEService {
 			OpenFileState ofs;
 			try {
 				ofs = openResources.getFileState(fileLocation);
+				
 				ResourceAbstractSyntaxTree node = ofs.getNode(nodeId);
 				EStructuralFeature refFeature = node.getEClass().getEStructuralFeature(referenceName);
-								
-				EClassifier classifier;
-				//If the request specified a class to add then we add a node of that class, otherwise we default to the reference features type
-				if(childType == null) {
-					classifier = refFeature.getEType();
-				}else {
-					classifier = node.getEClass().getEPackage().getEClassifier(childType);
-				}
-				
-				
-				EObject toAdd = EcoreUtil.create((EClass)classifier);
-				
+
 				//TODO Investigate if this cast safe, references always list?
 				EList<EObject> refs = ((EList<EObject>)node.getEObject().eGet(refFeature));
+				
+				EObject toAdd;
+				ResourceAbstractSyntaxTree astToReturn = null;
+				
+				if(!crossReference) {
+					EClassifier classifier;
+					//If the request specified a class to add then we add a node of that class, otherwise we default to the reference features type
+					if(childType == null) {
+						classifier = refFeature.getEType();
+					}else {
+						classifier = node.getEClass().getEPackage().getEClassifier(childType);
+					}
+					
+					toAdd = EcoreUtil.create((EClass)classifier);
+					astToReturn = ofs.addChildToNode(node, toAdd);
+				}else { //Cross Reference
+					toAdd = ofs.getNode(childId).getEObject();
+					//Don't want to add cross references to the RAST
+				}
+				
 				refs.add(toAdd);
-				return new AddNodeReferenceResult(ofs.addChildToNode(node, toAdd));
+				
+				return new AddNodeReferenceResult(astToReturn);
 		
 			} catch (ResourceLoadingException e) {
 				//TODO fix this
@@ -83,7 +99,5 @@ public class AddNodeReferenceService implements PEService {
 			}
 		}
 		throw new InvalidRequestException("A \'add-reference' request must have a \'attribute-name\' or \'reference-name\' parameter!");
-
 	}
-
 }

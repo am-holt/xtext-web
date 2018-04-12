@@ -20,3 +20,9 @@ ul li ul li{
   padding-left:  1em;
   padding-right: 1em;
 }
+
+select{
+  cursor: pointer;
+  background: #1d1f2b;
+  border-radius: 3px;
+}

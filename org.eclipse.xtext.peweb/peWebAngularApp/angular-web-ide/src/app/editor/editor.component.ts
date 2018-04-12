@@ -67,6 +67,7 @@ export class EditorComponent implements OnInit {
     this.projectService.getNode(this.project.details.id,this.openFile.details,node).subscribe(a =>
       {
         this.openNodeAST = node;
+        this.nodeViewDescriptor = null;
         this.nodeViewDescriptor = a;
       })
   }

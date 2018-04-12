@@ -28,11 +28,22 @@ public class DefaultProjectionDescription extends ProjectionDescription {
 	public class Reference{ 
 		String name;
 		List<String> possibleTypes;
+		List<NodeRef> possibleCrossReferences;
+		boolean crossReference;
 		List<NodeRef> nodes = new ArrayList<NodeRef>();
 		public Reference(String name, List<NodeRef> nodes, List<String> possibleTypes){
 			this.name = name;
+			this.crossReference = false;
 			this.nodes = nodes;
 			this.possibleTypes = possibleTypes;
+		}
+		
+		//Have to include boolean otherwise type signatures are identical after generics removed at compile time. Must be better solution
+		public Reference(String name, List<NodeRef> nodes,boolean crossReference, List<NodeRef> possibleCrossRefs){
+			this.name = name;
+			this.crossReference = crossReference;
+			this.nodes = nodes;
+			this.possibleCrossReferences = possibleCrossRefs;
 		}
 	}
 	
@@ -66,7 +77,21 @@ public class DefaultProjectionDescription extends ProjectionDescription {
 				refNodes.add(new NodeRef(ofs.getEObjectId(refObject),refObject.eClass().getName()));
 			}
 			
-			this.addReference(eRef, refNodes, typeHelper.getSubtypes(eRef.getEType().getName()));
+			List<String> possibleSubtypes = typeHelper.getSubtypes(eRef.getEType().getName());
+			
+			if(eRef.isContainment()) {
+				this.addReference(eRef, refNodes, possibleSubtypes);
+			}else {
+				List<NodeRef> possibleCrossRefs = new ArrayList<NodeRef>();
+				
+				for(String t : possibleSubtypes) {
+					for(String id: ofs.getNodesOfType(t)) {
+						possibleCrossRefs.add(ofs.getNode(id).getNodeRef());
+					}
+				}
+				this.references.add(new Reference(eRef.getName(),refNodes,true, possibleCrossRefs));
+			}
+			
 		}
 	}
 	

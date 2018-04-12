@@ -64,6 +64,7 @@ export class CustomNodeEditorComponent implements OnInit {
   @Output() refresh = new EventEmitter<Boolean>();; 
 
   onGetPoll(){
+    console.log("OnGetPoll")
     var changedValues : AttributeId[] = [];
 
   	for( var attribute of this.nodeViewDescriptor.attributeControllers){
@@ -79,9 +80,8 @@ export class CustomNodeEditorComponent implements OnInit {
 
   initReferences(){
     for(var reference of this.nodeViewDescriptor.referenceControllers){
-      for(var pt of reference.possibleTypes){
-        document.getElementById(reference.addButtonId+"_"+pt).addEventListener("click",this.addReference(reference.nodeId,reference.referenceName,pt));  
-      }
+
+      document.getElementById(reference.addSelectorId).addEventListener("change",this.addReference(reference.nodeId,reference.referenceName,reference.crossReference))  
       
       for(var referenceItem of reference.references){
         document.getElementById(referenceItem.removeButtonId).addEventListener("click",this.removeReference(reference.nodeId,reference.referenceName , referenceItem.nodeId,referenceItem.divId));
@@ -103,15 +103,21 @@ export class CustomNodeEditorComponent implements OnInit {
     }
   }
 
-  addReference(nodeId:string, referenceName:string , childType:string) : EventListener {
+  addReference(nodeId:string, referenceName:string, crossRef:boolean ) : EventListener {
     var editService = this.editService;
     var projId = this.projId;
     var fileDetails = this.fileDetails;
     var nodeAST = this.nodeAST;
     var refresh = this.refresh;
-
-    return function(){
-      editService.addReference(projId,fileDetails,nodeId,referenceName,childType).subscribe(a=>{nodeAST.addChild(a,nodeId);refresh.emit(true);})
+    
+    if(crossRef){
+      return function(event){
+      editService.addCrossReference(projId,fileDetails,nodeId,referenceName,(event.target as HTMLSelectElement).value).subscribe(a=>{refresh.emit(true);})
+    }
+    }else{
+      return function(event){
+      editService.addReference(projId,fileDetails,nodeId,referenceName,(event.target as HTMLSelectElement).value).subscribe(a=>{nodeAST.addChild(a,nodeId);refresh.emit(true);})
+    }
     }
   }
 
@@ -120,10 +126,11 @@ export class CustomNodeEditorComponent implements OnInit {
     var projId = this.projId;
     var fileDetails = this.fileDetails;
     var nodeAST = this.nodeAST;
+    var refresh = this.refresh;
 
     return function(){
       editService.removeReference(projId,fileDetails,nodeId,childId,referenceName).subscribe(a=>nodeAST.removeChild(childId,nodeId));
-      document.getElementById(divId).remove();
+      refresh.emit(true);
     }
   }
 

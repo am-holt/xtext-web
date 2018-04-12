@@ -1,7 +1,9 @@
 package org.eclipse.xtext.peweb;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -21,6 +23,7 @@ public class OpenFileState {
 	private ResourceAbstractSyntaxTree ast;
 	private Map<String, ResourceAbstractSyntaxTree> nodeMap = new HashMap<String,ResourceAbstractSyntaxTree>();
 	private Map<EObject, String> eObjectMap = new HashMap<EObject, String>();
+	private Map<String, List<String>> typeToNodeMap = new HashMap<String,List<String>>();
 	
 	//lastUsedNodeID so can assign fresh to new nodes. 
 	//At some point may need to worry about reusing these, in which case use list of freed ones
@@ -62,7 +65,7 @@ public class OpenFileState {
 		String freshId = getFreshNodeId();
 		String name = getNodeName(eObject);
 		ResourceAbstractSyntaxTree node = new ResourceAbstractSyntaxTree(eObject,name,freshId);
-		this.linkEObjectToId(node,eObject,freshId);
+		this.trackNode(node,eObject,freshId);
 
 		for(EObject o : eObject.eContents()){
 			node.addChild(createASTFromEObject(o));
@@ -70,8 +73,8 @@ public class OpenFileState {
 		return node;
 	}
 	
-	//Add the node to the two maps
-	private void linkEObjectToId(ResourceAbstractSyntaxTree tree, EObject eObject, String nodeId){
+	//Add the node to the relevant maps
+	private void trackNode(ResourceAbstractSyntaxTree tree, EObject eObject, String nodeId){
 
 		if(this.nodeMap.containsKey(nodeId)){
 			throw new IllegalArgumentException("nodeID should be an id which doesn't occur in nodeMap already!");
@@ -81,6 +84,14 @@ public class OpenFileState {
 		
 		this.nodeMap.put(nodeId, tree);
 		this.eObjectMap.put(eObject, nodeId);
+		
+		
+		String typeOfNode = eObject.eClass().getName();
+		if(!this.typeToNodeMap.containsKey(typeOfNode)) {
+			this.typeToNodeMap.put(typeOfNode, new ArrayList<String>());
+		}
+		this.typeToNodeMap.get(typeOfNode).add(nodeId);
+		
 	}
 	
 	//TODO better name for each node?
@@ -106,6 +117,10 @@ public class OpenFileState {
 		return this.eObjectMap.get(eObject);
 	}
 	
+	public List<String> getNodesOfType(String type){
+		return this.typeToNodeMap.getOrDefault(type, new ArrayList<String>());
+	}
+	
 	public void saveFile() throws IOException{
 		System.out.println("Saving...");
 		resource.save(null);
@@ -119,6 +134,7 @@ public class OpenFileState {
 	}
 
 	public boolean removeChildNode(ResourceAbstractSyntaxTree node, ResourceAbstractSyntaxTree toRemove) {
+		this.typeToNodeMap.getOrDefault(toRemove.getEClass().getName(), new ArrayList<String>()).remove(toRemove.getNodeId());
 		return node.removeChild(toRemove);
 	}	
 }

@@ -1,4 +1,5 @@
 import { ViewDescriptor } from './view-descriptor';
+import {NodeReference} from './node-reference';
 
 export class Attribute{
 	//The name of the attribute this describes
@@ -18,16 +19,14 @@ export class Reference{
 	//The possible types this reference may contain
 	possibleTypes:string[];
 
+	//Whether or not this reference represents a crossReference
+	crossReference :boolean;
+
+	//The possible nodes this reference could cross reference
+	possibleCrossReferences : NodeReference[];
+
 	//The list of nodes references
 	nodes:NodeReference[];
-}
-
-export class NodeReference{
-	//The name of the referenced node, if given one by the language server
-	name:string;
-
-	//The nodeId of the referenced node
-	nodeId: string;
 }
 
 
