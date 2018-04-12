@@ -1,3 +1,17 @@
 input{
 	color: black;
 }
+
+select{
+  cursor: pointer;
+  background: #1d1f2b;
+  border-radius: 3px;
+}
+
+button{
+  cursor: pointer;
+  background: #1d1f2b;
+  border-radius: 3px;
+  padding-left:  1em;
+  padding-right: 1em;
+}
