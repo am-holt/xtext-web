@@ -51,7 +51,7 @@ export class ReferenceItemController{
 	//The id of the node being referenced;
 	nodeId: string;
 
-	//The id of the button used to remove the button;
+	//The id of the button used to remove the item;
 	removeButtonId: string;
 
 	//The identifier of the div that the referenced node is contained within
