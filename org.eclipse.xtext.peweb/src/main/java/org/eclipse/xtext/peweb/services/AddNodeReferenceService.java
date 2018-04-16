@@ -66,12 +66,16 @@ public class AddNodeReferenceService implements PEService {
 				
 				ResourceAbstractSyntaxTree node = ofs.getNode(nodeId);
 				EStructuralFeature refFeature = node.getEClass().getEStructuralFeature(referenceName);
-
-				//TODO Investigate if this cast safe, references always list?
-				EList<EObject> refs = ((EList<EObject>)node.getEObject().eGet(refFeature));
 				
 				EObject toAdd;
 				ResourceAbstractSyntaxTree astToReturn = null;
+				
+				Object referencedObject = node.getEObject().eGet(refFeature);
+				
+				// If the reference links to a singular EObject then we cannot add another
+				if(referencedObject instanceof EObject) {
+					throw new RuntimeException("Can't add a child here, the upper bound is one");
+				}
 				
 				if(!crossReference) {
 					EClassifier classifier;
@@ -89,8 +93,14 @@ public class AddNodeReferenceService implements PEService {
 					//Don't want to add cross references to the RAST
 				}
 				
-				refs.add(toAdd);
 				
+				if(referencedObject instanceof EList<?>) {				
+					EList<EObject> refs = ((EList<EObject>)referencedObject);
+					refs.add(toAdd);
+				}else {
+					node.getEObject().eSet(refFeature, toAdd);
+				}
+
 				return new AddNodeReferenceResult(astToReturn);
 		
 			} catch (ResourceLoadingException e) {

@@ -64,20 +64,20 @@ public class RemoveNodeReferenceService implements PEService {
 				ResourceAbstractSyntaxTree toRemove = ofs.getNode(referenceId);
 
 				EStructuralFeature refFeature = node.getEClass().getEStructuralFeature(referenceName);
-				EClass referenceEClass = node.getEClass().getFeatureType(refFeature).eClass();
-				EClassifier a = refFeature.getEType();
-				
-				EObject toAdd = EcoreUtil.create((EClass)a);
-				
-				//TODO Investigate if this cast safe, references always list?
-				EList<EObject> refs = ((EList<EObject>)node.getEObject().eGet(refFeature));
 				
 				boolean result = true;
 				if(((EReference)refFeature).isContainment()) {
 					EcoreUtil.delete(toRemove.getEObject(), true);
 					result = ofs.removeChildNode(node, toRemove);
 				}else {
-					refs.remove(toRemove.getEObject());
+					Object referencedObject = node.getEObject().eGet(refFeature);
+					//If the crossreference is contained in an EList we remove it
+					if(referencedObject instanceof EList<?>) {				
+						EList<EObject> refs = ((EList<EObject>)referencedObject);
+						refs.remove(toRemove.getEObject());
+					}else { //If the reference is a singleton we unset it so it is no longer pointing to toRemove
+						node.getEObject().eUnset(refFeature);
+					}										
 				}
 				
 				return new RemoveNodeReferenceResult(result);

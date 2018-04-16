@@ -80,11 +80,17 @@ export class CustomNodeEditorComponent implements OnInit {
 
   initReferences(){
     for(var reference of this.nodeViewDescriptor.referenceControllers){
-
-      document.getElementById(reference.addSelectorId).addEventListener("change",this.addReference(reference.nodeId,reference.referenceName,reference.crossReference))  
+      var addSelector = document.getElementById(reference.addSelectorId);
+      if(addSelector != null){
+        addSelector.addEventListener("change",this.addReference(reference.nodeId,reference.referenceName,reference.crossReference));    
+      }
+      
       
       for(var referenceItem of reference.references){
-        document.getElementById(referenceItem.removeButtonId).addEventListener("click",this.removeReference(reference.nodeId,reference.referenceName , referenceItem.nodeId,referenceItem.divId));
+        var referenceRemoveBtn = document.getElementById(referenceItem.removeButtonId);
+        if(referenceRemoveBtn != null){
+          referenceRemoveBtn.addEventListener("click",this.removeReference(reference.nodeId,reference.referenceName , referenceItem.nodeId,referenceItem.divId));  
+        }
       }
     }
   }

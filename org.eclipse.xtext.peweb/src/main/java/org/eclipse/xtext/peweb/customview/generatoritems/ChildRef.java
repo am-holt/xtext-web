@@ -1,6 +1,5 @@
 package org.eclipse.xtext.peweb.customview.generatoritems;
 
-import static com.google.common.collect.Sets.intersection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +38,7 @@ public class ChildRef implements GeneratorItem  {
 		
 		EObject eObject = node.getEObject();
 		
-		// TODO Correct cast, think probably not?
 		EStructuralFeature structFeature = node.getEClass().getEStructuralFeature(childName);
-		
-		//TODO Only works if list!
-		EList<EObject> eObjects = (EList<EObject>)eObject.eGet(structFeature);
 		
 		CustomHtmlProjectionDescription result = new CustomHtmlProjectionDescription(); 
 		
@@ -69,63 +64,95 @@ public class ChildRef implements GeneratorItem  {
 		}
 		
 		
-		for(EObject refObject : eObjects){
-
-			
-			ResourceAbstractSyntaxTree childNode = ofs.getNode(ofs.getEObjectId(refObject));		
-			ProjectionIdentifier childProjId = new ProjectionIdentifier(childNode.getName(),this.projectionName); 
-			if(!nodeMap.containsKey(childProjId)) {
-				throw new RuntimeException("Node type: " + childProjId.nodeName + " does not have " +childProjId.projectionName+" projection");
-			}else {
+		Object referencedObject = eObject.eGet(structFeature);
+		String suff = htmlIdSuffix + "_" + suffixAddition;
+		
+		if(referencedObject instanceof EList<?>) { //If reference is a list of children
+			EList<EObject> refs = ((EList<EObject>)referencedObject);
+			for(EObject refObject : refs){
+				suff = htmlIdSuffix + "_" + suffixAddition;
 				
-				String divId = "childDiv" + childNode.getNodeId() + htmlIdSuffix + "_" + suffixAddition;
-				String removeBtnId = "removeChildBtn" + childNode.getNodeId() + htmlIdSuffix + "_" + suffixAddition;
+				appendChild(refObject, result,referenceController, suff, ofs, typeHelper,
+						nodeMap, componentMap);
 				
-				result.append("<div id=\"" + divId + "\">");
-				result.append("<hr>");
-				result.append("<button id=\""+removeBtnId+"\">Remove Node</button>");
-				result.append(nodeMap.get(childProjId).generate(htmlIdSuffix + "_" + suffixAddition,ofs,typeHelper, childNode, nodeMap, componentMap));
-				result.append("</div>");
-				
-				referenceController.addReferenceItem(childNode.getNodeId(), removeBtnId, divId);
-				
+				suffixAddition +=1;
 			}
 			
-			suffixAddition +=1;
-		}
-		result.append("<hr>");
-		/*<select (change)="AddCrossReference(ref,$event.target.value)">
-		<option selected disabled>Add Cross Reference</option>
-		<option *ngFor="let node of ref.possibleCrossReferences" [value]="node.nodeId">
-			{{node.name}}
-		</option>
-	</select>
-*/		
-		result.append("<select id=\""+addRefSelectorId+"\">");
-		if(eRef.isContainment()) {
-			result.append("<option selected disabled>Add Child</option>");
-			for(String pt : possibleTypes) {
-				result.append("<option value=\""+pt+"\">Add " +pt + " Node</option>");
+			result.append("<hr>");
+			
+			if(eRef.isContainment()) {
+				appendContainmentAddSelector(possibleTypes,result,referenceController);
+			}else{
+				appendCrossReferenceAddSelector(possibleCrossRefs,result,referenceController);
 			}
+			
 		}else {
-			result.append("<option selected disabled>Add Reference</option>");
-			for(NodeRef nr : possibleCrossRefs) {
-				result.append("<option value=\""+nr.getNodeId() +"\">Add " +nr.getName() + " </option>");
+			if(referencedObject != null) { //If the reference is a singleton object
+				EObject refObject = (EObject) referencedObject;
+				appendChild(refObject, result,referenceController, suff, ofs, typeHelper,
+					nodeMap, componentMap);
+				
+				result.append("<hr>");
+				
+			}else {
+				if(eRef.isContainment()) {
+					appendContainmentAddSelector(possibleTypes,result,referenceController);
+				}else{
+					appendCrossReferenceAddSelector(possibleCrossRefs,result,referenceController);
+				}
 			}
-		}
-		result.append("</select>");
+		}										
 		
-		
-		
-		
-		result.append(referenceController);
-		//Append above as ReferenceController to result
-		
+		result.append(referenceController);		
 		return result;
 		
 	}
 	
-
+	private void appendChild(EObject childObject, CustomHtmlProjectionDescription result,ReferenceController referenceController, String htmlIdSuffix, OpenFileState ofs, TypeHelper typeHelper,
+			Map<ProjectionIdentifier, HtmlProjectionSpecification> nodeMap,
+			Map<String, HtmlComponentSpecification> componentMap) {
+		
+		ResourceAbstractSyntaxTree childNode = ofs.getNode(ofs.getEObjectId(childObject));		
+		ProjectionIdentifier childProjId = new ProjectionIdentifier(childNode.getName(),this.projectionName); 
+		if(!nodeMap.containsKey(childProjId)) {
+			throw new RuntimeException("Node type: " + childProjId.nodeName + " does not have " +childProjId.projectionName+" projection");
+		}else {
+			
+			String divId = "childDiv" + childNode.getNodeId() + htmlIdSuffix ;
+			String removeBtnId = "removeChildBtn" + childNode.getNodeId() + htmlIdSuffix ;
+			
+			result.append("<div id=\"" + divId + "\">");
+			result.append("<hr>");
+			result.append("<button id=\""+removeBtnId+"\">Remove Node</button>");
+			result.append(nodeMap.get(childProjId).generate(htmlIdSuffix ,ofs,typeHelper, childNode, nodeMap, componentMap));
+			result.append("</div>");
+			
+			referenceController.addReferenceItem(childNode.getNodeId(), removeBtnId, divId);
+			
+		}
+	}
+	
+	private void appendContainmentAddSelector(List<String> possibleTypes, CustomHtmlProjectionDescription result,ReferenceController referenceController) {
+			
+		result.append("<select id=\""+referenceController.addSelectorId+"\">");
+		result.append("<option selected disabled>Add Child</option>");
+		for(String pt : possibleTypes) {
+			result.append("<option value=\""+pt+"\">Add " +pt + " Node</option>");
+		}
+		result.append("</select>");
+	}
+	
+	private void appendCrossReferenceAddSelector(List<NodeRef> possibleCrossRefs, CustomHtmlProjectionDescription result,ReferenceController referenceController) {
+		
+		result.append("<select id=\""+referenceController.addSelectorId+"\">");
+		result.append("<option selected disabled>Add Reference</option>");
+		for(NodeRef nr : possibleCrossRefs) {
+			result.append("<option value=\""+nr.getNodeId() +"\">Add " +nr.getName() + " </option>");
+		}
+		
+		result.append("</select>");
+	}
+	
 }
 
 
