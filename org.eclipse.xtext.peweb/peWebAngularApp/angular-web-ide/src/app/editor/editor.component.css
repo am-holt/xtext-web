@@ -69,6 +69,7 @@
   height: 100%;
   position: relative;
   float: right;
+  overflow: auto;
 }
 
 .rightpane p{
