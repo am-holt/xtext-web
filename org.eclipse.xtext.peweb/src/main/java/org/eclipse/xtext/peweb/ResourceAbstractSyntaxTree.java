@@ -18,10 +18,10 @@ public class ResourceAbstractSyntaxTree {
 	private EObject eObject;
 	private List<ResourceAbstractSyntaxTree> children;
 
-	public ResourceAbstractSyntaxTree(EObject eObject, String name, String nodeId){
+	public ResourceAbstractSyntaxTree(EObject eObject, String nodeId){
 		this.eObject = eObject;
 		this.children = new ArrayList<ResourceAbstractSyntaxTree>();
-		this.name = name;
+		this.name = eObject.eClass().getName();
 		this.nodeId = nodeId; 
 	}
 	
@@ -32,10 +32,19 @@ public class ResourceAbstractSyntaxTree {
 	public List<ResourceAbstractSyntaxTree> getChildren() {
 		return children;
 	}
-
 	
+	//TODO better name for each node?
+	//TODO Maybe allow for nodes to be renamed??
 	public String getName() {
-		return name;
+		// CAN only do if has name attribute
+		
+		if( eObject.eClass().getEStructuralFeature("name") != null) {
+			String nameAttr = (String)eObject.eGet(eObject.eClass().getEStructuralFeature("name"));
+			if(nameAttr !=null) {
+				return eObject.eClass().getName() +" : " + nameAttr;
+			}
+		}
+		return eObject.eClass().getName();
 	}
 	
 	public String getNodeId() {
@@ -43,7 +52,7 @@ public class ResourceAbstractSyntaxTree {
 	}
 	
 	public NodeRef getNodeRef() {
-		return new NodeRef(nodeId,name);
+		return new NodeRef(nodeId,this.getName());
 	}
 
 	public EObject getEObject() {

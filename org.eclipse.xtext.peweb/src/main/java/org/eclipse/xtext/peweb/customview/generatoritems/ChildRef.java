@@ -113,7 +113,7 @@ public class ChildRef implements GeneratorItem  {
 			Map<String, HtmlComponentSpecification> componentMap) {
 		
 		ResourceAbstractSyntaxTree childNode = ofs.getNode(ofs.getEObjectId(childObject));		
-		ProjectionIdentifier childProjId = new ProjectionIdentifier(childNode.getName(),this.projectionName); 
+		ProjectionIdentifier childProjId = new ProjectionIdentifier(childNode.getEClass().getName() ,this.projectionName); 
 		if(!nodeMap.containsKey(childProjId)) {
 			throw new RuntimeException("Node type: " + childProjId.nodeName + " does not have " +childProjId.projectionName+" projection");
 		}else {

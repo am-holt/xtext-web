@@ -20,7 +20,7 @@ public class ViewRetriever {
 	
 	public ProjectionDescription getView(TypeHelper typeHelper, OpenFileState ofs, ResourceAbstractSyntaxTree node) {
 		
-		ProjectionIdentifier projId = new ProjectionIdentifier(node.getName(),"main");
+		ProjectionIdentifier projId = new ProjectionIdentifier(node.getEClass().getName(),"main");
 		return getView(typeHelper, ofs,node,projId);
 	}
 	

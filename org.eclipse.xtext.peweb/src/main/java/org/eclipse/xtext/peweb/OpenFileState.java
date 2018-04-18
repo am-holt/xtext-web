@@ -63,8 +63,7 @@ public class OpenFileState {
 	private ResourceAbstractSyntaxTree createASTFromEObject(EObject eObject) {
 		
 		String freshId = getFreshNodeId();
-		String name = getNodeName(eObject);
-		ResourceAbstractSyntaxTree node = new ResourceAbstractSyntaxTree(eObject,name,freshId);
+		ResourceAbstractSyntaxTree node = new ResourceAbstractSyntaxTree(eObject,freshId);
 		this.trackNode(node,eObject,freshId);
 
 		for(EObject o : eObject.eContents()){
@@ -92,12 +91,6 @@ public class OpenFileState {
 		}
 		this.typeToNodeMap.get(typeOfNode).add(nodeId);
 		
-	}
-	
-	//TODO better name for each node?
-	//TODO Maybe allow for nodes to be renamed??
-	private String getNodeName(EObject e) {
-		return e.eClass().getName();
 	}
 
 	private String getFreshNodeId() {
