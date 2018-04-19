@@ -32,7 +32,8 @@ export class EditService {
   private readonly serviceUrl : string = `/pe-service`;
 
   validateAttribute(projId:string, fileDetails:FileDetails, nodeId:string, attributeName:string, newValue:any) : Observable<ValidNodeResponse>{
-  	return this.http.get<ValidNodeRawResponse>(this.serviceUrl,
+  	this.log("Validate Attribute: " + attributeName);
+    return this.http.get<ValidNodeRawResponse>(this.serviceUrl,
       {params: new HttpParams()
       	.append('serviceType','validate-node')
       	.append('file-name', fileDetails.name)
@@ -45,6 +46,7 @@ export class EditService {
 
   updateAttribute(projId: string, fileDetails: FileDetails, nodeId: string, attributeName: string, newValue: any): Observable<UpdateNodeResponse> {
     //TODO change to post
+    this.log("Update attribiute: "  + attributeName + " to " +newValue);
     console.log("updating attribute")
     return this.http.get<UpdateNodeRawResponse>(this.serviceUrl,
       {
@@ -59,6 +61,7 @@ export class EditService {
   }
 
   addReference(projId: string, fileDetails: FileDetails, nodeId: string, referenceName: string, type?:string): Observable<AbstractSyntaxTree> {
+    this.log("Add ref: " + type)
     var paramsparams = new HttpParams()
           .append('serviceType', 'add-reference')
           .append('file-name', fileDetails.name)
@@ -77,6 +80,7 @@ export class EditService {
   }
 
   addCrossReference(projId: string, fileDetails: FileDetails, nodeId: string, referenceName: string, childId:string): Observable<any> {
+    this.log("Add crossRef")
     var paramsparams = new HttpParams()
           .append('serviceType', 'add-reference')
           .append('file-name', fileDetails.name)
@@ -93,7 +97,7 @@ export class EditService {
   }
 
   removeReference(projId: string, fileDetails: FileDetails, nodeId: string, toRemoveId: string, referenceName:string): Observable<boolean> {
-
+    this.log("Remove ref: "  + toRemoveId);
     return this.http.get<RemoveReferenceRawResponse>(this.serviceUrl,
       {
         params: new HttpParams()
@@ -105,6 +109,13 @@ export class EditService {
           .append('reference-name', referenceName)
       }).map(a => new RemoveReferenceResponse(a).getSuccess()); 
   }
+
+
+  private log(message:string):void{
+    this.messageService.addMessage("Edit Service: " + message);
+  }
+
+
 
 /*
   validateNode(projId:string, fileDetails:FileDetails, nodeId:string) : Observable<ValidNodeResponse>{

@@ -43,6 +43,7 @@ export class ProjectsService {
   }
 
   addNewProject(name: string) : Observable<string>{
+    this.log("Add new project: " + name);
   	var b : Observable<string> = this.http.get(this.serviceUrl,
       {params: new HttpParams().append('serviceType', 'add-project').append('name',name)}).map(a=>name);
     return b;
@@ -58,7 +59,7 @@ export class ProjectsService {
   }
 
   getFile(projId:string, fileDetails:FileDetails): Observable<File>{
-    
+    this.log("Get file: " + fileDetails.name);
     var a = this.http.get(this.serviceUrl,
       {params: new HttpParams().append('serviceType','get-file').append('file-name', fileDetails.name).append('project-name',projId)})
       .map(a=> new File(new AbstractSyntaxTree(a["ast"]), fileDetails));
@@ -69,6 +70,7 @@ export class ProjectsService {
   //TODO refactor out into separate service? 
   //TODO Modify service so it returns something other than default node response
   getNode(projId: string, fileDetails:FileDetails, node:AbstractSyntaxTree): Observable<ViewDescriptor>{
+    this.log("Get Node: " + node.nodeId);
     return this.http.get<ViewDescriptor>(this.serviceUrl,
       {params: new HttpParams().append('serviceType','get-node')
       .append('file-name', fileDetails.name)
