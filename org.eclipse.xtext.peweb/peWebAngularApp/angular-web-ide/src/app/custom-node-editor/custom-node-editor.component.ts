@@ -135,8 +135,7 @@ export class CustomNodeEditorComponent implements OnInit {
     var refresh = this.refresh;
 
     return function(){
-      editService.removeReference(projId,fileDetails,nodeId,childId,referenceName).subscribe(a=>nodeAST.removeChild(childId,nodeId));
-      refresh.emit(true);
+      editService.removeReference(projId,fileDetails,nodeId,childId,referenceName).subscribe(a=>{nodeAST.removeChild(childId,nodeId);refresh.emit(true);}); 
     }
   }
 

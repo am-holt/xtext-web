@@ -69,6 +69,7 @@ public class ChildRef implements GeneratorItem  {
 		
 		if(referencedObject instanceof EList<?>) { //If reference is a list of children
 			EList<EObject> refs = ((EList<EObject>)referencedObject);
+			result.append("<div style=\"margin-left:2em;\">");
 			for(EObject refObject : refs){
 				suff = htmlIdSuffix + "_" + suffixAddition;
 				
@@ -78,13 +79,14 @@ public class ChildRef implements GeneratorItem  {
 				suffixAddition +=1;
 			}
 			
-			result.append("<hr>");
+			result.append("<hr align=\"left\" width=\"10%\">");
 			
 			if(eRef.isContainment()) {
 				appendContainmentAddSelector(possibleTypes,result,referenceController);
 			}else{
 				appendCrossReferenceAddSelector(possibleCrossRefs,result,referenceController);
 			}
+			result.append("</div>");
 			
 		}else {
 			if(referencedObject != null) { //If the reference is a singleton object
@@ -121,10 +123,11 @@ public class ChildRef implements GeneratorItem  {
 			String divId = "childDiv" + childNode.getNodeId() + htmlIdSuffix ;
 			String removeBtnId = "removeChildBtn" + childNode.getNodeId() + htmlIdSuffix ;
 			
-			result.append("<"+seperationTag +" id=\"" + divId + "\">");
-			if(!inline) {
+			//String openingTagStyle = inline ? "" : " style=\"margin-left:2em;\"";
+			result.append("<"+seperationTag + " id=\"" + divId + "\">");
+			/*if(!inline) {
 				result.append("<hr>");
-			}
+			}*/
 			result.append("<button id=\""+removeBtnId+"\" class=\"removeBtn\">X</button>");
 			result.append(nodeMap.get(childProjId).generate(htmlIdSuffix ,ofs,typeHelper, childNode, nodeMap, componentMap));
 			result.append("</"+seperationTag +">");
@@ -141,9 +144,8 @@ public class ChildRef implements GeneratorItem  {
 	}
 	
 	private void appendContainmentAddSelector(List<String> possibleTypes, CustomHtmlProjectionDescription result,ReferenceController referenceController) {
-			
 		result.append("<select id=\""+referenceController.addSelectorId+"\">");
-		result.append("<option selected disabled>Add Child</option>");
+		result.append("<option selected disabled>Add " + referenceController.referenceName + "</option>");
 		for(String pt : possibleTypes) {
 			result.append("<option value=\""+pt+"\">Add " +pt + " Node</option>");
 		}
@@ -153,7 +155,7 @@ public class ChildRef implements GeneratorItem  {
 	private void appendCrossReferenceAddSelector(List<NodeRef> possibleCrossRefs, CustomHtmlProjectionDescription result,ReferenceController referenceController) {
 		
 		result.append("<select id=\""+referenceController.addSelectorId+"\">");
-		result.append("<option selected disabled>Add Reference</option>");
+		result.append("<option selected disabled>Add "+ referenceController.referenceName +"</option>");
 		for(NodeRef nr : possibleCrossRefs) {
 			result.append("<option value=\""+nr.getNodeId() +"\">Add " +nr.getName() + " </option>");
 		}
