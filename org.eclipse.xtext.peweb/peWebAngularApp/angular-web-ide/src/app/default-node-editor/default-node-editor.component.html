@@ -15,7 +15,7 @@
 				{{ref.name}}
 				<ul>
 					<li *ngFor="let refNode of ref.nodes">
-						<span class="textbtn" (click)="RemoveReferenceClick(refNode.nodeId,ref)">X</span> {{refNode.name}}  : ({{refNode.nodeId}})
+						<span class="removeBtn" (click)="RemoveReferenceClick(refNode.nodeId,ref)">X</span> {{refNode.name}}  : ({{refNode.nodeId}})
 					</li>
 				</ul>
 				<div *ngIf="ref.crossReference == false">

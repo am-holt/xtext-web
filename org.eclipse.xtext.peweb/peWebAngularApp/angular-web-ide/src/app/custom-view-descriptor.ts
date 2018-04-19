@@ -56,7 +56,6 @@ export class ReferenceItemController{
 
 	//The identifier of the div that the referenced node is contained within
 	divId: string;
-
 }
 
 export class CustomViewDescriptor  implements ViewDescriptor{

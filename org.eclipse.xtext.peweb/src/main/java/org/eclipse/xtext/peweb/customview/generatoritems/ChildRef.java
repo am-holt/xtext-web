@@ -90,9 +90,7 @@ public class ChildRef implements GeneratorItem  {
 			if(referencedObject != null) { //If the reference is a singleton object
 				EObject refObject = (EObject) referencedObject;
 				appendChild(refObject, result,referenceController, suff, ofs, typeHelper,
-					nodeMap, componentMap);
-				
-				result.append("<hr>");
+					nodeMap, componentMap, true);
 				
 			}else {
 				if(eRef.isContainment()) {
@@ -110,7 +108,9 @@ public class ChildRef implements GeneratorItem  {
 	
 	private void appendChild(EObject childObject, CustomHtmlProjectionDescription result,ReferenceController referenceController, String htmlIdSuffix, OpenFileState ofs, TypeHelper typeHelper,
 			Map<ProjectionIdentifier, HtmlProjectionSpecification> nodeMap,
-			Map<String, HtmlComponentSpecification> componentMap) {
+			Map<String, HtmlComponentSpecification> componentMap, Boolean inline) {
+		
+		String seperationTag = inline ? "span" : "div";
 		
 		ResourceAbstractSyntaxTree childNode = ofs.getNode(ofs.getEObjectId(childObject));		
 		ProjectionIdentifier childProjId = new ProjectionIdentifier(childNode.getEClass().getName() ,this.projectionName); 
@@ -121,15 +121,23 @@ public class ChildRef implements GeneratorItem  {
 			String divId = "childDiv" + childNode.getNodeId() + htmlIdSuffix ;
 			String removeBtnId = "removeChildBtn" + childNode.getNodeId() + htmlIdSuffix ;
 			
-			result.append("<div id=\"" + divId + "\">");
-			result.append("<hr>");
-			result.append("<button id=\""+removeBtnId+"\">Remove Node</button>");
+			result.append("<"+seperationTag +" id=\"" + divId + "\">");
+			if(!inline) {
+				result.append("<hr>");
+			}
+			result.append("<button id=\""+removeBtnId+"\" class=\"removeBtn\">X</button>");
 			result.append(nodeMap.get(childProjId).generate(htmlIdSuffix ,ofs,typeHelper, childNode, nodeMap, componentMap));
-			result.append("</div>");
+			result.append("</"+seperationTag +">");
 			
 			referenceController.addReferenceItem(childNode.getNodeId(), removeBtnId, divId);
 			
 		}
+	}
+	
+	private void appendChild(EObject childObject, CustomHtmlProjectionDescription result,ReferenceController referenceController, String htmlIdSuffix, OpenFileState ofs, TypeHelper typeHelper,
+			Map<ProjectionIdentifier, HtmlProjectionSpecification> nodeMap,
+			Map<String, HtmlComponentSpecification> componentMap) {
+		this.appendChild(childObject, result, referenceController, htmlIdSuffix, ofs, typeHelper, nodeMap, componentMap, false);
 	}
 	
 	private void appendContainmentAddSelector(List<String> possibleTypes, CustomHtmlProjectionDescription result,ReferenceController referenceController) {
