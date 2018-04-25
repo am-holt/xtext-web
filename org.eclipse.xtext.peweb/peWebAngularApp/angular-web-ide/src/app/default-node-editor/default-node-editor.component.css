@@ -6,9 +6,11 @@
 .removeBtn{
   cursor: pointer;
   background: #d12e0e;
-  border-radius: 3px;
-  padding-left:  1em;
-  padding-right: 1em;
+	border-radius: 15px;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+	border: 0;
+	border-color: transparent;
 }
 
 ul li{
