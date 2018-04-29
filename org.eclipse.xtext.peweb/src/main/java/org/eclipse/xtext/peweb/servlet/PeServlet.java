@@ -137,7 +137,7 @@ public abstract class PeServlet extends HttpServlet {
 				return new GetFileService(this.openResources);
 			case "get-node":
 				return new GetNodeService(this.openResources, this.getViewRetriever());
-			case "update-node":
+			case "update-attribute":
 				return new UpdateNodeService(this.openResources);
 			case "validate-node":
 				return new ValidateNodeService(this.openResources);

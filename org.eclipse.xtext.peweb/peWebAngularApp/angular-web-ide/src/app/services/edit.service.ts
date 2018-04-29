@@ -51,7 +51,7 @@ export class EditService {
     return this.http.get<UpdateNodeRawResponse>(this.serviceUrl,
       {
         params: new HttpParams()
-          .append('serviceType', 'update-node')
+          .append('serviceType', 'update-attribute')
           .append('file-name', fileDetails.name)
           .append('project-name', projId)
           .append('node-id', nodeId)
