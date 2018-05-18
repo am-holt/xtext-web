@@ -33,7 +33,7 @@ export class EditService {
 
   validateAttribute(projId:string, fileDetails:FileDetails, nodeId:string, attributeName:string, newValue:any) : Observable<ValidNodeResponse>{
   	this.log("Validate Attribute: " + attributeName);
-    return this.http.get<ValidNodeRawResponse>(this.serviceUrl,
+    return this.http.post<ValidNodeRawResponse>(this.serviceUrl,{}
       {params: new HttpParams()
       	.append('serviceType','validate-node')
       	.append('file-name', fileDetails.name)
@@ -48,7 +48,7 @@ export class EditService {
     //TODO change to post
     this.log("Update attribiute: "  + attributeName + " to " +newValue);
     console.log("updating attribute")
-    return this.http.get<UpdateNodeRawResponse>(this.serviceUrl,
+    return this.http.post<UpdateNodeRawResponse>(this.serviceUrl,{},
       {
         params: new HttpParams()
           .append('serviceType', 'update-attribute')
@@ -73,7 +73,7 @@ export class EditService {
       paramsparams = paramsparams.append('child-type',type);
     }
           
-    return this.http.get<AddReferenceRawResponse>(this.serviceUrl,
+    return this.http.post<AddReferenceRawResponse>(this.serviceUrl,{"a":"a"},
       {
         params: paramsparams
       }).map(a => new AddReferenceResponse(a).getAst()); 
@@ -90,7 +90,7 @@ export class EditService {
           .append('cross-reference', 'true')
           .append('child-id',childId)
           
-    return this.http.get<AddReferenceRawResponse>(this.serviceUrl,
+    return this.http.post<AddReferenceRawResponse>(this.serviceUrl,{},
       {
         params: paramsparams
       }); 
@@ -98,7 +98,7 @@ export class EditService {
 
   removeReference(projId: string, fileDetails: FileDetails, nodeId: string, toRemoveId: string, referenceName:string): Observable<boolean> {
     this.log("Remove ref: "  + toRemoveId);
-    return this.http.get<RemoveReferenceRawResponse>(this.serviceUrl,
+    return this.http.post<RemoveReferenceRawResponse>(this.serviceUrl,{},
       {
         params: new HttpParams()
           .append('serviceType', 'remove-reference')

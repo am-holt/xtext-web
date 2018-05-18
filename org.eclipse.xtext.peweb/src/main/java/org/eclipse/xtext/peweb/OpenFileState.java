@@ -54,10 +54,15 @@ public class OpenFileState {
 			
 		}else if(resource.getContents().size() > 1){
 			//This shouldn't ever be the case!
-			throw new UnsupportedOperationException("Can't open files that don't have more than one root object");
+			throw new UnsupportedOperationException("Can't open files that have more than one root object");
 		}
 		
 		this.ast = createASTFromEObject(resource.getContents().get(0));
+	}
+	
+	public OpenFileState(EObject rootNode) {
+		//TODO work out how to do resource
+		this.ast = createASTFromEObject(rootNode);
 	}
 	
 	private ResourceAbstractSyntaxTree createASTFromEObject(EObject eObject) {

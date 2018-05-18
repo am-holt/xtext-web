@@ -10,7 +10,7 @@ import org.eclipse.xtext.peweb.customview.generatoritems.*;
 import java.util.HashMap;
 import java.util.List;
 
-public class ViewRetriever {
+public class ViewRetriever implements IViewRetriever{
 
 	
 	public Map<ProjectionIdentifier,HtmlProjectionSpecification> nodeMap;

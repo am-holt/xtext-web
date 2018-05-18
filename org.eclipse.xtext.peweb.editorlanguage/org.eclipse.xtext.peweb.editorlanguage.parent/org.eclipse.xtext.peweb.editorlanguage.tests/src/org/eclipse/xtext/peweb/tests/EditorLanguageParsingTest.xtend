@@ -4,27 +4,214 @@
 package org.eclipse.xtext.peweb.tests
 
 import com.google.inject.Inject
-import org.eclipse.xtext.peweb.editorLanguage.Model
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.eclipse.xtext.peweb.editorLanguage.EditorDefinitionFile
+import org.eclipse.xtext.peweb.tests.EditorLanguageInjectorProvider
 
 @RunWith(XtextRunner)
 @InjectWith(EditorLanguageInjectorProvider)
 class EditorLanguageParsingTest {
 	@Inject
-	ParseHelper<Model> parseHelper
+	ParseHelper<EditorDefinitionFile> parseHelper
 	
+	//Invalid, just a word
 	@Test
-	def void loadModel() {
+	def void loadPlainString() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			Test
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertFalse('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+	//Invalid, nested node
+	@Test
+	def void loadNestedNode() {
+		val result = parseHelper.parse('''
+			Node test{
+				Node test2{}
+			}
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertFalse('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+	//Invalid, nested projection
+	@Test
+	def void loadNestedProjection() {
+		val result = parseHelper.parse('''
+			Node test{
+				projection main{
+					projection main2{}
+				}
+			}
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertFalse('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+	//Invalid, projection missing view
+	@Test
+	def void loadProjectionNoView() {
+		val result = parseHelper.parse('''
+			Node test{
+				Projection main{}
+			}
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertFalse('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+	//Invalid, references non-existent component
+	@Test
+	def void loadNonExistentComponentRef() {
+		val result = parseHelper.parse('''
+			Node test{
+				Projection main{
+					view:[ <<%Component%>> ]	
+				}
+			}
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertFalse('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+	//Invalid, references non-existent child projection
+	@Test
+	def void loadNonExistentChildRef() {
+		val result = parseHelper.parse('''
+			Node test{
+				Projection main{
+					view:[ <<!child:DoesntExist!>> ]	
+				}
+			}
+			Node child{
+				Projection main{
+					view:[ <<%Component%>> ]	
+				}
+			}
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertFalse('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+
+	//Invalid, getter has incorrect annotation
+	@Test
+	def void loadGetterusingIncorrectAnnotation() {
+		val result = parseHelper.parse('''
+			Node test{
+				Projection main{
+					view:[ test ]
+					@attribute{
+						get:[ <<!ShouldntBeHere:main!>> ]
+						set:[]
+						validate:[]
+					}	
+				}
+			}
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertFalse('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+	//valid, simple view of one node
+	@Test
+	def void loadSimpleProj() {
+		val result = parseHelper.parse('''
+			Node test{
+				Projection main{
+					view:[ test ]
+				}
+			}
 		''')
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
 	}
+	
+	//valid, simpleTextBox using attribute controller
+	@Test
+	def void loadTextBoxProj() {
+		val result = parseHelper.parse('''
+			Node test{
+				Projection main{
+					view:[ <input type="text" id=<<$input$>>> ]
+					@attribute{
+						get:[document.getElementById(<<$input$>>).value]
+						set:[document.getElementById(<<$input$>>).value = X]
+						validate:[]
+					}
+				}
+			}
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+	//valid, simpleTextBox using component
+	@Test
+	def void loadTextBoxComponent() {
+		val result = parseHelper.parse('''
+			Node test{
+				Projection main{
+					view:[ <<%textBox:attribute%>> ]
+				}
+				
+				Component textBox{
+					view:[<input type=\"text\" id=<<$input$>>>]
+					get:[document.getElementById(<<$input$>>).value]
+					set:[document.getElementById(<<$input$>>).value = X]
+					validate:[]
+				}
+			}
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+	//valid, checks child annotation
+	@Test
+	def void loadChildAnnotation() {
+		val result = parseHelper.parse('''
+			Node test{
+				Projection main{
+					view:[ <<!child:proj!>> ]
+				}
+			}
+			Node childNode{
+				Projection main{
+					view: [ hi ]
+				}
+				Projection proj{
+					view: [ hello ]
+				}
+			}
+		''')
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+	}
+	
+//Component textBox{
+//	view:[<input type=\"text\" id=<<$input$>>>]
+//	get:[document.getElementById(<<$input$>>).value]
+//	set:[document.getElementById(<<$input$>>).value = X]
+//	validate:[]
+//}
+	
+	
 }

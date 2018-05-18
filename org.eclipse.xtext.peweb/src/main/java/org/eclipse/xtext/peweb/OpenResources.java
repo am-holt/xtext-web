@@ -6,7 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.peweb.exceptions.ResourceLoadingException;
 
-public class OpenResources {
+public class OpenResources implements IOpenResources{
 
 	private Map<String, OpenFileState> openFileMap = new HashMap<String, OpenFileState>();
 	private Map<EPackage, TypeHelper> typeHelperMap = new HashMap<EPackage, TypeHelper>();
@@ -27,7 +27,6 @@ public class OpenResources {
 		return ofs;
 	}
 	
-	//Try to get the details for a file, opening it if needed
 	public TypeHelper getTypeHelper(EPackage ePackage){
 		if(typeHelperMap.containsKey(ePackage)){
 			return typeHelperMap.get(ePackage);

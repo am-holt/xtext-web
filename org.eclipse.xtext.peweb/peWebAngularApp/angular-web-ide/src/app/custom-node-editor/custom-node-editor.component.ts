@@ -70,6 +70,9 @@ export class CustomNodeEditorComponent implements OnInit {
   	for( var attribute of this.nodeViewDescriptor.attributeControllers){
       var currentValue = eval(attribute.getter);
       if( currentValue !== this.attributeValueMap.get(attribute.nodeId).get(attribute.attributeName)){
+        var valid = eval("(X=>{"+attribute.validator+"})")(currentValue);
+        console.log("Validation:");
+        console.log(valid);
         changedValues.push(new AttributeId(attribute));
         this.attributeValueMap.get(attribute.nodeId).set(attribute.attributeName, currentValue);
         console.log("VALUE CHANGED: " + attribute.attributeName + " VAL: " + currentValue)

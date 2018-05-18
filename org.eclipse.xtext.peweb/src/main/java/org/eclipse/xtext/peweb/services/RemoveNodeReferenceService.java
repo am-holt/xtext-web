@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.peweb.IOpenResources;
 import org.eclipse.xtext.peweb.OpenFileState;
 import org.eclipse.xtext.peweb.OpenResources;
 import org.eclipse.xtext.peweb.ResourceAbstractSyntaxTree;
@@ -21,7 +22,7 @@ import org.eclipse.xtext.web.server.InvalidRequestException;
 
 public class RemoveNodeReferenceService implements PEService {
 
-	private OpenResources openResources;
+	private IOpenResources openResources;
 	
 	private class RemoveNodeReferenceResult implements IServiceResult{
 		boolean success;
@@ -30,7 +31,7 @@ public class RemoveNodeReferenceService implements PEService {
 		}
 	}
 	
-	public RemoveNodeReferenceService(OpenResources openResources){
+	public RemoveNodeReferenceService(IOpenResources openResources){
 		this.openResources = openResources;
 	}
 	
@@ -51,11 +52,16 @@ public class RemoveNodeReferenceService implements PEService {
 		if(projectName == null){
 			throw new InvalidRequestException("A \'remove-reference' request must have a \'project-name\' parameter!");
 		}
-		
+		if(referenceName ==null){
+			throw new InvalidRequestException("A \'remove-reference' request must have a \'reference-name\' parameter!");
+		}
+		if(referenceId ==null){
+			throw new InvalidRequestException("A \'remove-reference' request must have a \'reference-id\' parameter!");
+		}
 		
 		String fileLocation = ("user-files" + File.separator + projectName + File.separator + fileName);
 		
-		if(referenceName !=null){
+		
 			OpenFileState ofs;
 			try {
 				ofs = openResources.getFileState(fileLocation);
@@ -63,10 +69,22 @@ public class RemoveNodeReferenceService implements PEService {
 				
 				ResourceAbstractSyntaxTree toRemove = ofs.getNode(referenceId);
 
+				if(node == null) {
+					throw new InvalidRequestException("\'node-id\' is not present in file!");
+				}
 				EStructuralFeature refFeature = node.getEClass().getEStructuralFeature(referenceName);
+				System.out.println(refFeature);
+				if(refFeature == null) {
+					throw new InvalidRequestException("\'reference-name\' doesn't exist for this node!");
+				}
+				
 				
 				boolean result = true;
 				if(((EReference)refFeature).isContainment()) {
+					
+					if(toRemove == null) {
+						throw new InvalidRequestException("\'reference-id\' doesn't exist!");
+					}
 					EcoreUtil.delete(toRemove.getEObject(), true);
 					result = ofs.removeChildNode(node, toRemove);
 				}else {
@@ -84,10 +102,9 @@ public class RemoveNodeReferenceService implements PEService {
 		
 			} catch (ResourceLoadingException e) {
 				//TODO fix this
-				throw new RuntimeException(e);
+				throw new InvalidRequestException.ResourceNotFoundException(e.getMessage());
 			}
-		}
-		throw new InvalidRequestException("A \'add-reference' request must have a \'attribute-name\' or \'reference-name\' parameter!");
+		
 
 	}
 

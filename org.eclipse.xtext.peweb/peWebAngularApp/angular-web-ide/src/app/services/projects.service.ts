@@ -33,7 +33,7 @@ export class ProjectsService {
   
   getProjectDetails(): Observable<ProjectDetails[]> {
   	this.log("getting project details");
-  	return this.http.get(this.serviceUrl, 
+  	return this.http.post(this.serviceUrl, {},
       {params: new HttpParams().append('serviceType','ls-projects')})
       .map( res => <String[]>(res["projectnames"])).map(a =>a.map(this.stringToProjectDetails));
   }
@@ -44,14 +44,15 @@ export class ProjectsService {
 
   addNewProject(name: string) : Observable<string>{
     this.log("Add new project: " + name);
-  	var b : Observable<string> = this.http.get(this.serviceUrl,
+  	var b : Observable<string> = this.http.post(this.serviceUrl,{},
       {params: new HttpParams().append('serviceType', 'add-project').append('name',name)}).map(a=>name);
+    
     return b;
   }
 
   getProject(id:string) : Observable<Project>{    
     this.log("retrieving project id: " + id);
-    var b : Observable<Project> = this.http.get(this.serviceUrl,
+    var b : Observable<Project> = this.http.post(this.serviceUrl,{},
       {params: new HttpParams().append('serviceType', 'get-project').append('name',id)})
       .map(a=> a["Files"])
       .map<string[],Project>(ls => {var files = ls.map(a=> new FileDetails(a)); return {details:{name:id,id:id},files:files}});
@@ -60,7 +61,7 @@ export class ProjectsService {
 
   getFile(projId:string, fileDetails:FileDetails): Observable<File>{
     this.log("Get file: " + fileDetails.name);
-    var a = this.http.get(this.serviceUrl,
+    var a = this.http.post(this.serviceUrl,{},
       {params: new HttpParams().append('serviceType','get-file').append('file-name', fileDetails.name).append('project-name',projId)})
       .map(a=> new File(new AbstractSyntaxTree(a["ast"]), fileDetails));
     return a;
@@ -71,7 +72,7 @@ export class ProjectsService {
   //TODO Modify service so it returns something other than default node response
   getNode(projId: string, fileDetails:FileDetails, node:AbstractSyntaxTree): Observable<ViewDescriptor>{
     this.log("Get Node: " + node.nodeId);
-    return this.http.get<ViewDescriptor>(this.serviceUrl,
+    return this.http.post<ViewDescriptor>(this.serviceUrl,{},
       {params: new HttpParams().append('serviceType','get-node')
       .append('file-name', fileDetails.name)
       .append('project-name',projId)
@@ -90,7 +91,7 @@ export class ProjectsService {
   addFileToProject(projId:string , fileName:string) : Observable<FileDetails>{
     this.log("adding file "+ fileName + "to project " + projId);
     
-    var b : Observable<FileDetails> = this.http.get(this.serviceUrl,
+    var b : Observable<FileDetails> = this.http.post(this.serviceUrl,{},
       {params: new HttpParams().append('serviceType', 'add-file')
       .append('name',fileName)
       .append('project-name',projId)})
@@ -101,7 +102,7 @@ export class ProjectsService {
   saveFile(projId:string , fileDetails:FileDetails) : Observable<SaveFileResponse>{
     this.log("saving file "+ fileDetails.name + " to project " + projId);
     
-    return this.http.get<SaveFileRawResponse>(this.serviceUrl,
+    return this.http.post<SaveFileRawResponse>(this.serviceUrl,{},
       {params: new HttpParams().append('serviceType', 'save-file')
       .append('file-name',fileDetails.name)
       .append('project-name',projId)})

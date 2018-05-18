@@ -32,9 +32,7 @@ public class ValidateNodeService implements PEService {
 		String nodeId = serviceContext.getParameter("node-id") ;
 		String fileName = serviceContext.getParameter("file-name");
 		String projectName = serviceContext.getParameter("project-name");
-		String attributeName = serviceContext.getParameter("attribute-name");
-		String referenceName = serviceContext.getParameter("reference-name");
-		String value = serviceContext.getParameter("value");
+		
 		if(nodeId == null){
 			throw new InvalidRequestException("A \'validate-node' request must have a \'node-id\' parameter!");
 		}
@@ -44,18 +42,11 @@ public class ValidateNodeService implements PEService {
 		if(projectName == null){
 			throw new InvalidRequestException("A \'validate-node' request must have a \'project-name\' parameter!");
 		}
-		if(value == null){
-			throw new InvalidRequestException("A \'validate-node' request must have a \'value\' parameter!");
-		}
+		
 		
 		String fileLocation = ("user-files" + File.separator + projectName + File.separator + fileName);
 		
-		if(attributeName !=null){
-			return validateAttribute(fileLocation, nodeId ,attributeName,value);
-		}else if(referenceName != null){
-			return validateReference(fileLocation, nodeId, referenceName,value);
-		}
-		throw new InvalidRequestException("A \'validate-node' request must have a \'attribute-name\' or \'reference-name\' parameter!");
+		return new ValidateNodeResponse(true, "");
 	}
 
 	private IServiceResult validateAttribute(String fileLocation, String nodeId, String attributeName, String value) {		
